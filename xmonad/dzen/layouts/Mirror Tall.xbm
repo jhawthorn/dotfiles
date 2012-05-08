@@ -1,0 +1,4 @@
+#define Mirror_Tall_width 8
+#define Mirror_Tall_height 8
+static char Mirror_Tall_bits[] = {
+  0xFF, 0x81, 0x81, 0x81, 0xFF, 0x91, 0x91, 0xFF, };
