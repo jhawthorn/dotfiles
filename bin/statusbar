@@ -1,0 +1,111 @@
+#!/usr/bin/env ruby
+# Encoding: utf-8
+
+ICON_PATH='/home/jhawthorn/.dzen/xbm8x8/'
+DZENCMD=%{dzen2 -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u' -geometry -0+0 -expand l -bg black -fg '#aaaaaa'}
+
+module Dzen
+  def dzen command, arg=""
+    "^#{command}(#{arg})"
+  end
+  def icon name
+    dzen(:i, icon_path(name))
+  end
+  def icon_path name
+    File.join(ICON_PATH, "#{name}.xbm")
+  end
+  def click button, command, content
+    "^ca(#{button},#{command})#{content}^ca()"
+  end
+end
+
+class StatusApp
+  include Dzen
+  def initialize *args
+    @args = args
+  end
+end
+
+class Battery < StatusApp
+  def label
+    device, status = `acpi -b`.chomp.split(/: */, 2)
+    status, level, time = (status || "").split(/, */)
+    time = time[/[\d]*:[\d]*/] if time
+    _, ico = {10 => :empty, 40 => :low, 80 => :med, 1000 => :full}.detect do |(charge, _)|
+      (level || 0).to_i < charge
+    end
+    ico = "bat_#{ico}_01"
+    ico = 'ac_01' if status == "Charging"
+    "#{icon ico} #{level} #{time}"
+  end
+end
+
+class Volume < StatusApp
+  def label
+    mixer = @args[0]
+    status = `amixer get #{mixer}`
+
+    level = status[/\d+%/]
+    state = status[/\[(on|off)\]/, 1]
+    content = state == 'on' ? ("%3i%" % level.to_i) : 'mute'
+
+    content = "#{icon 'phones'} #{content}"
+    content = click(1, "amixer -q set #{mixer} toggle", content)
+    content = click(4, "amixer -q set #{mixer} 5%+", content)
+    content = click(5, "amixer -q set #{mixer} 5%-", content)
+  end
+end
+
+class Clock < StatusApp
+  def label
+    time = Time.now.strftime("%H:%M:%S")
+    "#{icon 'clock'} #{time}"
+  end
+end
+
+class Wireless < StatusApp
+  def label
+    device = 'wlan0'
+    iwconfig = `iwconfig #{device}`
+    lq = iwconfig[/Link Quality=([\/\d]*)/, 1]
+    essid = iwconfig[/ESSID:\"([^"]*)\"/, 1]
+    content = "#{icon 'wifi_01'} #{essid} #{lq}"
+    content = click(1, 'sudo /etc/rc.d/net-auto-wireless restart', content)
+  end
+end
+
+class Maildir < StatusApp
+  def label
+    mailcount = Dir["#{@args[0]}/new/*"].count
+    content = "#{icon 'mail'} #{mailcount}"
+    click(1, 'urxvt -e mutt', content)
+  end
+end
+
+class Statusbar
+  def initialize
+    @apps = [
+      Wireless.new,
+      Maildir.new("#{ENV['HOME']}/mail/INBOX"),
+      Battery.new,
+      Volume.new('Master'),
+      Clock.new
+    ]
+  end
+  def output
+    #STDOUT
+    @output ||= open("|#{DZENCMD}", 'w')
+  end
+  def print_line
+    output.puts @apps.map { |app| app.label }.join(" · ")
+    output.flush
+  end
+  def run
+    loop do
+      print_line
+      sleep 1
+    end
+  end
+end
+
+Statusbar.new.run
