@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+def usage
+  warn "USAGE: #{$0} 3d6 2d6"
+  exit 1
+end
+
+usage if ARGV.length < 1
+
+def roll number, die
+  rolls = number.times.map { rand(die) }.sort.reverse
+  if die <= 6
+    puts rolls.map{|x| [0x2680 + x].pack('U') }.join(" ")
+  end
+  puts rolls.map{|x| x.succ.to_s }.join(" ")
+  puts
+end
+
+ARGV.each do |arg|
+  if arg =~ /(\d+)[dD](\d+)/
+    roll $1.to_i, $2.to_i
+  else
+    usage
+  end
+end

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+code = ARGV[0] || "line"
+begin
+  loop do
+    line = STDIN.readline.chomp
+    puts eval code
+  end
+rescue EOFError
+end

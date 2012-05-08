@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#exec ssh -t dragoon weechat
+exec mosh dragoon weechat
+
