@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Encoding: utf-8
 
-ICON_PATH='/home/jhawthorn/.dzen/xbm8x8/'
+ICON_PATH="#{ENV['HOME']}/.dzen/xbm8x8/"
 DZENCMD=%{dzen2 -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u' -geometry -0+0 -expand l -bg black -fg '#aaaaaa'}
 
 module Dzen
