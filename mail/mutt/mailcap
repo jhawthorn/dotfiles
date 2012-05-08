@@ -1,0 +1,7 @@
+text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+#text/html;                     firefox %s & sleep 5; test=RunningX;
+#text/html;                     w3m %s; nametemplate=%s.html;
+image/*;                       meh %s; edit=gimp %s;
+application/pdf;               mupdf %s;
+application/ms-tnef;           tnef -t %s && read ans;
+application/msword;            soffice %s;

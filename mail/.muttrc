@@ -1,0 +1,97 @@
+
+# mbox setup (offlineimap)
+set mbox_type   = Maildir
+set folder      = ~/mail
+set spoolfile   = "+INBOX"
+set mbox        = "+archive"
+unset record
+
+set postponed   = "+drafts"
+set recall=no
+
+# outgoing setup (msmtp)
+set sendmail    = /usr/bin/msmtp
+
+# store message headers locally to speed things up
+set header_cache=~/.mutt/.hcache
+
+# Edit headers in the message
+set autoedit
+set edit_headers
+
+set beep_new = yes
+set check_new = yes
+set timeout = 600
+
+set mailcap_path 	= ~/.mutt/mailcap
+
+# if there is only html dump that
+auto_view text/html
+alternative_order text/plain text/html
+
+#auto_view text/html
+#macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+
+# sillyness
+# my_hdr X-Face: Bo~#0_C_diEih^{*-$IOp8TwSvqA+9-O}aWuS3hWc51_[rdrXW/6znw.+e%t3Rtw^jW;{r`~aB7OMsPyZh)&c0!1l!i)Zzv)^|AfA0T)N?MM#FB(gplV[>j3DSaei%E[:D8NQzHk2Appi1xf7[x$4wr<WJ+O"aV(6(,]U8TJB7HDq%((qA'NdwT$arowCL8`GtP9!Zo:[F1"/':3WuG,wCGZzdU9]v7wy5l^0s9\%UG,a{P8B_c|\j4X4TDW73NS;94yjI5+9xgc$0oo_2}5
+
+
+# gmail mailboxes (hopefully)
+mailboxes +INBOX +archive +sent +drafts +spam +trash
+
+
+# bindings
+macro index D "<save-message>+trash<enter>"   "move message to the trash"
+macro index S "<save-message>+spam<enter>"    "mark message as spam"
+
+# Email from options
+set realname            = "John Hawthorn"
+set from                = "john.hawthorn@gmail.com"
+set envelope_from
+
+set reverse_name # use To as the From address
+alternates "jhawthor@uvic.ca|john@freerunningtechnologies.com|j@hawth.ca"
+
+# gmail options
+set mail_check = 0
+unset move
+set delete
+unset confirmappend
+set quit
+unset mark_old
+set use_domain=no
+
+# gmail-like index options
+set sort       = threads
+set sort_aux   = reverse-last-date-received
+set sort_re
+
+# pager
+set pager_index_lines   = 8
+set pager_context       = 5
+set pager_stop
+set menu_scroll
+set smart_wrap
+set tilde
+unset markers
+
+# composing mail
+set fcc_attach
+unset mime_forward
+set forward_format = "Fwd: %s"
+set include
+set forward_quote
+
+# headers to show
+ignore *
+unignore From To Cc Date Subject
+# Dkim-Signature
+hdr_order From To Cc Date Subject
+
+source $HOME/.mutt/colors.linux
+source $HOME/.mutt/mailboxes
+
