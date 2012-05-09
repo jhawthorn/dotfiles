@@ -28,6 +28,8 @@ else
 	"let g:Powerline_symbols = 'unicode'
 	let g:Powerline_symbols = 'compatible'
 endif
+call Pl#Theme#RemoveSegment('rvm:string')
+call Pl#Theme#RemoveSegment('rvm:statusline')
 let g:Powerline_symbols_override = { 'BRANCH': [0x26a1], 'LINE': 'L', }
 
 " syntastic
@@ -62,6 +64,8 @@ Bundle 'ack.vim'
 "Bundle 'kien/ctrlp.vim'
 "set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
 "let g:ctrlp_user_command = 'find %s -type f'
+
+runtime macros/matchit.vim
 
 
 filetype plugin indent on
