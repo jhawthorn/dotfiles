@@ -2,6 +2,7 @@
 
 export EDITOR=vim
 export BROWSER="chrome"
+export MOSH_TITLE_NOPREFIX=1
 
 # fallbacks for $TERM
 case "$TERM" in
