@@ -6,3 +6,4 @@ sh    vim/install.sh
 sh      x/install.sh
 sh xmonad/install.sh
 sh    zsh/install.sh
+ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
