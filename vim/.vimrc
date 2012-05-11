@@ -41,6 +41,7 @@ Bundle "file-line"
 " version control
 Bundle 'vcscommand.vim'
 Bundle 'int3/vim-extradite'
+let g:extradite_showhash=1
 
 "" LaTeX
 "Bundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -103,21 +104,21 @@ if has("autocmd")
   autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
 
   " File types
-  au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} setfiletype ruby
-  au BufRead,BufNewFile {*.rss,*.atom}                              setfiletype xml
-  au BufRead,BufNewFile *.json                                      setfiletype json
-  au BufRead,BufNewFile {*.md,*.mkd,*.markdown}                     setfiletype markdown
-  au BufRead,BufNewFile {COMMIT_EDITMSG}                            setfiletype gitcommit
-  au BufRead,BufNewFile *mutt-*                                     setfiletype mail
-  au BufRead,BufNewFile svn-commit.*                                setfiletype svn
-  au BufRead,BufNewFile *.vala                                      setfiletype vala
-  au BufRead,BufNewFile *.vapi                                      setfiletype vala
+  au BufRead,BufNewFile {*.rake,config.ru}                   set ft=ruby
+  au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,Guardfile} set ft=ruby
+  au BufRead,BufNewFile {*.rss,*.atom}                       set ft=xml
+  au BufRead,BufNewFile *.json                               set ft=json
+  au BufRead,BufNewFile {*.md,*.mkd,*.markdown}              set ft=markdown
+  au BufRead,BufNewFile {COMMIT_EDITMSG}                     set ft=gitcommit
+  au BufRead,BufNewFile *mutt-*                              set ft=mail
+  au BufRead,BufNewFile svn-commit.*                         set ft=svn
+  au BufRead,BufNewFile {*.vala,*.vapi}                      set ft=vala
+  au BufRead,BufNewFile pos.*.*                              set ft=basic
+  au BufRead,BufNewFile *.mirah                              set ft=mirah
 
   au BufRead,BufNewFile *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
   au BufRead,BufNewFile *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 
-  au BufRead,BufNewFile pos.*.* setfiletype basic
-  au BufRead,BufNewFile *.mirah setfiletype mirah
 endif
 
 set shell=zsh
