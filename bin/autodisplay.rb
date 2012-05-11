@@ -20,9 +20,9 @@ names = all.map(&:name)
 
 puts names.inspect
 
-if names.count > 1
+if names.count > 2
   ## Use all but builtin LCD
-  #names.delete('DFP-0')
+  names.delete('DFP-0')
 end
 
 cmd = "disper -d '#{names.join(',')}' -e"
