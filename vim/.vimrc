@@ -39,7 +39,7 @@ Bundle 'tsaleh/vim-align'
 Bundle "file-line"
 
 " version control
-Bundle 'vcscommand.vim'
+"Bundle 'vcscommand.vim'
 Bundle 'int3/vim-extradite'
 let g:extradite_showhash=1
 
@@ -196,5 +196,7 @@ cnoremap s# s#\v
 cnoremap s@ s@\v'
 
 set background=dark
-colorscheme wombat256mod
+if filereadable(expand("~/.vim/bundle/wombat256.vim/colors/wombat256mod.vim"))
+	colorscheme wombat256mod
+end
 
