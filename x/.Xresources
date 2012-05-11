@@ -6,6 +6,10 @@ URxvt.boldFont: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
 !Xft.hinting: true
 
 
+dzen2.font:       -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
+dzen2.foreground: white
+dzen2.background: black
+
 
 URxvt.loginShell:  false
 URxvt.utmpInhibit: true

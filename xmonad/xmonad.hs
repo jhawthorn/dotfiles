@@ -351,7 +351,7 @@ myStartupHook = setWMName "LG3D"
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc <- spawnPipe "dzen2 -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u' -geometry +0+0 -expand r -bg black"
+    xmproc <- spawnPipe "dzen2 -geometry +0+0 -expand r"
     xmonad $ withUrgencyHook NoUrgencyHook
            $ defaultConfig {
       -- simple stuff
