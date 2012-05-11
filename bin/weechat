@@ -1,5 +1,8 @@
 #!/bin/sh
 
-#exec ssh -t dragoon weechat
-exec mosh dragoon weechat
+if [ `hostname -s` = "dragoon" ]; then
+	dtach -A ~/.dtach/weechat weechat-curses
+else
+	exec mosh dragoon weechat
+fi
 
