@@ -1,0 +1,33 @@
+[user]
+	name = John Hawthorn
+	email = john.hawthorn@gmail.com
+[github]
+	user = jhawthorn
+[merge]
+	tool = vimdiff
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+[advice]
+	statusHints = false
+[diff]
+	renames = copies
+[push]
+	default = upstream
+[difftool]
+	prompt = false
+[core]
+	excludesfile = /home/jhawthorn/.gitignore
+	whitespace = trailing-space,space-before-tab
+	quotepath = false
+	autocrlf = input
+[alias]
+	l = log --oneline --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[apply]
+	whitespace = fix
+
