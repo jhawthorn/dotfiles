@@ -17,7 +17,8 @@
 [diff]
 	renames = copies
 [push]
-	default = upstream
+	# tracking is the deprecated name for "upstream"
+	default = tracking
 [difftool]
 	prompt = false
 [core]
