@@ -48,7 +48,6 @@ let g:extradite_showhash=1
 
 "" color scheme
 Bundle 'wombat256.vim'
-set cursorline
 
 " tab completion
 Bundle 'ervandew/supertab'
@@ -88,6 +87,7 @@ set laststatus=2
 
 set ffs=unix,mac,dos
 
+set foldmethod=manual
 
 set tabstop=3
 set shiftwidth=3
@@ -200,3 +200,7 @@ if filereadable(expand("~/.vim/bundle/wombat256.vim/colors/wombat256mod.vim"))
 	colorscheme wombat256mod
 end
 
+" save ~100ms loading ftplugin/ruby.vim
+if !empty($MY_RUBY_HOME)
+	let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
+endif
