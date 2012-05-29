@@ -7,6 +7,9 @@ zstyle ':omz:module:editor' keymap 'vi'
 # Auto convert .... to ../..
 zstyle ':omz:module:editor' dot-expansion 'yes'
 
+# 10ms for key sequences
+KEYTIMEOUT=1
+
 # Set case-sensitivity for completion, history lookup, etc.
 zstyle ':omz:*:*' case-sensitive 'yes'
 
@@ -36,7 +39,7 @@ source "$OMZ/init.zsh"
 
 # Customize to your needs...
 
-. "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 function rails() {
 	if [ -e "script/rails" ]; then
