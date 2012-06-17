@@ -27,7 +27,7 @@ zstyle ':omz:load' zfunction 'zargs' 'zmv'
 
 # Set the Oh My Zsh modules to load (browse modules).
 zstyle ':omz:load' omodule 'environment' 'terminal' 'editor' 'completion' \
-  'history' 'directory' 'spectrum' 'alias' 'prompt'
+  'history' 'directory' 'spectrum' 'prompt' 'utility' 'history-substring-search'
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
@@ -62,16 +62,14 @@ unsetopt SHARE_HISTORY
 unsetopt correct
 unsetopt correctall
 unalias rm
+unalias cp
 
 # report time for commands > 10 seconds
 export REPORTTIME=10
 
 # history search
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
+bindkey "$key_info[Control]P" history-substring-search-up
+bindkey "$key_info[Control]N" history-substring-search-down
 
 # for mplayer script
 alias tv="export TV=1"
