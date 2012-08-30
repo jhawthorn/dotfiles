@@ -124,7 +124,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.json                               set ft=json
   au BufRead,BufNewFile {*.md,*.mkd,*.markdown}              set ft=markdown
   au BufRead,BufNewFile {COMMIT_EDITMSG}                     set ft=gitcommit
-  au BufRead,BufNewFile *mutt-*                              set ft=mail
+  au BufRead,BufNewFile *mutt-*                              set ft=mail formatoptions=aw
   au BufRead,BufNewFile svn-commit.*                         set ft=svn
   au BufRead,BufNewFile {*.vala,*.vapi}                      set ft=vala
   au BufRead,BufNewFile pos.*.*                              set ft=basic
