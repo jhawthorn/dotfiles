@@ -1,6 +1,8 @@
 set nocompatible
 filetype off
 
+let mapleader=","
+
 " vundle setup
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -19,6 +21,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-unimpaired'
+
+Bundle 'vim-ruby/vim-ruby'
+
+Bundle 'bronson/vim-trailing-whitespace'
 
 " Statusbar
 Bundle 'Lokaltog/vim-powerline'
@@ -30,12 +39,25 @@ else
 endif
 call Pl#Theme#RemoveSegment('rvm:string')
 call Pl#Theme#RemoveSegment('rvm:statusline')
-let g:Powerline_symbols_override = { 'BRANCH': [0x26a1], 'LINE': 'L', }
+let g:Powerline_symbols_override = { 'BRANCH': [0x26a1], 'LINE': '↳', }
 
 " syntastic
 Bundle 'scrooloose/syntastic.git'
 
-Bundle 'tsaleh/vim-align'
+" CamelCase and underscored words
+Bundle 'camelcasemotion'
+
+Bundle 'godlygeek/tabular'
+let mapleader=','
+if exists(":Tabularize")
+	nmap <Leader>a= :Tabularize /=<CR>
+	vmap <Leader>a= :Tabularize /=<CR>
+	nmap <Leader>a: :Tabularize /:\zs<CR>
+	vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+" interferes with camelcase motion
+"unmap! <leader>w=
+
 Bundle "file-line"
 
 " version control
@@ -55,15 +77,11 @@ Bundle 'ervandew/supertab'
 " Additional filetypes
 Bundle 'JSON.vim'
 Bundle 'Neurogami/mirah-vim'
-
-"Bundle 'skammer/vim-css-color'
+Bundle 'jayferd/ragel.vim'
+Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
 
 Bundle 'ack.vim'
-
-" ctrlp
-"Bundle 'kien/ctrlp.vim'
-"set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
-"let g:ctrlp_user_command = 'find %s -type f'
 
 runtime macros/matchit.vim
 
@@ -78,20 +96,16 @@ endif
 set wildmenu
 set wildmode=list:longest,full
 
-set undodir=~/.vim/undodir
+set undodir=~/.vim/undo
 set undofile
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+set undolevels=1000
+set undoreload=10000
 
 set laststatus=2
 
 set ffs=unix,mac,dos
 
 set foldmethod=manual
-
-set tabstop=3
-set shiftwidth=3
-set noexpandtab
 
 if has("autocmd")
   " Syntax of these languages is fussy over tabs Vs spaces
@@ -115,17 +129,19 @@ if has("autocmd")
   au BufRead,BufNewFile {*.vala,*.vapi}                      set ft=vala
   au BufRead,BufNewFile pos.*.*                              set ft=basic
   au BufRead,BufNewFile *.mirah                              set ft=mirah
+  au BufRead,BufNewFile *.rl                                 set ft=ragel cindent
 
   au BufRead,BufNewFile *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
   au BufRead,BufNewFile *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 
+  au BufRead,BufNewFile *_spec.rb compiler rspec
 endif
 
 set shell=zsh
 set shortmess=atI
 
 set ttyfast
-set t_Co=256
+"set t_Co=256
 set noerrorbells
 set novisualbell
 set lazyredraw
@@ -136,7 +152,6 @@ set lazyredraw
 set timeoutlen=1000
 set ttimeoutlen=0
 "set noesckeys
-
 
 syntax on
 
@@ -176,6 +191,7 @@ set fileencodings=ucs-bom,utf-8,latin1
 set undodir=~/.vim/backups
 set undofile
 
+set virtualedit=block
 
 " Sudo write
 cmap w!! w !sudo tee % >/dev/null
@@ -185,15 +201,15 @@ set ignorecase smartcase
 " use very magic 
 nnoremap / /\v
 vnoremap / /\v
-cnoremap '<,'>s/ '<,'>s/\v
-cnoremap '<,'>s# '<,'>s#\v
-cnoremap '<,'>s@ '<,'>s@\v
-cnoremap %s/ %s/\v
-cnoremap %s# %s#\v
-cnoremap %s@ %s@\v
-cnoremap s/ s/\v
-cnoremap s# s#\v
-cnoremap s@ s@\v'
+"cnoremap '<,'>s/ '<,'>s/\v
+"cnoremap '<,'>s# '<,'>s#\v
+"cnoremap '<,'>s@ '<,'>s@\v
+"cnoremap %s/ %s/\v
+"cnoremap %s# %s#\v
+"cnoremap %s@ %s@\v
+"cnoremap s/ s/\v
+"cnoremap s# s#\v
+"cnoremap s@ s@\v'
 
 set background=dark
 if filereadable(expand("~/.vim/bundle/wombat256.vim/colors/wombat256mod.vim"))
@@ -204,3 +220,12 @@ end
 if !empty($MY_RUBY_HOME)
 	let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
+
+:command -nargs=* Make silent make <args> | cwindow 10 | redraw!
+nmap <leader>t :wa<cr>:Make %<cr>
+
+" arrows control indentation
+vnoremap <silent>< <gv
+vnoremap <silent>> >gv
+
+nmap <F10>n :wqa!<cr>
