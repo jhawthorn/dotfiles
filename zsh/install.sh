@@ -7,7 +7,7 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezt
 ln -sf "$HOME/.zprezto/runcoms/zlogin"    "$HOME/.zlogin"
 ln -sf "$HOME/.zprezto/runcoms/zlogout"   "$HOME/.zlogout"
 ln -sf "$HOME/.zprezto/runcoms/zprofile"  "$HOME/.zprofile"
-ln -sf "$HOME/.zprezto/runcoms/zshrc"     "$HOME/.zshrc"
 
 ln -sf "$(pwd)/.zpreztorc" "$HOME/.zpreztorc"
 ln -sf "$(pwd)/.zshenv" "$HOME/.zshenv"
+ln -sf "$(pwd)/.zshrc" "$HOME/.zshrc"

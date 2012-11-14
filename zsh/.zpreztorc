@@ -10,7 +10,7 @@
 #
 
 # Set case-sensitivity for completion, history lookup, etc.
-zstyle ':prezto:*:*' case-sensitive 'no'
+zstyle ':prezto:*:*' case-sensitive 'yes'
 
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
@@ -32,7 +32,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt'
+  'prompt' \
+  'history-substring-search'
 
 #
 # Editor
@@ -125,3 +126,34 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # Auto start a session when Zsh is launched.
 # zstyle ':prezto:module:tmux' auto-start 'yes'
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# 10ms for key sequences
+KEYTIMEOUT=1
+REPORTTIME=10
+unsetopt correct
+unsetopt correctall
+
+alias tv="export TV=1"
+
+function rails() {
+	if [ -e "script/rails" ]; then
+		ruby script/rails $@
+	else
+		=rails $@
+	fi
+}
+
+function zeus() {
+	=zeus $@
+	RETVAL=$?
+	stty sane
+	return $RETVAL
+}
+
+function scratch() {
+	local cur_dir="$HOME/scratch"
+	local new_dir=$(mktemp -d /var/tmp/scratch-$(date +%F)-XXXXX)
+	ln -nfs $new_dir $cur_dir
+	cd $cur_dir
+}
