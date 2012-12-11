@@ -2,7 +2,7 @@
 # Encoding: utf-8
 
 ICON_PATH="#{ENV['HOME']}/.dzen/xbm8x8/"
-DZENCMD=%{dzen2 -expand l}
+DZENCMD=%{dzen2 -xs 1 -expand l}
 
 module Dzen
   def dzen command, arg=""

@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-/usr/bin/dunst -fn "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u" -geometry 0x16-0+16 $*
+exec /usr/bin/dunst -fn "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u" -geometry 0x16-0+16 $*

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ `hostname -s` = "dragoon" ]; then
+if [ `hostname -s` = "scourge" ]; then
 	dtach -A ~/.dtach/weechat weechat-curses
 else
-	exec mosh dragoon weechat
+	exec mosh scourge weechat
 fi
 
