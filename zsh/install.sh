@@ -9,5 +9,6 @@ ln -sf "$HOME/.zprezto/runcoms/zlogout"   "$HOME/.zlogout"
 ln -sf "$HOME/.zprezto/runcoms/zprofile"  "$HOME/.zprofile"
 
 ln -sf "$(pwd)/.zpreztorc" "$HOME/.zpreztorc"
-ln -sf "$(pwd)/.zshenv" "$HOME/.zshenv"
-ln -sf "$(pwd)/.zshrc" "$HOME/.zshrc"
+ln -sf "$(pwd)/.zshenv"    "$HOME/.zshenv"
+ln -sf "$(pwd)/.zshrc"     "$HOME/.zshrc"
+ln -sf "$(pwd)/.zlogin"    "$HOME/.zlogin"
