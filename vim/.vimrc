@@ -118,7 +118,7 @@ if has("autocmd")
   autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
 
   " File types
-  au BufRead,BufNewFile {*.rake,config.ru}                   set ft=ruby
+  au BufRead,BufNewFile {*.rake,*.ruby,config.ru}            set ft=ruby
   au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,Guardfile} set ft=ruby
   au BufRead,BufNewFile {*.rss,*.atom}                       set ft=xml
   au BufRead,BufNewFile *.json                               set ft=json
