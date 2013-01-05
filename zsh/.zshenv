@@ -19,6 +19,7 @@ export BROWSER='chrome'
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 export TERMINFO="$HOME/.terminfo"
 export MOSH_TITLE_NOPREFIX=1
@@ -78,7 +79,7 @@ unset path_file
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/$HOME/bin
+  $HOME/bin
   /usr/local/{bin,sbin}
   /usr/{bin,sbin}
   /{bin,sbin}
