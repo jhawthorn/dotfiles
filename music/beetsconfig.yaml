@@ -1,0 +1,32 @@
+directory: ~/music
+
+import:
+  incremental: true
+  quiet: true
+  copy: true
+  write: true
+  resume: ask
+  art: true
+  quiet_fallback: skip
+  timid: false
+
+ignore: .AppleDouble ._* *~ .DS_Store
+art_filename: albumart
+color: true
+plugins: scrub fetchart lyrics
+
+mpdupdate:
+  host: localhost
+  port: 6600
+
+paths:
+  default: $albumartist/$year $album%aunique{}/$track $title
+  singleton: Non-Album/$artist/$title
+  comp: Compilations/$album%aunique{}/$track $title
+
+fetchart:
+  auto: true
+
+lyrics:
+  auto: no
+
