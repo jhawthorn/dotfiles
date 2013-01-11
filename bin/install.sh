@@ -1,3 +1,4 @@
+mkdir -p "$HOME/bin"
 cd "$( dirname "$0" )"
 mkdir "$HOME/bin"
 for name in autodisplay.rb  chrome  dunst  inspect  install.sh  mplayer  mplayer-youtube  rline  roll  starcraft  statusbar  urlview  watchmsg  weechat; do
