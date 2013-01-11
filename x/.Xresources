@@ -7,7 +7,7 @@ URxvt.boldFont: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
 
 
 dzen2.font:       -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
-dzen2.foreground: white
+dzen2.foreground: #aaaaaa
 dzen2.background: black
 
 
@@ -54,4 +54,10 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
 XDvi*Foreground:XDviblack
 XDvi*Background:XDviwhite
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.rgba:       rgb
+Xft.hintstyle:  hintslight
 
