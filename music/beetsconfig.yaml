@@ -2,7 +2,7 @@ directory: ~/music
 
 import:
   incremental: true
-  quiet: true
+  quiet: false
   copy: true
   write: true
   resume: ask
@@ -13,7 +13,12 @@ import:
 ignore: .AppleDouble ._* *~ .DS_Store
 art_filename: albumart
 color: true
-plugins: scrub fetchart lyrics
+plugins: scrub fetchart lyrics mpdupdate rewrite
+
+rewrite:
+  artist .*neil young.*: Neil Young
+  artist manitoba: Caribou
+  artist final fantasy: Owen Pallett
 
 mpdupdate:
   host: localhost
