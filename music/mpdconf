@@ -81,7 +81,7 @@ state_file			"~/.mpd/state"
 #bind_to_address		"any"
 #
 # And for Unix Socket
-#bind_to_address		"~/.mpd/socket"
+bind_to_address		"/home/jhawthorn/.mpd/socket"
 #
 # This setting is the TCP port that is desired for the daemon to get assigned
 # to.
