@@ -14,5 +14,9 @@ fi
 unalias rm
 unalias mv
 
+alias mplayer=mpv
 alias mmv='noglob zmv -W'
+alias t='task'
+alias beet='python2 =beet'
+alias ls="ls --group-directories-first --color=auto -v"
 

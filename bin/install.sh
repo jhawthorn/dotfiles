@@ -11,8 +11,6 @@ dmenu_surfraw
 dmenu_tv
 dunst
 inspect
-mplayer
-mplayer-youtube
 rline
 roll
 rtorrent

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-video_url=`youtube-dl -g $1`
-echo $video_url
-exec mplayer -cache 300 -prefer-ipv4 $video_url

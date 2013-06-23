@@ -35,6 +35,8 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'history-substring-search'
 
+  #'gpg-agent'
+
 #
 # Editor
 #
@@ -49,6 +51,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 # Git
 #
 
+zstyle ':vcs_info:*' disable-patterns "$HOME/dragoon/**"
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
@@ -119,6 +122,8 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 # Auto set the tab and window titles.
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
+zstyle ':prezto:module:gpg-agent' ssh-support 'yes'
+
 #
 # Tmux
 #
@@ -133,8 +138,6 @@ KEYTIMEOUT=1
 REPORTTIME=10
 unsetopt correct
 unsetopt correctall
-
-alias tv="export TV=1"
 
 function rails() {
 	if [ -e "script/rails" ]; then
