@@ -56,18 +56,18 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.tile.bottom,
+--    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
+--    awful.layout.suit.max.fullscreen,
 --    awful.layout.suit.tile.left,
---    awful.layout.suit.tile.top,
---    awful.layout.suit.fair,
+    awful.layout.suit.tile.top,
+    awful.layout.suit.fair,
 --    awful.layout.suit.fair.horizontal,
 --    awful.layout.suit.spiral,
 --    awful.layout.suit.spiral.dwindle,
---    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier
 --    awful.layout.suit.floating,
 }
 -- }}}
@@ -118,34 +118,13 @@ vicious = require("vicious")
 -- Create a textclock widget
 --mytextclock = awful.widget.textclock()
 mytextclock = wibox.widget.textbox()
-vicious.register(mytextclock, vicious.widgets.date, "%H:%M:%S", 1)
-
--- Initialize widget
-mpdwidget = wibox.widget.textbox()
--- Register widget
-vicious.register(mpdwidget, vicious.widgets.mpd,
-    function (widget, args)
-        if args["{state}"] == "Play" then
-            return '♫ '..args["{Artist}"]..' - '.. args["{Title}"]
-        else
-            return " - "
-        end
-    end, 1)
+vicious.register(mytextclock, vicious.widgets.date, "%H:%M", 30)
 
 batwidget = wibox.widget.textbox()
 vicious.register(batwidget, vicious.widgets.bat, "$2%$1", 61, "BAT0")
 
-netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
-
-volumewidget = wibox.widget.textbox()
-vicious.register(volumewidget, vicious.widgets.volume,
-function(widget, args)
-	local label = { ["♫"] = "O", ["♩"] = "M" }
-	return "Volume: " .. args[1] .. "% State: " .. args[2]
-end, 2, "Master")
-
-
+mailwidget = wibox.widget.textbox()
+vicious.register(mailwidget, vicious.widgets.mdir, "M $1", 60, { '/home/jhawthorn/mail/INBOX/' })
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -183,7 +162,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 15 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -194,11 +173,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mpdwidget)
     right_layout:add(sep)
-    right_layout:add(netwidget)
-    right_layout:add(sep)
-    right_layout:add(volumewidget)
+    right_layout:add(mailwidget)
     right_layout:add(sep)
     right_layout:add(batwidget)
     right_layout:add(sep)
@@ -218,9 +194,9 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
+--    awful.button({ }, 4, awful.tag.viewnext),
+--    awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -276,6 +252,8 @@ globalkeys = awful.util.table.join(
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
+    awful.key({ }, "Print", function () awful.util.spawn("scrot") end),
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
@@ -298,11 +276,6 @@ clientkeys = awful.util.table.join(
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
-        end),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
         end)
 )
 
