@@ -1,6 +1,28 @@
 mkdir -p "$HOME/bin"
 cd "$( dirname "$0" )"
 mkdir "$HOME/bin"
-for name in autodisplay.rb  chrome  dunst  inspect  install.sh  mplayer  mplayer-youtube  rline  roll  starcraft  statusbar  urlview  watchmsg  weechat; do
+
+files=(
+autodisplay.rb
+chrome
+dmenu_mpd
+dmenu_run
+dmenu_surfraw
+dmenu_tv
+dunst
+inspect
+mplayer
+mplayer-youtube
+rline
+roll
+rtorrent
+starcraft
+statusbar
+urlview
+watchmsg
+weechat
+)
+
+for name in $files; do
 	ln -sf "$(pwd)/$name" "$HOME/bin/$name"
 done

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+MUSICDIR="$HOME/music/"
+CACHEFILE="$HOME/.cache/mpdcache"
+
+MTIME=`stat -c '%Y' "$HOME/.mpd/database"`
+CACHETIME=`stat -c '%Y' "$CACHEFILE"`
+
+if [[ ! -a "$CACHEFILE" || "$CACHETIME" -lt "$MTIME" ]]; then
+	levelfind "$MUSICDIR" | grep -v 'albumart' > "$CACHEFILE"
+fi
+
+ADD=`dmenu -p "mpd" -i -l 10 $* < "$CACHEFILE"` || exit
+
+mpc clear
+mpc add "$ADD"
+mpc play
+

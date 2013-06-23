@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+cd $HOME/tv
+SELECTION=`levelfind $HOME/tv/ | dmenu -p "tv" -i -l 10 $*` || exit 
+
+mpv "$SELECTION"
+
