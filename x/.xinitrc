@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-systemd --user &
-
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+eval `gpg-agent -s --enable-ssh-support --daemon`
 
 xsetroot -cursor_name watch
 
@@ -11,12 +11,12 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 xset -b
 
+/usr/lib/systemd/systemd --user &
+
 urxvtd -q -o -f
 
 xsetroot -solid black
 xsetroot -cursor_name left_ptr
-
-xbindkeys &
 
 exec awesome
 
