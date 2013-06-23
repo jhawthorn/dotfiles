@@ -308,9 +308,10 @@ progressbar_look = "─╼·"
 #default_place_to_search_in = "database" (database/playlist)
 #
 user_interface = "classic" (classic/alternative)
-#
-#media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
-#
+
+# List albumartist in media library
+media_library_left_column = "A"
+
 #default_find_mode = "wrapped" (wrapped/normal)
 #
 #default_space_mode = "add" (add/select)
@@ -498,3 +499,4 @@ visualizer_color = "white"
 #
 #active_window_border = "red"
 #
+

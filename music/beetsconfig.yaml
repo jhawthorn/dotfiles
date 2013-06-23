@@ -10,24 +10,25 @@ import:
   quiet_fallback: skip
   timid: false
 
+original_date: yes
 ignore: .AppleDouble ._* *~ .DS_Store
 art_filename: albumart
 color: true
 plugins: scrub fetchart lyrics mpdupdate rewrite
 
 rewrite:
+  artist Carl Newman: A.C. Newman
   artist .*neil young.*: Neil Young
   artist manitoba: Caribou
   artist final fantasy: Owen Pallett
 
 mpdupdate:
-  host: localhost
-  port: 6600
+  host: /home/jhawthorn/.mpd/socket
 
 paths:
   default: $albumartist/$year $album%aunique{}/$track $title
   singleton: Non-Album/$artist/$title
-  comp: Compilations/$album%aunique{}/$track $title
+  comp: Compilations/$album%aunique{}/$track $artist - $title
 
 fetchart:
   auto: true
