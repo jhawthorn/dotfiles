@@ -43,16 +43,18 @@ nametrans = lambda folder: re.sub('spam', '[Gmail].Spam',
 [Repository gmail-remote]
 type = Gmail
 ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 idlefolders = ['INBOX']
 remoteuser = john.hawthorn@gmail.com
 # password specified by .netrc
 realdelete = no
 maxconnections = 5
-nametrans = lambda folder: re.sub('.*Spam$', 'spam', 
-                           re.sub('.*Drafts$', 'drafts', 
-                           re.sub('.*Sent Mail$', 'sent', 
-                           re.sub('.*Starred$', 'flagged', 
-                           re.sub('.*Trash$', 'trash', 
-                           re.sub('.*Important$', 'important', 
+nametrans = lambda folder: re.sub('.*Spam$', 'spam',
+                           re.sub('.*Drafts$', 'drafts',
+                           re.sub('.*Sent Mail$', 'sent',
+                           re.sub('.*Starred$', 'flagged',
+                           re.sub('.*Trash$', 'trash',
+                           re.sub('.*Important$', 'important',
                            re.sub('.*All Mail$', 'archive', folder)))))))
 lambda foldername: foldername not in '[Gmail]/Bin'
+

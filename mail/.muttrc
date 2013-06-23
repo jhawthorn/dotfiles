@@ -65,13 +65,16 @@ set quit
 unset mark_old
 set use_domain=no
 
+set date_format = "%m/%d"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+
 # gmail-like index options
 set sort       = threads
 set sort_aux   = reverse-last-date-received
 set sort_re
 
 # pager
-set pager_index_lines   = 8
+set pager_index_lines   = 10
 set pager_context       = 5
 set pager_stop
 set menu_scroll
@@ -95,4 +98,8 @@ hdr_order From To Cc Date Subject
 
 source $HOME/.mutt/colors.linux
 source $HOME/.mutt/mailboxes
+source $HOME/.mutt/gpg.rc
+
+lists ietf-dkim rubyonrails-core
+subscribe ietf-dkim rubyonrails-core
 
