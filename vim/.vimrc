@@ -9,7 +9,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" TPOPE!
+" <3 TPOPE!
 Bundle 'tpope/vim-rvm'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
@@ -25,24 +25,12 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-unimpaired'
 
-Bundle 'vim-ruby/vim-ruby'
+"Bundle 'vim-ruby/vim-ruby'
 
-Bundle 'bronson/vim-trailing-whitespace'
-
-" Statusbar
-Bundle 'Lokaltog/vim-powerline'
-if has("gui_running")
-	let g:Powerline_symbols = 'fancy'
-else
-	"let g:Powerline_symbols = 'unicode'
-	let g:Powerline_symbols = 'compatible'
-endif
-call Pl#Theme#RemoveSegment('rvm:string')
-call Pl#Theme#RemoveSegment('rvm:statusline')
-let g:Powerline_symbols_override = { 'BRANCH': [0x26a1], 'LINE': '↳', }
+"Bundle 'bronson/vim-trailing-whitespace'
 
 " syntastic
-Bundle 'scrooloose/syntastic.git'
+"Bundle 'scrooloose/syntastic'
 
 " CamelCase and underscored words
 Bundle 'camelcasemotion'
@@ -55,18 +43,14 @@ if exists(":Tabularize")
 	nmap <Leader>a: :Tabularize /:\zs<CR>
 	vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
-" interferes with camelcase motion
-"unmap! <leader>w=
 
 Bundle "file-line"
 
 " version control
-"Bundle 'vcscommand.vim'
 Bundle 'int3/vim-extradite'
 let g:extradite_showhash=1
 
-"" LaTeX
-"Bundle 'LaTeX-Box-Team/LaTeX-Box'
+"Bundle 'airblade/vim-gitgutter'
 
 "" color scheme
 Bundle 'wombat256.vim'
@@ -96,10 +80,10 @@ endif
 set wildmenu
 set wildmode=list:longest,full
 
-set undodir=~/.vim/undo
-set undofile
-set undolevels=1000
-set undoreload=10000
+"set undodir=~/.vim/undo
+"set undofile
+"set undolevels=1000
+"set undoreload=10000
 
 set laststatus=2
 
@@ -112,12 +96,15 @@ if has("autocmd")
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType sass setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 
   autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
 
   " File types
+  au BufRead,BufNewFile {*.txt}                              set ft=txt
   au BufRead,BufNewFile {*.rake,*.ruby,config.ru}            set ft=ruby
   au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,Guardfile} set ft=ruby
   au BufRead,BufNewFile {*.rss,*.atom}                       set ft=xml
@@ -140,18 +127,11 @@ endif
 set shell=zsh
 set shortmess=atI
 
-set ttyfast
 "set t_Co=256
 set noerrorbells
 set novisualbell
+set ttyfast
 set lazyredraw
-
-" Extremely fast timeout for escape codes
-" Gets us in normal mode fast
-" Might mess with some keybindings
-set timeoutlen=1000
-set ttimeoutlen=0
-"set noesckeys
 
 syntax on
 
@@ -187,29 +167,12 @@ set nobackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,latin1
 
-" persistent undo
-set undodir=~/.vim/backups
-set undofile
-
 set virtualedit=block
 
 " Sudo write
 cmap w!! w !sudo tee % >/dev/null
 
 set ignorecase smartcase
-
-" use very magic 
-nnoremap / /\v
-vnoremap / /\v
-"cnoremap '<,'>s/ '<,'>s/\v
-"cnoremap '<,'>s# '<,'>s#\v
-"cnoremap '<,'>s@ '<,'>s@\v
-"cnoremap %s/ %s/\v
-"cnoremap %s# %s#\v
-"cnoremap %s@ %s@\v
-"cnoremap s/ s/\v
-"cnoremap s# s#\v
-"cnoremap s@ s@\v'
 
 set background=dark
 if filereadable(expand("~/.vim/bundle/wombat256.vim/colors/wombat256mod.vim"))
@@ -228,4 +191,6 @@ nmap <leader>t :wa<cr>:Make %<cr>
 vnoremap <silent>< <gv
 vnoremap <silent>> >gv
 
-nmap <F10>n :wqa!<cr>
+" ctags: C-], but in a new split
+map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
