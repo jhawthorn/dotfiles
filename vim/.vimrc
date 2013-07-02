@@ -25,9 +25,9 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-unimpaired'
 
-"Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-ruby/vim-ruby'
 
-"Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'bronson/vim-trailing-whitespace'
 
 " syntastic
 "Bundle 'scrooloose/syntastic'
@@ -190,7 +190,4 @@ nmap <leader>t :wa<cr>:Make %<cr>
 " arrows control indentation
 vnoremap <silent>< <gv
 vnoremap <silent>> >gv
-
-" ctags: C-], but in a new split
-map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
