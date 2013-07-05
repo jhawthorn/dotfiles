@@ -1,0 +1,30 @@
+"mpc toggle"
+XF86AudioPlay
+
+"mpc prev"
+XF86AudioPrev
+
+"mpc next"
+XF86AudioNext
+
+"mpc clear"
+XF86AudioStop
+
+"amixer set Master playback 2+"
+XF86AudioRaiseVolume
+
+"amixer set Master playback 2-"
+XF86AudioLowerVolume
+
+"/home/jhawthorn/bin/dmenu_tv"
+Mod4 + t
+
+"/home/jhawthorn/bin/dmenu_mpd"
+Mod4 + i
+
+"/home/jhawthorn/bin/dmenu_surfraw"
+Mod4 + g
+Mod4 + o
+
+"urxvt -e mutt"
+Mod4 + m
