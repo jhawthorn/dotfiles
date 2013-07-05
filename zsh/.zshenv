@@ -104,5 +104,5 @@ if [[ -d "$TMPDIR" ]]; then
 fi
 
 XDG_DATA_HOME=$HOME/.local/share
-XDG_CONFIG_HOME=$HOME/config
+XDG_CONFIG_HOME=$HOME/.config
 

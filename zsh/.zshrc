@@ -20,3 +20,5 @@ alias t='task'
 alias beet='python2 =beet'
 alias ls="ls --group-directories-first --color=auto -v"
 
+export RUBY_GC_MALLOC_LIMIT=80000000
+
