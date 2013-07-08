@@ -1,5 +1,5 @@
 
-URxvt.font: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
+URxvt.font: -*-terminus for powerline-medium-r-normal-*-14-*-*-*-*-*-*-*
 URxvt.boldFont: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*-*
 
 !Xft.antialias: true
@@ -40,13 +40,11 @@ URxvt*background: #000000
 *color7:  #aaaaaa
 *color15: #ffffff
 
-
-URxvt.perl-ext:      default,url-select,clipboard
-
+URxvt.perl-ext:      default,url-select
 URxvt.keysym.M-u:    perl:url-select:select_next
-URxvt.urlLauncher:   chromium
-!URxvt.urlLauncher:   surf
-URxvt.underlineURLs: true
+!URxvt.url-select.launcher:   /usr/bin/firefox -new-tab
+URxvt.url-select.launcher: /home/jhawthorn/bin/open
+URxvt.url-select.underline: true
 
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
