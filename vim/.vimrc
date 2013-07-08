@@ -50,6 +50,8 @@ Bundle "file-line"
 Bundle 'int3/vim-extradite'
 let g:extradite_showhash=1
 
+Bundle 'kien/ctrlp.vim'
+
 "Bundle 'airblade/vim-gitgutter'
 
 Bundle 'bling/vim-airline'
@@ -79,7 +81,7 @@ Bundle 'jayferd/ragel.vim'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 
-Bundle 'ack.vim'
+Bundle 'rking/ag.vim'
 
 runtime macros/matchit.vim
 
