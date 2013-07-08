@@ -52,6 +52,20 @@ let g:extradite_showhash=1
 
 "Bundle 'airblade/vim-gitgutter'
 
+Bundle 'bling/vim-airline'
+let g:airline_theme='badwolf'
+let g:airline_powerline_fonts=1
+
+" Fix slow return to normal mode when using powerline
+if ! has('gui_running')
+	set ttimeoutlen=10
+	augroup FastEscape
+		autocmd!
+		au InsertEnter * set timeoutlen=0
+		au InsertLeave * set timeoutlen=1000
+	augroup END
+endif
+
 "" color scheme
 Bundle 'wombat256.vim'
 
