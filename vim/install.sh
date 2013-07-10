@@ -4,5 +4,5 @@ ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.vim/bundle"
 rm -Rf "$HOME/.vim/bundle/vundle"
 git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
-vim -c "BundleInstall!" -c "qa" > /dev/null
+vim +BundleInstall +qa
 
