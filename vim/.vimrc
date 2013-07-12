@@ -207,3 +207,4 @@ nmap <leader>t :wa<cr>:Make %<cr>
 vnoremap <silent>< <gv
 vnoremap <silent>> >gv
 
+nnoremap <C-\> :Ag "\b<cword>\b"<CR>
