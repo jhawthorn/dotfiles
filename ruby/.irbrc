@@ -7,3 +7,10 @@ elsif defined?(Rails)
   require 'logger'
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
+
+begin
+  require 'pry'
+  Pry.start
+  exit
+rescue LoadError
+end
