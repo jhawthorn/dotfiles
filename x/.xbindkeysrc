@@ -28,3 +28,6 @@ Mod4 + o
 
 "urxvt -e mutt"
 Mod4 + m
+
+"urxvt -e ncmpcpp"
+Mod4 + n
