@@ -16,11 +16,12 @@ fi
 
 alias mplayer=mpv
 alias mmv='noglob zmv -W'
-alias t='task'
+alias t=task
 alias beet='python2 =beet'
 alias ls="ls --group-directories-first --color=auto -v"
 alias l="ls"
 alias json="python -mjson.tool"
+alias xml="xmllint --format -"
 
 # As of nokogiri 1.6, it will compile its own version of libxml2 and libxslt.
 # While this is convenient, it is slower, and uses about 100MB for each
