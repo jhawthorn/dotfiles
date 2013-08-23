@@ -1,20 +1,38 @@
 "mpc toggle"
 XF86AudioPlay
 
+"mpc toggle"
+Mod4 + KP_Begin
+
 "mpc prev"
 XF86AudioPrev
+
+"mpc prev"
+Mod4 + KP_Left
 
 "mpc next"
 XF86AudioNext
 
+"mpc next"
+Mod4 + KP_Right
+
 "mpc clear"
 XF86AudioStop
+
+"mpc clear"
+Mod4 + KP_Delete
 
 "amixer set Master playback 2+"
 XF86AudioRaiseVolume
 
+"amixer set Master playback 2+"
+Mod4 + KP_Up
+
 "amixer set Master playback 2-"
 XF86AudioLowerVolume
+
+"amixer set Master playback 2-"
+Mod4 + KP_Down
 
 "/home/jhawthorn/bin/dmenu_tv"
 Mod4 + t
