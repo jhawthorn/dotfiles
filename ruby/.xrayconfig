@@ -1,2 +1,2 @@
 ---
-:editor: ! 'urxvt -e vim '
+:editor: bgvim

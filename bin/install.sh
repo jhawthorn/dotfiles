@@ -4,6 +4,7 @@ mkdir "$HOME/bin"
 
 files=(
 autodisplay.rb
+bgvim
 chrome
 dmenu_mpd
 dmenu_run
