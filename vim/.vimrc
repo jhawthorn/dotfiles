@@ -24,6 +24,7 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-abolish'
 
 Bundle 'vim-ruby/vim-ruby'
 
@@ -114,6 +115,7 @@ if has("autocmd")
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType sass setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 
