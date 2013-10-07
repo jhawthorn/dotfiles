@@ -1,0 +1,3 @@
+[submodule "ruby/chruby"]
+	path = ruby/chruby
+	url = git@github.com:postmodern/chruby.git
