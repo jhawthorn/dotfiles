@@ -1,3 +1,6 @@
 [submodule "ruby/chruby"]
 	path = ruby/chruby
 	url = git@github.com:postmodern/chruby.git
+[submodule "ruby/ruby-install"]
+	path = ruby/ruby-install
+	url = git@github.com:postmodern/ruby-install.git
