@@ -40,5 +40,9 @@ setopt CHASE_LINKS
 stty -ixon -ixoff
 
 PS1='
-%F{135}%n%f@%F{166}%m%f:%F{118}%~%f ${vcs_info_msg_0_}
+%F{135}%n%f@%F{166}%m%f:%F{118}%~%f ${vcs_info_msg_0_} [${RUBY_ENGINE} ${RUBY_VERSION}]
 ↳ '
+
+source $HOME/.local/share/chruby/chruby.sh
+source $HOME/.local/share/chruby/auto.sh
+

@@ -30,6 +30,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'utility' \
   'completion' \
   'prompt' \
   'history-substring-search'
@@ -41,7 +42,7 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' keymap 'vi'
+zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
@@ -63,6 +64,20 @@ zstyle ':vcs_info:*' disable-patterns "$HOME/dragoon/**"
 
 #
 # Pacman
+# History Substring Search
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:history-substring-search:color' found ''
+
+# Set the query not found color.
+# zstyle ':prezto:module:history-substring-search:color' not-found ''
+
+# Set the search globbing flags.
+# zstyle ':prezto:module:history-substring-search' globbing-flags ''
+
+#
+# Pacman
 #
 
 # Set the Pacman frontend.
@@ -81,8 +96,8 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 # Screen
 #
 
-# Auto start a session when Zsh is launched.
-# zstyle ':prezto:module:screen' auto-start 'yes'
+# Auto start a session when Zsh is launched in a local terminal.
+# zstyle ':prezto:module:screen:auto-start' local 'yes'
 
 #
 # GPG-Agent
@@ -106,13 +121,20 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 #
 
 # Set syntax highlighters.
-# By default main, brackets, and cursor are enabled.
+# By default, only the main highlighter is enabled.
 # zstyle ':prezto:module:syntax-highlighting' highlighters \
 #   'main' \
 #   'brackets' \
 #   'pattern' \
 #   'cursor' \
 #   'root'
+#
+# Set syntax highlighting styles.
+# zstyle ':prezto:module:syntax-highlighting' styles \
+#   'builtin' 'bg=blue' \
+#   'command' 'bg=blue' \
+#   'function' 'bg=blue'
+#
 
 #
 # Terminal
@@ -130,8 +152,6 @@ zstyle ':prezto:module:gpg-agent' ssh-support 'yes'
 # Auto start a session when Zsh is launched.
 # zstyle ':prezto:module:tmux' auto-start 'yes'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
 # 10ms for key sequences
 KEYTIMEOUT=1
 REPORTTIME=10
@@ -144,13 +164,6 @@ function rails() {
 	else
 		=rails $@
 	fi
-}
-
-function zeus() {
-	=zeus $@
-	RETVAL=$?
-	stty sane
-	return $RETVAL
 }
 
 function scratch() {
