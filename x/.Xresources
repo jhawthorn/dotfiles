@@ -20,6 +20,7 @@ URxvt*externalBorder: 0
 URxvt*lineSpace:      0
 URxvt*scrollBar: false
 URxvt*urgentOnBell: true
+URxvt*saveLines: 12000
 
 URxvt*foreground: #ffffff
 URxvt*background: #000000
