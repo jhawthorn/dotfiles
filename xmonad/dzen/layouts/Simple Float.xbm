@@ -1,4 +1,0 @@
-#define Simple_Float_width 8
-#define Simple_Float_height 8
-static unsigned char Simple_Float_bits[] = {
-   0x0e, 0x3e, 0x22, 0xe2, 0xa2, 0xbe, 0x88, 0xf8 };

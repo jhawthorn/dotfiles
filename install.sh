@@ -6,6 +6,5 @@ sh  music/install.sh
 sh   ruby/install.sh
 sh    vim/install.sh
 sh      x/install.sh
-sh xmonad/install.sh
 sh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
