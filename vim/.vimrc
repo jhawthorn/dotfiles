@@ -25,6 +25,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-repeat'
 
 Bundle 'vim-ruby/vim-ruby'
 
@@ -210,3 +211,6 @@ vnoremap <silent>< <gv
 vnoremap <silent>> >gv
 
 nnoremap <C-\> :Ag "\b<cword>\b"<CR>
+
+nnoremap <ENTER> :
+vnoremap <ENTER> :
