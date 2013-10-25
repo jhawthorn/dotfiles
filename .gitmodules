@@ -4,3 +4,6 @@
 [submodule "ruby/ruby-install"]
 	path = ruby/ruby-install
 	url = git@github.com:postmodern/ruby-install.git
+[submodule "ruby/bundler-exec"]
+	path = ruby/bundler-exec
+	url = git@github.com:jhawthorn/bundler-exec.git
