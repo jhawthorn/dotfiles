@@ -16,6 +16,7 @@
 	statusHints = false
 [diff]
 	renames = copies
+	algorithm = patience
 [push]
 	# tracking is the deprecated name for "upstream"
 	default = tracking
@@ -27,8 +28,15 @@
 	quotepath = false
 	autocrlf = input
 [alias]
+	s = status --short --branch
 	l = log --oneline --decorate
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [apply]
 	whitespace = fix
+[rebase]
+	autosquash = true
+[diff "ruby"]
+	funcname = "^ *\\(\\(def\\) .*\\)"
+[diff "image"]
+	textconv = identify
 
