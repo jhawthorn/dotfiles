@@ -5,6 +5,7 @@ zsh    bin/install.sh
 zsh    git/install.sh
 zsh   mail/install.sh
 zsh  music/install.sh
+zsh   misc/install.sh
 zsh   ruby/install.sh
 zsh    vim/install.sh
 zsh      x/install.sh
