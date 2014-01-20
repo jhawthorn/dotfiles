@@ -1,6 +1,5 @@
 mkdir -p "$HOME/bin"
-cd "$( dirname "$0" )"
-mkdir "$HOME/bin"
+cd `dirname "$0"`
 
 files=(
 autodisplay.rb

@@ -22,6 +22,8 @@ alias ls="ls --group-directories-first --color=auto -v"
 alias l="ls"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
+alias git="hub"
+compdef hub=git
 
 # As of nokogiri 1.6, it will compile its own version of libxml2 and libxslt.
 # While this is convenient, it is slower, and uses about 100MB for each
@@ -41,7 +43,7 @@ stty -ixon -ixoff
 
 PS1='
 %F{135}%n%f@%F{166}%m%f:%F{118}%~%f ${vcs_info_msg_0_} [${RUBY_ENGINE} ${RUBY_VERSION}]
-↳ '
+$ '
 
 source $HOME/.local/share/chruby/chruby.sh
 source $HOME/.local/share/chruby/auto.sh

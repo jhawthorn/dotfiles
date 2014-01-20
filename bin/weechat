@@ -3,6 +3,6 @@
 if [ `hostname -s` = "scourge" ]; then
 	dtach -A ~/.dtach/weechat weechat-curses
 else
-	exec mosh scourge weechat
+	exec ssh -t scourge weechat
 fi
 
