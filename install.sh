@@ -1,10 +1,12 @@
+#!/bin/zsh
+
 cd "$( dirname "$0" )"
-sh    bin/install.sh
-sh    git/install.sh
-sh   mail/install.sh
-sh  music/install.sh
-sh   ruby/install.sh
-sh    vim/install.sh
-sh      x/install.sh
-sh    zsh/install.sh
+zsh    bin/install.sh
+zsh    git/install.sh
+zsh   mail/install.sh
+zsh  music/install.sh
+zsh   ruby/install.sh
+zsh    vim/install.sh
+zsh      x/install.sh
+zsh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
