@@ -1,0 +1,8 @@
+.ruby-*
+.env
+tags
+vendor/bundle
+public/assets
+.bundle
+.pt
+spec/support/_*
