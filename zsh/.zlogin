@@ -9,23 +9,14 @@
 {
   # Compile the completion dump to increase startup speed.
   zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-  if [[ "$zcompdump" -nt "${zcompdump}.zwc" || ! -s "${zcompdump}.zwc" ]]; then
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
     zcompile "$zcompdump"
-  fi
-
-  # Set environment variables for launchd processes.
-  if [[ "$OSTYPE" == darwin* ]]; then
-    for env_var in PATH MANPATH; do
-      launchctl setenv "$env_var" "${(P)env_var}"
-    done
   fi
 } &!
 
-# # Print a random, hopefully interesting, adage.
-# if (( $+commands[fortune] )); then
-#   fortune -a
-#   print
-# fi
-
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx &> /dev/null
+# Print a random, hopefully interesting, adage.
+if (( $+commands[fortune] )); then
+  fortune -a
+  print
+fi
 
