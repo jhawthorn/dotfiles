@@ -1,9 +1,9 @@
 [submodule "ruby/chruby"]
 	path = ruby/chruby
-	url = git@github.com:postmodern/chruby.git
+	url = https://github.com/postmodern/chruby
 [submodule "ruby/ruby-install"]
 	path = ruby/ruby-install
-	url = git@github.com:postmodern/ruby-install.git
+	url = https://github.com/postmodern/ruby-install
 [submodule "ruby/bundler-exec"]
 	path = ruby/bundler-exec
-	url = git@github.com:jhawthorn/bundler-exec.git
+	url = https://github.com/jhawthorn/bundler-exec
