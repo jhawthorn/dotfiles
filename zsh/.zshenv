@@ -25,6 +25,11 @@ export TERMINFO="$HOME/.terminfo"
 export MOSH_TITLE_NOPREFIX=1
 export MPD_HOST="$HOME/.mpd/socket"
 
+export TZ=America/Vancouver
+
+export NPM_PACKAGES="$HOME/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
 #
 # Language
 #
@@ -81,6 +86,8 @@ unset path_file
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/bin
+  $HOME/go/bin
+  $NPM_PACKAGES/bin
   /usr/local/{bin,sbin}
   /usr/{bin,sbin}
   /{bin,sbin}
