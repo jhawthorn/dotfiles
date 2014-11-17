@@ -1,2 +1,21 @@
-exec chromium --disk-cache-size=50000000 --purge-memory-button --disable-enforced-throttling --enable-extension-timeline-api $@
+#!/bin/zsh
+
+# Seriously... I just want to run chrome/chromium/chromium-browser/whatever
+
+if [[ -z $CHROME ]]; then
+  if (( $+commands[google-chrome] )) ; then
+    CHROME=google-chrome
+  elif (( $+commands[google-chrome-stable] )) ; then
+    CHROME=google-chrome-stable
+  elif (( $+commands[chromium] )) ; then
+    CHROME=chromium
+  elif (( $+commands[chromium-browser] )) ; then
+    CHROME=chromium-browser
+  else
+    # I don't expect this to happen
+    CHROME=/usr/bin/chrome
+  fi
+fi
+
+exec $CHROME --disk-cache-size=50000000 --purge-memory-button --disable-enforced-throttling --enable-extension-timeline-api $@
 
