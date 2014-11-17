@@ -1,43 +1,44 @@
 set nocompatible
 filetype off
 
-let mapleader=","
+let mapleader=" "
 
 " vundle setup
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " <3 TPOPE!
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-afterimage'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
 
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch'
 
-Bundle 'bronson/vim-trailing-whitespace'
+Plugin 'vim-ruby/vim-ruby'
+
+Plugin 'bronson/vim-trailing-whitespace'
 
 " syntastic
-"Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 " CamelCase and underscored words
-Bundle 'camelcasemotion'
+Plugin 'camelcasemotion'
 
-Bundle 'godlygeek/tabular'
-let mapleader=','
+Plugin 'godlygeek/tabular'
 if exists(":Tabularize")
 	nmap <Leader>a= :Tabularize /=<CR>
 	vmap <Leader>a= :Tabularize /=<CR>
@@ -45,30 +46,34 @@ if exists(":Tabularize")
 	vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
-Bundle "file-line"
+Plugin 'file-line'
 
 " version control
-Bundle 'int3/vim-extradite'
+Plugin 'int3/vim-extradite'
 let g:extradite_showhash=1
 
-Bundle 'kien/ctrlp.vim'
-
-"Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 
 "" color scheme
-Bundle 'wombat256.vim'
+Plugin 'wombat256.vim'
 
 " tab completion
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 " Additional filetypes
-Bundle 'JSON.vim'
-Bundle 'Neurogami/mirah-vim'
-Bundle 'jayferd/ragel.vim'
-Bundle 'tpope/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'JSON.vim'
+Plugin 'Neurogami/mirah-vim'
+Plugin 'jayferd/ragel.vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mustache/vim-mustache-handlebars'
 
-Bundle 'rking/ag.vim'
+" Safe escaping of pastes
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
+
+call vundle#end()
 
 runtime macros/matchit.vim
 
@@ -104,6 +109,11 @@ if has("autocmd")
   autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType elixir setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
 
   autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
 
@@ -161,17 +171,17 @@ nmap <F1> <Esc>
 map! <F1> <Esc>
 
 " unprintable characters
-set nolist " off by default
-set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« "
-
-highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
+"set list
+"set listchars=tab:·\ ,trail:·,extends:»,precedes:« "
 
 set nobackup
 set noswapfile
 set fileencodings=ucs-bom,utf-8,latin1
 
 set virtualedit=block
+
+" I don't use this, but the default cipher is broken
+set cryptmethod=blowfish2
 
 " Sudo write
 cmap w!! w !sudo tee % >/dev/null
@@ -191,6 +201,13 @@ endif
 :command -nargs=* Make silent make <args> | cwindow 10 | redraw!
 nmap <leader>t :wa<cr>:Make %<cr>
 
+
+" Start and end of line
+nnoremap H ^
+vnoremap H ^
+nnoremap L g_
+vnoremap L g_
+
 " arrows control indentation
 vnoremap <silent>< <gv
 vnoremap <silent>> >gv
@@ -199,3 +216,87 @@ nnoremap <C-\> :Ag "\b<cword>\b"<CR>
 
 nnoremap <ENTER> :
 vnoremap <ENTER> :
+
+" Evil screen/tmux steals my beloved C-a
+nnoremap <leader>a <C-a>
+nnoremap <leader>x <C-x>
+
+" okay, tmux might be awesome
+Plugin 'christoomey/vim-tmux-navigator'
+
+
+nnoremap <leader><backspace> :Dispatch<CR>
+nnoremap <leader><insert> :execute('Start bundle exec rspec %:' . line('.'))<CR>
+nnoremap <leader><delete> :Start<CR>
+
+let g:projectiles = {
+      \   'Gemfile' : {
+      \     '*_spec.rb' : {
+      \       'dispatch': "bundle exec rspec {file}",
+      \       'make' : "bundle exec rspec spec",
+      \       'start' : "bundle exec rspec rspec {file}"
+      \     },
+      \     'spec/*_spec.rb' : {
+      \       'template' : "require 'spec_helper'\n\ndescribe {camelcase|colons} do\n\nend",
+      \       'type' : 'spec',
+      \     },
+      \     'app/models/*.rb' : {
+      \       'alternate' : 'spec/models/{}_spec.rb',
+      \       'type' : 'model',
+      \       'template' : "class {camelcase|colons} < ActiveRecord::Base\nend"
+      \     },
+      \     'app/controllers/*.rb' : {
+      \       'alternate' : 'spec/controllers/{}_spec.rb',
+      \       'type' : 'controller',
+      \       'template' : "class {camelcase|colons} < ApplicationController\nend"
+      \     },
+      \     'spec/models/*_spec.rb' : {
+      \       'alternate' : 'app/models/{}.rb',
+      \     },
+      \     'spec/controllers/*_spec.rb' : {
+      \       'alternate' : 'app/controllers/{}.rb',
+      \     },
+      \     'spec/lib/*_spec.rb' : {
+      \       'alternate' : 'lib/{}.rb',
+      \     },
+      \     'lib/*.rb' : {
+      \       'alternate' : 'spec/lib/{}_spec.rb',
+      \       'type' : 'lib',
+      \       'template' : "class {camelcase|colons}\nend"
+      \     }
+      \   }
+      \ }
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+map <leader>ph :r!tail -n20 /home/jhawthorn/.pry_history\|tac\|fzy<CR>
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+
+nnoremap <leader>e       :call FzyCommand('ag . -l -g ""', ":e")<cr>
+nnoremap <leader>v       :call FzyCommand('ag . -l -g ""', ":vs")<cr>
+nnoremap <leader>s       :call FzyCommand('ag . -l -g ""', ":sp")<cr>
+nnoremap <leader><space> :call FzyCommand('ag . -l -g ""', ":sp")<cr>
+
+nnoremap <leader>q :q<cr>
+nnoremap <leader>w :w<cr>
+
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
+
