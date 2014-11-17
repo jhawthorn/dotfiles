@@ -15,3 +15,24 @@ source $HOME/.local/share/bundler-exec/bundler-exec.sh
 # Read ~/.ruby-version to determine version
 chruby_auto
 
+
+selectgem(){
+       if [ -z "$1" ]; then
+               bundle show | tr -s ' ' | cut -d ' ' -f 3 | fzy
+       else
+               echo "$1"
+       fi
+}
+
+gempath() {
+       bundle show $(selectgem $1)
+}
+
+tmgem() {
+       GEM=$(selectgem "$1")
+       tmux new-window -c $(bundle show $GEM) -n "$GEM"
+}
+
+gemcd() {
+       pushd $(gempath "$1")
+}

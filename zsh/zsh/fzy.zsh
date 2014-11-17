@@ -22,5 +22,10 @@ v(){
 		vim $*
 	fi
 }
+
+fcd(){
+	cd "$(find -type d | fzy)"
+}
+
 compdef v=vim
 
