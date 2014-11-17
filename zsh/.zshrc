@@ -9,7 +9,7 @@ alias t=task
 alias beet='python2 =beet'
 alias ls="ls --group-directories-first --color=auto -v"
 alias l="ls"
-alias json="python -mjson.tool"
+alias json="jq ."
 alias xml="xmllint --format -"
 alias f="ag --nocolor -l -g ''"
 
