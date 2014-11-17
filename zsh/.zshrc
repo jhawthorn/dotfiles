@@ -11,7 +11,7 @@ alias ls="ls --group-directories-first --color=auto -v"
 alias l="ls"
 alias json="jq ."
 alias xml="xmllint --format -"
-alias f="ag --nocolor -l -g ''"
+f(){ ag --nocolor -l -g "$1" "${2:-.}" }
 
 tmrun() { tmux split-window -c `pwd` -l 10 "zsh -ic \"$@;read\"" && tmux last-pane }
 tmgem() { tmux new-window -c `bundle show $1` -n "$1" }
