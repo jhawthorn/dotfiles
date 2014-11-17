@@ -25,3 +25,4 @@ $ '
 
 export GOPATH=~/go
 
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
