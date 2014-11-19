@@ -11,7 +11,7 @@ URxvt*pointerBlank: false
 
 URxvt.loginShell:  false
 URxvt.utmpInhibit: true
-URxvt.imLocale:    en_US-UTF-8
+URxvt.imLocale:    en_US.utf8
 
 ! No extra padding
 URxvt*internalBorder: 0
@@ -63,4 +63,8 @@ Xft.antialias:  true
 Xft.hinting:    true
 Xft.rgba:       rgb
 Xft.hintstyle:  hintslight
+
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
 

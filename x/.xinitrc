@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 export PATH="$HOME/bin:$PATH"
 
@@ -16,12 +16,16 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 xset -b
 
-/usr/lib/systemd/systemd --user &
+#/usr/lib/systemd/systemd --user &
 
 urxvtd -q -o -f
 
 xsetroot -solid black
 xsetroot -cursor_name left_ptr
 
-exec awesome
+unclutter &
+dwmstatus &
 
+#optirun steam -tenfoot
+#exec awesome
+exec dwm
