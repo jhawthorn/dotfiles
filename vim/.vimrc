@@ -32,9 +32,6 @@ Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'bronson/vim-trailing-whitespace'
 
-" syntastic
-Plugin 'scrooloose/syntastic'
-
 " CamelCase and underscored words
 Plugin 'camelcasemotion'
 
