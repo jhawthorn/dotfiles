@@ -178,7 +178,9 @@ set fileencodings=ucs-bom,utf-8,latin1
 set virtualedit=block
 
 " I don't use this, but the default cipher is broken
-set cryptmethod=blowfish2
+if v:version > 704 || v:version ==704 && has("patch399")
+	set cryptmethod=blowfish2
+end
 
 " Sudo write
 cmap w!! w !sudo tee % >/dev/null
