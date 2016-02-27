@@ -25,4 +25,6 @@ $ '
 
 export GOPATH=~/go
 
+export QUOTING_STYLE=literal
+
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
