@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "Terminus 8"
+theme.font          = "xos4 Terminus 8"
 
 theme.bg_normal     = "#000000"
 theme.bg_focus      = "#0000ff"

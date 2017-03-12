@@ -57,8 +57,7 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts =
-{
+awful.layout.layouts = {
 --    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile,
     awful.layout.suit.floating,
@@ -278,7 +277,7 @@ globalkeys = awful.util.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "p", function () awful.util.spawn("dmenu_run") end),
+    awful.key({ modkey,           }, "p", function () awful.util.spawn("dmenu_run -fn 'xos4 Terminus:size=10'") end),
 
 
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
