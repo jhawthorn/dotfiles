@@ -27,5 +27,5 @@ unclutter &
 dwmstatus &
 
 #optirun steam -tenfoot
-#exec awesome
-exec dwm
+exec awesome
+#exec dwm
