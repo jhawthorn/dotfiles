@@ -59,12 +59,7 @@ Plugin 'ervandew/supertab'
 
 " Additional filetypes
 Plugin 'JSON.vim'
-Plugin 'Neurogami/mirah-vim'
-Plugin 'jayferd/ragel.vim'
 Plugin 'tpope/vim-markdown'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mustache/vim-mustache-handlebars'
 
 " Safe escaping of pastes
 Plugin 'ConradIrwin/vim-bracketed-paste'
@@ -112,7 +107,7 @@ if has("autocmd")
   autocmd FileType elixir setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
 
-  autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
+  "autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
 
   " File types
   au BufRead,BufNewFile {*.txt}                              set ft=txt

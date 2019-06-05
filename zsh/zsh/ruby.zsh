@@ -15,7 +15,6 @@ source $HOME/.local/share/bundler-exec/bundler-exec.sh
 # Read ~/.ruby-version to determine version
 chruby_auto
 
-
 selectgem(){
        if [ -z "$1" ]; then
                bundle show | tr -s ' ' | cut -d ' ' -f 3 | fzy
@@ -36,3 +35,5 @@ tmgem() {
 gemcd() {
        pushd $(gempath "$1")
 }
+
+alias be="bundle exec"

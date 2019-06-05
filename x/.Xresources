@@ -58,7 +58,7 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 XDvi*Foreground:XDviblack
 XDvi*Background:XDviwhite
 
-Xft.dpi:        96
+Xft.dpi:        161
 Xft.antialias:  true
 Xft.hinting:    true
 Xft.rgba:       rgb

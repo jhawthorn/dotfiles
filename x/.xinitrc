@@ -2,12 +2,12 @@
 
 export PATH="$HOME/bin:$PATH"
 
-xset +fp /usr/share/fonts/local
-xset fp rehash
+#xset +fp /usr/share/fonts/local
+#xset fp rehash
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-eval `gpg-agent -s --enable-ssh-support --daemon`
+#eval `gpg-agent -s --enable-ssh-support --daemon`
 
 xsetroot -cursor_name watch
 
