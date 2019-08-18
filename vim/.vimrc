@@ -3,67 +3,7 @@ filetype off
 
 let mapleader=" "
 
-" vundle setup
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-" <3 TPOPE!
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-repeat'
-
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-dispatch'
-
-Plugin 'vim-ruby/vim-ruby'
-
-Plugin 'bronson/vim-trailing-whitespace'
-
-" CamelCase and underscored words
-Plugin 'camelcasemotion'
-
-Plugin 'godlygeek/tabular'
-if exists(":Tabularize")
-	nmap <Leader>a= :Tabularize /=<CR>
-	vmap <Leader>a= :Tabularize /=<CR>
-	nmap <Leader>a: :Tabularize /:\zs<CR>
-	vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
-Plugin 'file-line'
-
-" version control
-Plugin 'int3/vim-extradite'
-let g:extradite_showhash=1
-
-Plugin 'airblade/vim-gitgutter'
-set updatetime=100
-
-"" color scheme
-Plugin 'wombat256.vim'
-
-" tab completion
-Plugin 'ervandew/supertab'
-
-" Safe escaping of pastes
-Plugin 'ConradIrwin/vim-bracketed-paste'
-
-
-call vundle#end()
-
 runtime macros/matchit.vim
-
 
 filetype plugin indent on
 
@@ -179,9 +119,7 @@ cmap w!! w !sudo tee % >/dev/null
 set ignorecase smartcase
 
 set background=dark
-if filereadable(expand("~/.vim/bundle/wombat256.vim/colors/wombat256mod.vim"))
-	colorscheme wombat256mod
-end
+colorscheme wombat256mod
 
 " save ~100ms loading ftplugin/ruby.vim
 if !empty($MY_RUBY_HOME)
@@ -210,10 +148,6 @@ vnoremap <ENTER> :
 " Evil screen/tmux steals my beloved C-a
 nnoremap <leader>a <C-a>
 nnoremap <leader>x <C-x>
-
-" okay, tmux might be awesome
-Plugin 'christoomey/vim-tmux-navigator'
-
 
 nnoremap <leader><backspace> :Dispatch<CR>
 nnoremap <leader><insert> :execute('Start bundle exec rspec %:' . line('.'))<CR>

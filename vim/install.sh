@@ -1,8 +1,9 @@
 cd "$( dirname "$0" )"
+
+mkdir -p "$HOME/.vim"
+
+rm -Rf "$HOME/.vim/bundle"
+rm -Rf "$HOME/.vim/pack"
+
 ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
-
-mkdir -p "$HOME/.vim/bundle"
-rm -Rf "$HOME/.vim/bundle/vundle"
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +BundleInstall +qa
-
+ln -sf "$(pwd)/pack" "$HOME/.vim/pack"
