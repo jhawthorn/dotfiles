@@ -144,6 +144,7 @@ set number
 set mouse=
 set tf
 set showcmd
+set ruler
 
 set hlsearch
 set incsearch
