@@ -52,7 +52,7 @@ TERM
     hostname = Socket.gethostname
     user = ENV["USER"]
     pwd = "/"
-    ruby = "ruby #{RUBY_VERSION}"
+    ruby = "#{ENV["RUBY_ENGINE"]} #{ENV["RUBY_VERSION"]}"
 
     "#{user}@#{hostname}:#{pwd}  [#{ruby}]"
   end
