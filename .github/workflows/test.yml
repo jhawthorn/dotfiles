@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: docker://ubuntu
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Install dependencies
+      run: |
+        apt-get update
+        apt-get install -y zsh ruby sudo tmux vim git
+        useradd -ms /bin/zsh jhawthorn
+    - name: Install dotfiles
+      run: |
+        DIR=$(pwd)
+        sudo -H -i -u jhawthorn "$DIR/install.sh"
+    - name: Run tests
+      run: |
+        sudo gem install ttytest
+        DIR=$(pwd)
+        sudo -H -i -u jhawthorn ruby "$DIR/test/dotfiles_test.rb"
