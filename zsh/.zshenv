@@ -10,8 +10,6 @@
 # Browser
 #
 
-export BROWSER='surf'
-
 #
 # Editors
 #
@@ -88,6 +86,8 @@ path=(
   $HOME/bin
   $HOME/go/bin
   $NPM_PACKAGES/bin
+  /Applications/Postgres.app/Contents/Versions/latest/bin
+  /usr/local/opt/mysql@5.7/bin
   /usr/local/{bin,sbin}
   /usr/{bin,sbin}
   /{bin,sbin}

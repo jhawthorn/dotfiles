@@ -9,8 +9,6 @@
 # Browser
 #
 
-export BROWSER='surf'
-
 #
 # Editors
 #

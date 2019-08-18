@@ -3,11 +3,13 @@ for config_file ($HOME/.zsh/*.zsh); do
   source $config_file
 done
 
+export CLICOLOR=1
+
 alias mplayer=mpv
 alias mmv='noglob zmv -W'
 alias t=task
 alias beet='python2 =beet'
-alias ls="ls --group-directories-first --color=auto -v"
+alias ls="ls -F"
 alias l="ls"
 alias json="jq ."
 alias xml="xmllint --format -"
