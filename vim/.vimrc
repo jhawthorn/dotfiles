@@ -13,14 +13,12 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
@@ -50,16 +48,13 @@ Plugin 'int3/vim-extradite'
 let g:extradite_showhash=1
 
 Plugin 'airblade/vim-gitgutter'
+set updatetime=100
 
 "" color scheme
 Plugin 'wombat256.vim'
 
 " tab completion
 Plugin 'ervandew/supertab'
-
-" Additional filetypes
-Plugin 'JSON.vim'
-Plugin 'tpope/vim-markdown'
 
 " Safe escaping of pastes
 Plugin 'ConradIrwin/vim-bracketed-paste'
@@ -107,7 +102,7 @@ if has("autocmd")
   autocmd FileType elixir setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
 
-  "autocmd User Rails let  g:fuzzy_roots = [RailsRoot()]
+  autocmd User Rails let  g:fuzzy_roots = [rails#app().path()]
 
   " File types
   au BufRead,BufNewFile {*.txt}                              set ft=txt
@@ -267,7 +262,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-map <leader>ph :r!tail -n20 /home/jhawthorn/.pry_history\|tac\|fzy<CR>
+map <leader>ph :r!tail -n20 $HOME/.pry_history\|tac\|fzy<CR>
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
@@ -283,10 +278,10 @@ function! FzyCommand(choice_command, vim_command)
   endif
 endfunction
 
-nnoremap <leader>e       :call FzyCommand('ag . -l -g ""', ":e")<cr>
-nnoremap <leader>v       :call FzyCommand('ag . -l -g ""', ":vs")<cr>
-nnoremap <leader>s       :call FzyCommand('ag . -l -g ""', ":sp")<cr>
-nnoremap <leader><space> :call FzyCommand('ag . -l -g ""', ":sp")<cr>
+nnoremap <leader>e       :call FzyCommand('fd --type f', ":e")<cr>
+nnoremap <leader>v       :call FzyCommand('fd --type f', ":vs")<cr>
+nnoremap <leader>s       :call FzyCommand('fd --type f', ":sp")<cr>
+nnoremap <leader><space> :call FzyCommand('fd --type f', ":sp")<cr>
 
 nnoremap <leader>q :q<cr>
 nnoremap <leader>w :w<cr>
@@ -294,3 +289,18 @@ nnoremap <leader>w :w<cr>
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
 
+function! SetRailsEnv()
+  let l:path = getcwd()
+  let g:ruby_indent_access_modifier_style="normal"
+  if match(l:path, "rails\$") > 0
+    if filewritable(l:path . "/activesupport") == 2
+      if match(&path, "activesupport") < 0
+        for component in ["activesupport", "actionpack", "actionview", "activerecord"]
+          let &path = component . "/lib/**," . &path
+        endfor
+      endif
+      let g:ruby_indent_access_modifier_style="indent"
+    endif
+  endif
+endfunction
+autocmd BufRead,VimEnter * :call SetRailsEnv()
