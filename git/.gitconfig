@@ -1,10 +1,11 @@
 [user]
 	name = John Hawthorn
-	email = john.hawthorn@gmail.com
+	email = john@hawthorn.email
 [github]
 	user = jhawthorn
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [color]
 	ui = auto
 	diff = auto
@@ -14,9 +15,8 @@
 	grep = auto
 [advice]
 	statusHints = false
-[diff]
-	renames = copies
-	algorithm = patience
+[branch]
+	sort = committerdate
 [push]
 	# tracking is the deprecated name for "upstream"
 	default = tracking
@@ -31,6 +31,8 @@
 	s = status --short --branch
 	l = log --oneline --decorate
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	branchdate = !git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:iso8601)%09%(refname:short)' refs/heads | sort
+	bl = branch --sort=-committerdate
 [apply]
 	whitespace = fix
 [rebase]
@@ -39,4 +41,5 @@
 	funcname = "^ *\\(\\(def\\) .*\\)"
 [diff "image"]
 	textconv = identify
-
+[hub]
+	protocol = ssh
