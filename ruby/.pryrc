@@ -15,7 +15,6 @@ if defined?(BigDecimal)
   end
 end
 
-if defined?(Rails) && Rails.env
-  extend Rails::ConsoleMethods
+if defined?(ActiveRecord::Base)
+  ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT)
 end
-

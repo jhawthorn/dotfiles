@@ -8,10 +8,12 @@ elsif defined?(Rails)
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
 
-begin
-  require 'pry'
-  Pry.start
-  exit
-rescue LoadError
-end
+#begin
+#  unless ENV['NO_PRY']
+#    require 'pry'
+#    Pry.start
+#    exit
+#  end
+#rescue LoadError
+#end
 
