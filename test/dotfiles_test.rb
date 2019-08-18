@@ -49,7 +49,7 @@ TERM
   private
 
   def expected_ps1
-    hostname = Socket.gethostname
+    hostname = Socket.gethostname.split(".")[0]
     user = ENV["USER"]
     pwd = "/"
     ruby = "#{ENV["RUBY_ENGINE"]} #{ENV["RUBY_VERSION"]}"
