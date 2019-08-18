@@ -3,24 +3,50 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  linux:
+    strategy:
+      matrix:
+        container: [ubuntu, archlinux/base]
+      fail-fast: false
+    name: Test on ${{ matrix.container }}
     runs-on: ubuntu-latest
-    container: docker://ubuntu
+    container: docker://${{ matrix.container }}
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Install ubuntu dependencies
+      if: matrix.container == 'ubuntu'
+      run: |
+        apt-get update
+        apt-get install -y zsh ruby sudo tmux vim git
+    - name: Install arch dependencies
+      if: matrix.container == 'archlinux/base'
+      run: |
+        pacman -Sy --noconfirm zsh ruby sudo tmux vim git
+    - name: Setup user
+      run: useradd -ms /bin/zsh jhawthorn
+    - name: Install dotfiles
+      run: |
+        DIR=$(pwd)
+        sudo -H -i -u jhawthorn -- "$DIR/install.sh"
+    - name: Run tests
+      run: |
+        sudo -H -i -u jhawthorn -- gem install --user-install minitest ttytest
+        DIR=$(pwd)
+        sudo -H -i -u jhawthorn -- ruby "$DIR/test/dotfiles_test.rb"
+  macos:
+    name: Test on macOS-latest
+    runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
       with:
         submodules: true
     - name: Install dependencies
-      run: |
-        apt-get update
-        apt-get install -y zsh ruby sudo tmux vim git
-        useradd -ms /bin/zsh jhawthorn
+      run: brew install tmux
     - name: Install dotfiles
-      run: |
-        DIR=$(pwd)
-        sudo -H -i -u jhawthorn "$DIR/install.sh"
+      run: ./install.sh
     - name: Run tests
       run: |
-        sudo gem install ttytest
-        DIR=$(pwd)
-        sudo -H -i -u jhawthorn ruby "$DIR/test/dotfiles_test.rb"
+        gem install --user-install ttytest
+        ruby test/dotfiles_test.rb
