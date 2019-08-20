@@ -20,6 +20,9 @@ set wildmode=list:longest,full
 "set undolevels=1000
 "set undoreload=10000
 
+" Timely updates from gitgutter
+set updatetime=100
+
 set laststatus=2
 
 set ffs=unix,mac,dos
