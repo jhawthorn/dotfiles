@@ -242,3 +242,11 @@ function! SetRailsEnv()
   endif
 endfunction
 autocmd BufRead,VimEnter * :call SetRailsEnv()
+
+command CoAuthor r! echo "Co-authored-by: $(git log --pretty='\%aN <\%aE>' | sort | uniq | fzy)"
+
+" Gist
+command -range=% Gist <line1>,<line2>call GistSync()
+function! GistSync() range
+  echo system('gh gist create -f '.shellescape(expand('%:t')), join(getline(a:firstline, a:lastline), "\n"))
+endfunction
