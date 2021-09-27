@@ -10,6 +10,7 @@ zsh   mail/install.sh
 zsh  music/install.sh
 zsh   misc/install.sh
 zsh   ruby/install.sh
+zsh   tmux/install.sh
 zsh    vim/install.sh
 zsh      x/install.sh
 zsh    zsh/install.sh

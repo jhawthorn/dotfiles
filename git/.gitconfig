@@ -41,13 +41,9 @@
 	funcname = "^ *\\(\\(def\\) .*\\)"
 [diff "image"]
 	textconv = identify
-[hub]
-	protocol = ssh
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
 [fetch]
 	prune = true
-[maintenance]
-	repo = /Users/jhawthorn/github/github
+[include]
+	path = ~/.gitconfig.local
