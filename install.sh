@@ -15,3 +15,8 @@ zsh    vim/install.sh
 zsh      x/install.sh
 zsh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
+
+if [[ -n "$CODESPACES" ]]; then
+	apt-get install -y fzy fdfind
+	ln -s $(which fdfind) /usr/local/bin/fd
+fi
