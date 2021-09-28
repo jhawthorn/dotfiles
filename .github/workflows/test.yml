@@ -6,7 +6,7 @@ jobs:
   linux:
     strategy:
       matrix:
-        container: [ubuntu, debian, archlinux/base]
+        container: [ubuntu, debian, archlinux]
       fail-fast: false
     name: Test on ${{ matrix.container }}
     runs-on: ubuntu-latest
