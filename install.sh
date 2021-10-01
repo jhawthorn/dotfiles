@@ -17,6 +17,8 @@ zsh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
 
 if [[ -n "$CODESPACES" ]]; then
-	apt-get install -y fzy fdfind
+	apt-get install -y fzy fd-find linux-perf
 	ln -s $(which fdfind) /usr/local/bin/fd
+	ln -s /usr/bin/perf_* /usr/local/bin/perf
+	chsh -s /bin/zsh
 fi
