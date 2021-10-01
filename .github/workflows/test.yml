@@ -21,7 +21,7 @@ jobs:
         apt-get update
         apt-get install -y zsh ruby sudo tmux vim git
     - name: Install arch dependencies
-      if: matrix.container == 'archlinux/base'
+      if: matrix.container == 'archlinux'
       run: |
         pacman -Sy --noconfirm zsh ruby sudo tmux vim git
     - name: Setup user
