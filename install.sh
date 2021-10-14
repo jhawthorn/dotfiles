@@ -18,7 +18,7 @@ ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
 
 if [[ -n "$CODESPACES" ]]; then
 	sudo chsh -s /bin/zsh "$USER"
-	sudo apt-get install -y fzy fd-find ripgrep
+	sudo apt-get install -y fzy fd-find ripgrep tmux
 	sudo ln -s $(which fdfind) /usr/local/bin/fd
 	sudo apt-get install -y linux-perf
 	sudo ln -s /usr/bin/perf_* /usr/local/bin/perf
