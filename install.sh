@@ -17,7 +17,7 @@ zsh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
 
 if [[ -n "$CODESPACES" ]]; then
-	sudo chsh -s /bin/zsh "$USER"
+	sudo chsh -s /bin/zsh $(whoami)
 	sudo apt-get install -y fzy fd-find ripgrep tmux
 	sudo ln -s $(which fdfind) /usr/local/bin/fd
 	sudo apt-get install -y linux-perf
