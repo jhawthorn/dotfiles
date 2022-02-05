@@ -2,6 +2,10 @@ source $HOME/.local/share/chruby/chruby.sh
 source $HOME/.local/share/chruby/auto.sh
 #source $HOME/.local/share/bundler-exec/bundler-exec.sh
 
+if [ ! -z "$ARCH" ]; then
+	RUBIES=(~/.rubies/$ARCH/*)
+fi
+
 # Read ~/.ruby-version to determine version
 chruby_auto
 

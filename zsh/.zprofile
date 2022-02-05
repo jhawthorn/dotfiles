@@ -42,13 +42,6 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
-# Set the list of directories that Zsh searches for programs.
-path=(
-  /usr/local/{bin,sbin}
-  $path
-)
-
-#
 # Less
 #
 
