@@ -82,3 +82,6 @@
 [submodule "vim/pack/vendor/start/wombat256.vim"]
 	path = vim/pack/vendor/start/wombat256.vim
 	url = https://github.com/vim-scripts/wombat256.vim.git
+[submodule "vim/pack/vendor/start/vim-cruby"]
+	path = vim/pack/vendor/start/vim-cruby
+	url = https://github.com/mrkn/vim-cruby

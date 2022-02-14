@@ -66,6 +66,8 @@ if has("autocmd")
   au BufRead,BufNewFile *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 
   au BufRead,BufNewFile *_spec.rb compiler rspec
+
+  au BufRead,BufNewFile *.[chy]  set ft=cruby
 endif
 
 set shell=zsh
