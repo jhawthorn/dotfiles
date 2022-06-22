@@ -114,7 +114,7 @@ set fileencodings=ucs-bom,utf-8,latin1
 set virtualedit=block
 
 " I don't use this, but the default cipher is broken
-if v:version > 704 || v:version ==704 && has("patch399")
+if (v:version > 704 || v:version ==704 && has("patch399")) && !has('nvim')
 	set cryptmethod=blowfish2
 end
 
