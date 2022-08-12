@@ -5,7 +5,7 @@ stty -ixon -ixoff
 function insert-fzy-path-in-command-line() {
         local selected_path
         echo # Run fzy underneath the current prompt
-        selected_path=$(ag . -l -g '' | fzy) || return
+        selected_path=$(fd --type f | fzy) || return
         LBUFFER="$LBUFFER${(q)selected_path} " # ${(q)VAR} shell-escapes the string
         zle reset-prompt
 }
