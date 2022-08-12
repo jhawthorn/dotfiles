@@ -57,13 +57,7 @@ if has("autocmd")
   au BufRead,BufNewFile {COMMIT_EDITMSG}                     set ft=gitcommit
   au BufRead,BufNewFile *mutt-*                              set ft=mail formatoptions=aw
   au BufRead,BufNewFile svn-commit.*                         set ft=svn
-  au BufRead,BufNewFile {*.vala,*.vapi}                      set ft=vala
-  au BufRead,BufNewFile pos.*.*                              set ft=basic
-  au BufRead,BufNewFile *.mirah                              set ft=mirah
   au BufRead,BufNewFile *.rl                                 set ft=ragel cindent
-
-  au BufRead,BufNewFile *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-  au BufRead,BufNewFile *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 
   au BufRead,BufNewFile *_spec.rb compiler rspec
 
