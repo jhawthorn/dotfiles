@@ -204,24 +204,31 @@ endif
 
 map <leader>ph :r!tail -n20 $HOME/.pry_history\|tac\|fzy<CR>
 
-" Find all files in all non-dot directories starting in the working directory.
-" Fuzzy select one of those. Open the selected file with :e.
-function! FzyCommand(choice_command, vim_command)
-  try
-    let output = system(a:choice_command . " | fzy ")
-  catch /Vim:Interrupt/
-    " Swallow errors from ^C, allow redraw! below
-  endtry
-  redraw!
-  if v:shell_error == 0 && !empty(output)
-    exec a:vim_command . ' ' . output
-  endif
-endfunction
+if has('nvim')
+    lua require('telescope').load_extension('fzy_native')
 
-nnoremap <leader>e       :call FzyCommand('fd --type f', ":e")<cr>
-nnoremap <leader>v       :call FzyCommand('fd --type f', ":vs")<cr>
-nnoremap <leader>s       :call FzyCommand('fd --type f', ":sp")<cr>
-nnoremap <leader><space> :call FzyCommand('fd --type f', ":sp")<cr>
+    nnoremap <leader><space> :Telescope find_files<cr>
+    nnoremap <leader>/ :Telescope live_grep<cr>
+    nnoremap <leader>b :Telescope buffers<cr>
+    nnoremap <leader>g :Telescope treesitter<cr>
+else
+    function! FzyCommand(choice_command, vim_command)
+        try
+            let output = system(a:choice_command . " | fzy ")
+        catch /Vim:Interrupt/
+            " Swallow errors from ^C, allow redraw! below
+        endtry
+        redraw!
+        if v:shell_error == 0 && !empty(output)
+            exec a:vim_command . ' ' . output
+        endif
+    endfunction
+
+    nnoremap <leader>e       :call FzyCommand('fd --type f', ":e")<cr>
+    nnoremap <leader>v       :call FzyCommand('fd --type f', ":vs")<cr>
+    nnoremap <leader>s       :call FzyCommand('fd --type f', ":sp")<cr>
+    nnoremap <leader><space> :call FzyCommand('fd --type f', ":sp")<cr>
+endif
 
 nnoremap <leader>q :q<cr>
 nnoremap <leader>w :w<cr>
@@ -245,7 +252,9 @@ function! SetRailsEnv()
 endfunction
 autocmd BufRead,VimEnter * :call SetRailsEnv()
 
+if !has('nvim')
 command CoAuthor r! echo "Co-authored-by: $(git log --pretty='\%aN <\%aE>' | sort | uniq | fzy)"
+endif
 
 " Gist
 command -range=% Gist <line1>,<line2>call GistSync()

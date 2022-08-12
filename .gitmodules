@@ -85,3 +85,18 @@
 [submodule "vim/pack/vendor/start/vim-cruby"]
 	path = vim/pack/vendor/start/vim-cruby
 	url = https://github.com/mrkn/vim-cruby
+[submodule "vim/nvim_pack/vendor/start/telescope.nvim"]
+	path = vim/nvim_pack/vendor/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "vim/nvim_pack/vendor/start/telescope-fzy-native.nvim"]
+	path = vim/nvim_pack/vendor/start/telescope-fzy-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim
+[submodule "vim/nvim_pack/vendor/start/plenary.nvim"]
+	path = vim/nvim_pack/vendor/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "vim/nvim_pack/vendor/start/nvim-treesitter"]
+	path = vim/nvim_pack/vendor/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "vim/nvim_pack/vendor/start/github-coauthors.nvim"]
+	path = vim/nvim_pack/vendor/start/github-coauthors.nvim
+	url = https://github.com/cwebster2/github-coauthors.nvim

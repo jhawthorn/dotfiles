@@ -2,6 +2,9 @@ if [[ `uname` == "Darwin" ]]; then
     source $HOME/.zsh/os/macos.zsh
 fi
 
+# Trying it out....
+alias vim="nvim"
+
 for config_file ($HOME/.zsh/*.zsh); do
   source $config_file
 done
