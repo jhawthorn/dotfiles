@@ -99,4 +99,4 @@
 	url = https://github.com/nvim-treesitter/nvim-treesitter
 [submodule "vim/nvim_pack/vendor/start/github-coauthors.nvim"]
 	path = vim/nvim_pack/vendor/start/github-coauthors.nvim
-	url = https://github.com/cwebster2/github-coauthors.nvim
+	url = https://github.com/jhawthorn/github-coauthors.nvim
