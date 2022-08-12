@@ -67,7 +67,7 @@ if has("autocmd")
 
   au BufRead,BufNewFile *_spec.rb compiler rspec
 
-  au BufRead,BufNewFile *.[chy]  set ft=cruby
+  au BufRead,BufNewFile *.[chy]  set ft=cruby cindent
 endif
 
 set shell=zsh
