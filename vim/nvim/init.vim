@@ -2,6 +2,8 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
+set termguicolors
+
 lua <<EOF
 
 local telescope = require('telescope')
@@ -14,6 +16,8 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('gitsigns').setup()
+
+require('feline').setup()
 
 EOF
 
