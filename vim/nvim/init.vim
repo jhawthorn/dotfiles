@@ -12,6 +12,9 @@ require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "ruby", "c", "lua", "rust", "python", "markdown", "make", "go", "cpp", "bash" },
 }
+
+require('gitsigns').setup()
+
 EOF
 
 command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>

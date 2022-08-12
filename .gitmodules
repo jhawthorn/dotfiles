@@ -100,3 +100,6 @@
 [submodule "vim/nvim_pack/vendor/start/github-coauthors.nvim"]
 	path = vim/nvim_pack/vendor/start/github-coauthors.nvim
 	url = https://github.com/jhawthorn/github-coauthors.nvim
+[submodule "vim/nvim_pack/vendor/start/gitsigns.nvim"]
+	path = vim/nvim_pack/vendor/start/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim
