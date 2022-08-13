@@ -16,13 +16,7 @@ bindkey "^S" "insert-fzy-path-in-command-line"
 
 alias b="git branch | cut -c 3- | fzy | xargs git checkout"
 
-v(){
-	if [[ -z $1 ]]; then
-		FILE=$(fd | fzy) && vim "$FILE"
-	else
-		vim $*
-	fi
-}
+alias v="nvim -c ':Telescope find_files'"
 
 fcd(){
 	cd "$(find -type d | fzy)"
