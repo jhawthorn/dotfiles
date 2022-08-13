@@ -108,4 +108,7 @@
 	url = https://github.com/feline-nvim/feline.nvim
 [submodule "vim/nvim_pack/vendor/start/wombat.nvim"]
 	path = vim/nvim_pack/vendor/start/wombat.nvim
-	url = https://github.com/ViViDboarder/wombat.nvim
+	url = https://github.com/jhawthorn/wombat.nvim
+[submodule "vim/nvim_pack/vendor/start/lush.nvim"]
+	path = vim/nvim_pack/vendor/start/lush.nvim
+	url = https://github.com/rktjmp/lush.nvim

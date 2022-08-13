@@ -21,4 +21,6 @@ require('feline').setup()
 
 EOF
 
+colorscheme wombat_lush
+
 command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>
