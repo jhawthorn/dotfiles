@@ -200,8 +200,6 @@ endif
 map <leader>ph :r!tail -n20 $HOME/.pry_history\|tac\|fzy<CR>
 
 if has('nvim')
-    lua require('telescope').load_extension('fzy_native')
-
     nnoremap <leader><space> :Telescope find_files<cr>
     nnoremap <leader>/ :Telescope live_grep<cr>
     nnoremap <leader>b :Telescope buffers<cr>
