@@ -106,3 +106,6 @@
 [submodule "vim/nvim_pack/vendor/start/feline.nvim"]
 	path = vim/nvim_pack/vendor/start/feline.nvim
 	url = https://github.com/feline-nvim/feline.nvim
+[submodule "vim/nvim_pack/vendor/start/wombat.nvim"]
+	path = vim/nvim_pack/vendor/start/wombat.nvim
+	url = https://github.com/ViViDboarder/wombat.nvim
