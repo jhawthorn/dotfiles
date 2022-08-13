@@ -6,3 +6,5 @@ public/assets
 .bundle
 .pt
 spec/support/_*
+stackprof-*.dump
+stackprof-*.json
