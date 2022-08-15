@@ -32,6 +32,7 @@
 	l = log --oneline --decorate
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	branchdate = !git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:iso8601)%09%(refname:short)' refs/heads | sort
+	list-authors = !git log -100000 --pretty='%aN <%aE>' | ruby -rset -ne 'print if ($s ||= Set.new).add?($_)'
 	bl = branch --sort=-committerdate
 [apply]
 	whitespace = fix
