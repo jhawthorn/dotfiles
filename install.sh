@@ -16,6 +16,8 @@ zsh      x/install.sh
 zsh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
 
+ln -sfn "$(pwd)" "$HOME/.dotfiles"
+
 if [[ -n "$CODESPACES" ]]; then
 	sudo chsh -s /bin/zsh $(whoami)
 	sudo apt-get install -y fzy fd-find ripgrep tmux
