@@ -5,8 +5,8 @@ ln -sf "$(pwd)/.pryrc" "$HOME/.pryrc"
 ln -sf "$(pwd)/.xrayconfig" "$HOME/.xrayconfig"
 
 mkdir -p "$HOME/.local/share"
-ln -sf "$(pwd)/chruby/share/chruby" "$HOME/.local/share/chruby"
-ln -sf "$(pwd)/bundler-exec" "$HOME/.local/share/bundler-exec"
+ln -sfn "$(pwd)/chruby/share/chruby" "$HOME/.local/share/chruby"
+ln -sfn "$(pwd)/bundler-exec" "$HOME/.local/share/bundler-exec"
 
 mkdir -p "$HOME/.bundle"
 ln -sf "$(pwd)/.bundle/config" "$HOME/.bundle/config"

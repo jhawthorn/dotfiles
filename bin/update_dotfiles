@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/zsh
 set -ex
-cd ~/.dotfiles
+
+cd -- "$(dirname -- "$(readlink -- "$0")")/.."
+
 git pull --ff-only
 git submodule update --init --recursive
-./install.sh
+zsh ./install.sh
