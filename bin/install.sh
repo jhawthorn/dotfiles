@@ -17,6 +17,7 @@ rtorrent
 starcraft
 statusbar
 urlview
+update_dotfiles
 watchmsg
 weechat
 )

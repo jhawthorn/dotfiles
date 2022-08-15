@@ -1,0 +1,6 @@
+#!/bin/sh
+set -ex
+cd ~/.dotfiles
+git pull --ff-only
+git submodule update --init --recursive
+./install.sh
