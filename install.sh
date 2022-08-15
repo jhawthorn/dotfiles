@@ -21,7 +21,7 @@ ln -sfn "$(pwd)" "$HOME/.dotfiles"
 if [[ -n "$CODESPACES" ]]; then
 	sudo chsh -s /bin/zsh $(whoami)
 	sudo apt-get install -y fzy fd-find ripgrep tmux
-	sudo ln -s $(which fdfind) /usr/local/bin/fd
+	sudo ln -sf $(which fdfind) /usr/local/bin/fd
 	sudo apt-get install -y linux-perf
-	sudo ln -s /usr/bin/perf_* /usr/local/bin/perf
+	sudo ln -sf /usr/bin/perf_* /usr/local/bin/perf
 fi
