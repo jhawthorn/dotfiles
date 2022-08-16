@@ -25,3 +25,5 @@ if [[ -n "$CODESPACES" ]]; then
 	sudo apt-get install -y linux-perf
 	sudo ln -sf /usr/bin/perf_* /usr/local/bin/perf
 fi
+
+nvim --headless +'helptags ALL' +':TSUpdateSync ruby c lua rust python markdown make go cpp bash' +qa
