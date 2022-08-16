@@ -200,7 +200,7 @@ endif
 map <leader>ph :r!tail -n20 $HOME/.pry_history\|tac\|fzy<CR>
 
 if has('nvim')
-    nnoremap <leader><space> :Telescope find_files<cr>
+    nnoremap <leader><space> :Telescope find_files prompt_prefix=\ \ <cr>
     nnoremap <leader>/ :Telescope live_grep<cr>
     nnoremap <leader>b :Telescope buffers<cr>
     nnoremap <leader>g :Telescope treesitter<cr>
