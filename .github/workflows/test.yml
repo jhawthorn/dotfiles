@@ -19,11 +19,11 @@ jobs:
       if: matrix.container == 'ubuntu' || matrix.container == 'debian'
       run: |
         apt-get update
-        apt-get install -y zsh ruby sudo tmux vim git
+        apt-get install -y zsh ruby sudo tmux vim git neovim
     - name: Install arch dependencies
       if: matrix.container == 'archlinux'
       run: |
-        pacman -Sy --noconfirm zsh ruby sudo tmux vim git
+        pacman -Sy --noconfirm zsh ruby sudo tmux vim git neovim
     - name: Setup user
       run: useradd -ms /bin/zsh jhawthorn
     - name: Install dotfiles
@@ -43,7 +43,7 @@ jobs:
       with:
         submodules: true
     - name: Install dependencies
-      run: brew install tmux
+      run: brew install tmux neovim
     - name: Install dotfiles
       run: ./install.sh
     - name: Run tests
