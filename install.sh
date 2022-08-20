@@ -24,6 +24,9 @@ if [[ -n "$CODESPACES" ]]; then
 	sudo ln -sf $(which fdfind) /usr/local/bin/fd
 	sudo apt-get install -y linux-perf
 	sudo ln -sf /usr/bin/perf_* /usr/local/bin/perf
+
+	echo 0 | sudo tee /proc/sys/kernel/kptr_restrict > /dev/null
+	echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid > /dev/null
 fi
 
 nvim --headless +'helptags ALL' +':TSUpdateSync ruby c lua rust python markdown make go cpp bash' +qa
