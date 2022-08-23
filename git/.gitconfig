@@ -5,7 +5,7 @@
 	user = jhawthorn
 [merge]
 	tool = vimdiff
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [color]
 	ui = auto
 	diff = auto
@@ -48,3 +48,5 @@
 	prune = true
 [include]
 	path = ~/.gitconfig.local
+[diff]
+	algorithm = histogram
