@@ -115,3 +115,6 @@
 [submodule "vim/nvim_pack/vendor/start/nvim-web-devicons"]
 	path = vim/nvim_pack/vendor/start/nvim-web-devicons
 	url = https://github.com/kyazdani42/nvim-web-devicons/
+[submodule "vim/nvim_pack/vendor/start/git-conflict.nvim"]
+	path = vim/nvim_pack/vendor/start/git-conflict.nvim
+	url = https://github.com/akinsho/git-conflict.nvim

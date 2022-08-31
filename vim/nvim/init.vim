@@ -30,6 +30,11 @@ require('gitsigns').setup()
 
 require('feline').setup()
 
+require('git-conflict').setup({
+  default_mappings = true,
+  disable_diagnostics = false,
+})
+
 EOF
 
 colorscheme wombat_lush
