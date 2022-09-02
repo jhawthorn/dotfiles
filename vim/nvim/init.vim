@@ -35,6 +35,13 @@ require('git-conflict').setup({
   disable_diagnostics = false,
 })
 
+require("mason").setup()
+require("mason-lspconfig").setup({
+ensure_installed = { "rust_analyzer" }
+})
+
+require("lspconfig").rust_analyzer.setup {}
+
 EOF
 
 colorscheme wombat_lush
