@@ -130,3 +130,6 @@
 [submodule "vim/nvim_pack/vendor/start/null-ls.nvim"]
 	path = vim/nvim_pack/vendor/start/null-ls.nvim
 	url = https://github.com/jose-elias-alvarez/null-ls.nvim
+[submodule "vim/nvim_pack/vendor/start/packer.nvim"]
+	path = vim/nvim_pack/vendor/start/packer.nvim
+	url = https://github.com/wbthomason/packer.nvim
