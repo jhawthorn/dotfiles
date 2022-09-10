@@ -45,6 +45,15 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 local cmp = require'cmp'
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -171,7 +180,7 @@ vim.api.nvim_create_autocmd('User', {
     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
     -- Displays a function's signature information
-    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+    --bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
     -- Renames all references to the symbol under the cursor
     --bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
