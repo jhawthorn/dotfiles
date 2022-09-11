@@ -41,7 +41,7 @@ require("mason-lspconfig").setup({
 ensure_installed = { "rust_analyzer" }
 })
 
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 
 local cmp = require'cmp'
 
@@ -69,13 +69,20 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
+    ["<CR>"] = cmp.mapping(function(fallback)
+      if cmp.get_selected_entry() ~= nil then
+        cmp.confirm({ select = true })
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-c>'] = cmp.mapping.abort(),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+      if vim.fn["vsnip#jumpable"](1) == 1 then
+        feedkey("<Plug>(vsnip-jump-next)", "")
+      elseif cmp.visible() then
         cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
       elseif has_words_before() then
         cmp.complete()
       else
@@ -94,6 +101,9 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
+    { name = 'path' },
+    { name = 'treesitter' },
+    { name = 'zsh' },
   }, {
     { name = 'buffer' },
   })
@@ -201,6 +211,11 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 EOF
+
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.ruby = ['rails']
+let g:vsnip_filetypes.cruby = ['c']
+
 
 colorscheme wombat_lush
 
