@@ -6,6 +6,8 @@ zle -N self-insert url-quote-magic
 # 10ms for key sequences
 KEYTIMEOUT=1
 
+bindkey -v
+
 # Multi-level undo
 bindkey -a u undo
 bindkey -a '^R' redo
@@ -13,8 +15,6 @@ bindkey -a '^R' redo
 # delete past the position entering insert mode
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
-
-source ${0:a:h}/../zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # irc client like input
 # From http://zshwiki.org/home/zle/ircclientlikeinput

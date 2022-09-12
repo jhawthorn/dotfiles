@@ -118,6 +118,3 @@
 [submodule "vim/nvim_pack/vendor/start/git-conflict.nvim"]
 	path = vim/nvim_pack/vendor/start/git-conflict.nvim
 	url = https://github.com/akinsho/git-conflict.nvim
-[submodule "zsh/zsh-vi-mode"]
-	path = zsh/zsh-vi-mode
-	url = https://github.com/jeffreytse/zsh-vi-mode
