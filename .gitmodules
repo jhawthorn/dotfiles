@@ -118,3 +118,15 @@
 [submodule "vim/nvim_pack/vendor/start/git-conflict.nvim"]
 	path = vim/nvim_pack/vendor/start/git-conflict.nvim
 	url = https://github.com/akinsho/git-conflict.nvim
+[submodule "vim/nvim_pack/vendor/start/mason-lspconfig.nvim"]
+	path = vim/nvim_pack/vendor/start/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim
+[submodule "vim/nvim_pack/vendor/start/mason.nvim"]
+	path = vim/nvim_pack/vendor/start/mason.nvim
+	url = https://github.com/williamboman/mason.nvim
+[submodule "vim/nvim_pack/vendor/start/nvim-lspconfig"]
+	path = vim/nvim_pack/vendor/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "vim/nvim_pack/vendor/start/null-ls.nvim"]
+	path = vim/nvim_pack/vendor/start/null-ls.nvim
+	url = https://github.com/jose-elias-alvarez/null-ls.nvim
