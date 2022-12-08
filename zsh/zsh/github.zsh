@@ -1,0 +1,1 @@
+export SERVICEOWNERS_SKIP=1
