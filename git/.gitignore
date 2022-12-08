@@ -8,3 +8,7 @@ public/assets
 spec/support/_*
 stackprof-*.dump
 stackprof-*.json
+
+# clangd
+compile_commands.json
+.cache
