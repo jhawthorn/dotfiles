@@ -157,6 +157,13 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
 )
 
 require("lspconfig").rust_analyzer.setup {
+    settings = {
+        ["rust-analyzer"] = {
+            diagnostics = {
+                disabled = { "inactive-code" }
+            }
+        }
+    }
 }
 
 require("lspconfig").clangd.setup {
