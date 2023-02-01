@@ -34,6 +34,7 @@
 	branchdate = !git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:iso8601)%09%(refname:short)' refs/heads | sort
 	list-authors = !git log -100000 --pretty='%aN <%aE>' | ruby -rset -ne 'print if ($s ||= Set.new).add?($_)'
 	bl = branch --sort=-committerdate
+	wip = commit -am WIP
 [apply]
 	whitespace = fix
 [rebase]
