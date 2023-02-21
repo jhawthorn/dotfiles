@@ -91,9 +91,6 @@
 [submodule "vim/nvim_pack/vendor/start/telescope-fzy-native.nvim"]
 	path = vim/nvim_pack/vendor/start/telescope-fzy-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim
-[submodule "vim/nvim_pack/vendor/start/plenary.nvim"]
-	path = vim/nvim_pack/vendor/start/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim
 [submodule "vim/nvim_pack/vendor/start/nvim-treesitter"]
 	path = vim/nvim_pack/vendor/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
