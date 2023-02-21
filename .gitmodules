@@ -85,48 +85,6 @@
 [submodule "vim/pack/vendor/start/vim-cruby"]
 	path = vim/pack/vendor/start/vim-cruby
 	url = https://github.com/mrkn/vim-cruby
-[submodule "vim/nvim_pack/vendor/start/telescope.nvim"]
-	path = vim/nvim_pack/vendor/start/telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim
-[submodule "vim/nvim_pack/vendor/start/telescope-fzy-native.nvim"]
-	path = vim/nvim_pack/vendor/start/telescope-fzy-native.nvim
-	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim
-[submodule "vim/nvim_pack/vendor/start/nvim-treesitter"]
-	path = vim/nvim_pack/vendor/start/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter
-[submodule "vim/nvim_pack/vendor/start/github-coauthors.nvim"]
-	path = vim/nvim_pack/vendor/start/github-coauthors.nvim
-	url = https://github.com/jhawthorn/github-coauthors.nvim
-[submodule "vim/nvim_pack/vendor/start/gitsigns.nvim"]
-	path = vim/nvim_pack/vendor/start/gitsigns.nvim
-	url = https://github.com/lewis6991/gitsigns.nvim
-[submodule "vim/nvim_pack/vendor/start/feline.nvim"]
-	path = vim/nvim_pack/vendor/start/feline.nvim
-	url = https://github.com/feline-nvim/feline.nvim
-[submodule "vim/nvim_pack/vendor/start/wombat.nvim"]
-	path = vim/nvim_pack/vendor/start/wombat.nvim
-	url = https://github.com/jhawthorn/wombat.nvim
-[submodule "vim/nvim_pack/vendor/start/lush.nvim"]
-	path = vim/nvim_pack/vendor/start/lush.nvim
-	url = https://github.com/rktjmp/lush.nvim
-[submodule "vim/nvim_pack/vendor/start/nvim-web-devicons"]
-	path = vim/nvim_pack/vendor/start/nvim-web-devicons
-	url = https://github.com/kyazdani42/nvim-web-devicons/
-[submodule "vim/nvim_pack/vendor/start/git-conflict.nvim"]
-	path = vim/nvim_pack/vendor/start/git-conflict.nvim
-	url = https://github.com/akinsho/git-conflict.nvim
-[submodule "vim/nvim_pack/vendor/start/mason-lspconfig.nvim"]
-	path = vim/nvim_pack/vendor/start/mason-lspconfig.nvim
-	url = https://github.com/williamboman/mason-lspconfig.nvim
-[submodule "vim/nvim_pack/vendor/start/mason.nvim"]
-	path = vim/nvim_pack/vendor/start/mason.nvim
-	url = https://github.com/williamboman/mason.nvim
-[submodule "vim/nvim_pack/vendor/start/nvim-lspconfig"]
-	path = vim/nvim_pack/vendor/start/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
-[submodule "vim/nvim_pack/vendor/start/null-ls.nvim"]
-	path = vim/nvim_pack/vendor/start/null-ls.nvim
-	url = https://github.com/jose-elias-alvarez/null-ls.nvim
 [submodule "vim/nvim_pack/vendor/start/packer.nvim"]
 	path = vim/nvim_pack/vendor/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim

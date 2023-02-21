@@ -11,6 +11,21 @@ return require('packer').startup(function(use)
 
   use 'nvim-lua/plenary.nvim'
 
+use 'nvim-telescope/telescope.nvim'
+use 'nvim-telescope/telescope-fzy-native.nvim'
+use 'nvim-treesitter/nvim-treesitter'
+use 'jhawthorn/github-coauthors.nvim'
+use 'lewis6991/gitsigns.nvim'
+use 'feline-nvim/feline.nvim'
+use 'jhawthorn/wombat.nvim'
+use 'rktjmp/lush.nvim'
+use 'kyazdani42/nvim-web-devicons'
+use 'akinsho/git-conflict.nvim'
+use 'williamboman/mason-lspconfig.nvim'
+use 'williamboman/mason.nvim'
+use 'neovim/nvim-lspconfig'
+use 'jose-elias-alvarez/null-ls.nvim'
+
   use "rafamadriz/friendly-snippets"
 
 end)
