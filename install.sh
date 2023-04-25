@@ -32,4 +32,5 @@ if [[ -n "$CODESPACES" ]]; then
 	ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
 fi
 
+nvim --headless -u ~/.config/nvim/lua/plugins.lua  -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 nvim --headless +'helptags ALL' +':TSUpdateSync ruby c lua rust python markdown make go cpp bash' +qa
