@@ -4,9 +4,6 @@
 [submodule "ruby/ruby-install"]
 	path = ruby/ruby-install
 	url = https://github.com/postmodern/ruby-install
-[submodule "ruby/bundler-exec"]
-	path = ruby/bundler-exec
-	url = https://github.com/jhawthorn/bundler-exec
 [submodule "vim/pack/vendor/start/camelcasemotion"]
 	path = vim/pack/vendor/start/camelcasemotion
 	url = https://github.com/vim-scripts/camelcasemotion.git
