@@ -28,4 +28,10 @@ use 'jose-elias-alvarez/null-ls.nvim'
 
   use "rafamadriz/friendly-snippets"
 
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 end)

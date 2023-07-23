@@ -22,9 +22,6 @@
 [submodule "vim/pack/vendor/start/vim-bracketed-paste"]
 	path = vim/pack/vendor/start/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
-[submodule "vim/pack/vendor/start/vim-commentary"]
-	path = vim/pack/vendor/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
 [submodule "vim/pack/vendor/start/vim-dispatch"]
 	path = vim/pack/vendor/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
