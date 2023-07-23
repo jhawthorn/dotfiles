@@ -1,6 +1,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 brew analytics off
 brew install --cask slack discord 1password firefox iterm2 aerial
 brew install --cask hammerspoon
@@ -8,12 +9,13 @@ brew install --cask flotato
 brew install --cask anki
 
 brew install --cask iina streamlink-twitch-gui handbrake
-brew install --cask kicad inkscape gimp caffeine
+brew install --cask kicad inkscape gimp keepingyouawake
 
 brew install git gh
+brew install neovim tmux
 
 brew install yt-dlp
-sudo ln -s /usr/local/bin/yt-dlp /usr/local/bin/youtube-dl
+sudo ln -s $(brew --prefix)/bin/yt-dlp $(brew --prefix)/bin/youtube-dl
 
 brew tap homebrew/cask-fonts
 #brew install font-input
