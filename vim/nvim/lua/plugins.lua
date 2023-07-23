@@ -34,4 +34,14 @@ use 'jose-elias-alvarez/null-ls.nvim'
       require('Comment').setup()
     end
   }
+
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/src", "~/github", "~/Downloads", "/"},
+      }
+    end
+  }
 end)
