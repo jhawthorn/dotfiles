@@ -219,7 +219,8 @@ let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.ruby = ['rails']
 let g:vsnip_filetypes.cruby = ['c']
 
-
 colorscheme wombat_lush
+
+autocmd VimResized * wincmd =
 
 command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>
