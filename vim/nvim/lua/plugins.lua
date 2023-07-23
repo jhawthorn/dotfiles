@@ -1,3 +1,10 @@
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -11,20 +18,33 @@ return require('packer').startup(function(use)
 
   use 'nvim-lua/plenary.nvim'
 
-use 'nvim-telescope/telescope.nvim'
-use 'nvim-telescope/telescope-fzy-native.nvim'
-use 'nvim-treesitter/nvim-treesitter'
-use 'jhawthorn/github-coauthors.nvim'
-use 'lewis6991/gitsigns.nvim'
-use 'feline-nvim/feline.nvim'
-use 'jhawthorn/wombat.nvim'
-use 'rktjmp/lush.nvim'
-use 'kyazdani42/nvim-web-devicons'
-use 'akinsho/git-conflict.nvim'
-use 'williamboman/mason-lspconfig.nvim'
-use 'williamboman/mason.nvim'
-use 'neovim/nvim-lspconfig'
-use 'jose-elias-alvarez/null-ls.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
+  use 'nvim-treesitter/nvim-treesitter'
+
+  use 'jhawthorn/github-coauthors.nvim'
+  use 'lewis6991/gitsigns.nvim'
+  use 'akinsho/git-conflict.nvim'
+
+  use 'kyazdani42/nvim-web-devicons'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup {
+        options = {
+          theme = 'wombat',
+        }
+      }
+    end
+  }
+  use 'rktjmp/lush.nvim'
+  use 'jhawthorn/wombat.nvim'
+
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'williamboman/mason.nvim'
+  use 'neovim/nvim-lspconfig'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   use "rafamadriz/friendly-snippets"
 

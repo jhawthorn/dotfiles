@@ -7,13 +7,6 @@ set termguicolors
 lua <<EOF
 require('plugins')
 
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
-
 local telescope = require('telescope')
 local actions = require("telescope.actions")
 
@@ -35,8 +28,6 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('gitsigns').setup()
-
-require('feline').setup()
 
 require('git-conflict').setup({
   default_mappings = true,
