@@ -1,3 +1,5 @@
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
 if defined?(ActiveRecord)
   # for rails 3
   require 'logger'
