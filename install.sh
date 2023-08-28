@@ -42,5 +42,6 @@ if [[ -n "$CODESPACES" ]]; then
 GITCONFIG
 fi
 
+export PATH="$HOME/bin:$PATH"
 nvim --headless "+Lazy! sync" +qa
 nvim --headless +'helptags ALL' +':TSUpdateSync ruby c lua rust python markdown make go cpp bash' +qa
