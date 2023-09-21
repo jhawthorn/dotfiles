@@ -19,6 +19,7 @@ alias ls="ls -F"
 alias l="ls"
 alias json="jq ."
 alias xml="xmllint --format -"
+alias shh="echo 🤫"
 f(){ ag --nocolor -l -g "$1" "${2:-.}" }
 
 tmrun() { tmux split-window -c `pwd` -l 10 "zsh -ic \"$@;read\"" && tmux last-pane }
