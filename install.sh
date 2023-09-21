@@ -23,7 +23,6 @@ if [[ -n "$CODESPACES" ]]; then
 	sudo apt-get install -y fzy fd-find ripgrep tmux
 	sudo ln -sf $(which fdfind) /usr/local/bin/fd
 	apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
-	sudo ln -sf /usr/bin/perf_* /usr/local/bin/perf
 
 	echo 0 | sudo tee /proc/sys/kernel/kptr_restrict > /dev/null
 	echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid > /dev/null
