@@ -22,7 +22,7 @@ if [[ -n "$CODESPACES" ]]; then
 	sudo chsh -s /bin/zsh $(whoami)
 	sudo apt-get install -y fzy fd-find ripgrep tmux
 	sudo ln -sf $(which fdfind) /usr/local/bin/fd
-	apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
+	sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
 
 	echo 0 | sudo tee /proc/sys/kernel/kptr_restrict > /dev/null
 	echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid > /dev/null
