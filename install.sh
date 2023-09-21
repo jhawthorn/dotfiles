@@ -22,14 +22,14 @@ if [[ -n "$CODESPACES" ]]; then
 	sudo chsh -s /bin/zsh $(whoami)
 	sudo apt-get install -y fzy fd-find ripgrep tmux
 	sudo ln -sf $(which fdfind) /usr/local/bin/fd
-	sudo apt-get install -y linux-perf
+	apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
 	sudo ln -sf /usr/bin/perf_* /usr/local/bin/perf
 
 	echo 0 | sudo tee /proc/sys/kernel/kptr_restrict > /dev/null
 	echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid > /dev/null
 
-	curl -sSL https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
-	ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
+	#curl -sSL https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
+	#ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
 fi
 
 nvim --headless -u ~/.config/nvim/lua/plugins.lua  -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
