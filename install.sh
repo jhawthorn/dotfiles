@@ -31,6 +31,15 @@ if [[ -n "$CODESPACES" ]]; then
 
 	curl -sSL https://github.com/neovim/neovim/releases/download/v0.9.4/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
 	ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
+
+	cat <<-"GITCONFIG" >> "$HOME/.gitconfig.local"
+[credential "https://github.com"]
+        helper =
+        helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+        helper =
+        helper = !/usr/bin/gh auth git-credential
+GITCONFIG
 fi
 
 nvim --headless -u ~/.config/nvim/lua/plugins.lua  -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
