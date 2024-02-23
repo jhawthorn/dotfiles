@@ -21,3 +21,6 @@ defaults write com.apple.screencapture type -string "png"
 
 # Disable "force click"
 defaults write NSGlobalDomain com.apple.mouse.forceClick -bool false
+
+# Ctrl+cmd+click anywhere to drag a window
+defaults write -g NSWindowShouldDragOnGesture -bool true
