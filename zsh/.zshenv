@@ -17,7 +17,7 @@
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER='nvim +Man!'
 
 export TERMINFO="$HOME/.terminfo"
 export MOSH_TITLE_NOPREFIX=1
