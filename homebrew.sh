@@ -22,3 +22,5 @@ brew tap homebrew/cask-fonts
 brew install homebrew/cask-fonts/font-hack-nerd-font
 
 brew install fd fzy ripgrep speedtest-cli tree coreutils
+
+brew install --cask notunes
