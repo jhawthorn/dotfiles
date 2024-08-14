@@ -27,6 +27,7 @@
 	whitespace = trailing-space,space-before-tab
 	quotepath = false
 	autocrlf = input
+	untrackedcache = true
 [alias]
 	s = status --short --branch
 	l = log --oneline --decorate
