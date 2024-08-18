@@ -82,7 +82,6 @@ set backspace=indent,eol,start
 
 set number
 set mouse=
-set tf
 set showcmd
 set ruler
 

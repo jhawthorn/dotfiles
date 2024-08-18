@@ -1,8 +1,44 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
+"set runtimepath^=~/.vim runtimepath+=~/.vim/after
+"let &packpath = &runtimepath
+"source ~/.vimrc
 
-set termguicolors
+let mapleader=" "
+
+"set wildmode=list:longest,full
+
+"" Timely updates from gitgutter
+"set updatetime=100
+
+" supposedly not supposed to be set by default (anymore?)
+"set lazyredraw
+
+set mouse=
+
+iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
+
+" don't accidentally open help
+nmap <F1> <Esc>
+map! <F1> <Esc>
+
+set nobackup
+set noswapfile
+
+set virtualedit=block
+
+" < and > for indentation
+vnoremap <silent>< <gv
+vnoremap <silent>> >gv
+
+nnoremap <ENTER> :
+vnoremap <ENTER> :
+
+nnoremap <leader><space> :Telescope find_files prompt_prefix=\ \ <cr>
+nnoremap <leader>/ :Telescope live_grep<cr>
+nnoremap <leader>b :Telescope buffers<cr>
+nnoremap <leader>g :Telescope treesitter<cr>
+
+nnoremap <leader>q :q<cr>
+nnoremap <leader>w :w<cr>
 
 lua <<EOF
 require('plugins')
