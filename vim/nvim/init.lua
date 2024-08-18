@@ -14,7 +14,8 @@ vim.cmd('iab xdate <c-r>=strftime("%Y-%m-%d")<cr>')
 
 vim.g.mapleader = ' '
 
-vim.g.mouse = ''
+vim.opt.shortmess = 'atI'
+vim.opt.mouse = ""
 
 vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
 -- vim.keymap.del({'n'}, "<F1>")
