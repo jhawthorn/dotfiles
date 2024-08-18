@@ -1,10 +1,28 @@
 return {
 	{
 		'nvim-telescope/telescope.nvim',
-		dependencies = { 'nvim-lua/plenary.nvim' }
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-fzy-native.nvim',
+			'jhawthorn/github-coauthors.nvim',
+		},
+		config = function() 
+			local telescope = require('telescope')
+			local actions = require("telescope.actions")
+
+			telescope.setup({
+				defaults = {
+					mappings = {
+						i = {
+							["<esc>"] = actions.close,
+						},
+					},
+				},
+			})
+			telescope.load_extension('fzy_native')
+			telescope.load_extension('githubcoauthors')
+		end,
 	},
-	'nvim-telescope/telescope-fzy-native.nvim',
-	'jhawthorn/github-coauthors.nvim',
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -29,8 +47,21 @@ return {
 	'hrsh7th/vim-vsnip',
 
 	-- git extras
-	'lewis6991/gitsigns.nvim',
-	'akinsho/git-conflict.nvim',
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	},
+	{
+		'akinsho/git-conflict.nvim',
+		config = function()
+			require('git-conflict').setup({
+				default_mappings = true,
+				disable_diagnostics = false,
+			})
+		end
+	},
 
 	-- 
 	--use 'kyazdani42/nvim-web-devicons'

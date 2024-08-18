@@ -16,6 +16,7 @@ vim.g.mapleader = ' '
 
 vim.opt.shortmess = 'atI'
 vim.opt.mouse = ""
+vim.opt.number = true
 
 vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
 -- vim.keymap.del({'n'}, "<F1>")
@@ -46,28 +47,6 @@ vim.keymap.set('n', '<leader>w', ':w<cr>')
 
 --require('plugins')
 require('config.lazy')
-
-local telescope = require('telescope')
-local actions = require("telescope.actions")
-
-telescope.setup({
-    defaults = {
-        mappings = {
-            i = {
-                ["<esc>"] = actions.close,
-            },
-        },
-    },
-})
-telescope.load_extension('fzy_native')
-telescope.load_extension('githubcoauthors')
-
-require('gitsigns').setup()
-
-require('git-conflict').setup({
-  default_mappings = true,
-  disable_diagnostics = false,
-})
 
 require("mason").setup()
 require("mason-lspconfig").setup({
