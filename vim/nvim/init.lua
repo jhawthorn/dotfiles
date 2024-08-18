@@ -44,7 +44,8 @@ vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 vim.keymap.set('n', '<leader>w', ':w<cr>')
 
-require('plugins')
+--require('plugins')
+require('config.lazy')
 
 local telescope = require('telescope')
 local actions = require("telescope.actions")
@@ -60,11 +61,6 @@ telescope.setup({
 })
 telescope.load_extension('fzy_native')
 telescope.load_extension('githubcoauthors')
-
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "ruby", "c", "lua", "rust", "python", "markdown", "make", "go", "cpp", "bash" },
-}
 
 require('gitsigns').setup()
 
@@ -281,5 +277,11 @@ vim.cmd("colorscheme wombat_lush")
 
 vim.cmd("autocmd VimResized * wincmd =")
 
-vim.cmd("command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>")
+vim.api.nvim_create_user_command("CoAuthor",
+  function()
+	  require('telescope').extensions.githubcoauthors.coauthors()
+  end,
+  {})
+
+-- vim.cmd("command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>")
 
