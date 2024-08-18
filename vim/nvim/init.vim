@@ -2,8 +2,6 @@
 "let &packpath = &runtimepath
 "source ~/.vimrc
 
-let mapleader=" "
-
 "set wildmode=list:longest,full
 
 "" Timely updates from gitgutter
@@ -12,35 +10,41 @@ let mapleader=" "
 " supposedly not supposed to be set by default (anymore?)
 "set lazyredraw
 
-set mouse=
-
-iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
-
-" don't accidentally open help
-nmap <F1> <Esc>
-map! <F1> <Esc>
-
-set nobackup
-set noswapfile
-
-set virtualedit=block
-
-" < and > for indentation
-vnoremap <silent>< <gv
-vnoremap <silent>> >gv
-
-nnoremap <ENTER> :
-vnoremap <ENTER> :
-
-nnoremap <leader><space> :Telescope find_files prompt_prefix=\ \ <cr>
-nnoremap <leader>/ :Telescope live_grep<cr>
-nnoremap <leader>b :Telescope buffers<cr>
-nnoremap <leader>g :Telescope treesitter<cr>
-
-nnoremap <leader>q :q<cr>
-nnoremap <leader>w :w<cr>
-
 lua <<EOF
+
+vim.cmd('iab xdate <c-r>=strftime("%Y-%m-%d")<cr>')
+
+vim.g.mapleader = ' '
+
+vim.g.mouse = ''
+
+vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
+-- vim.keymap.del({'n'}, "<F1>")
+
+vim.keymap.set('v', '<silent><', '<gv')
+vim.keymap.set('v', '<silent>>', '>gv')
+
+vim.g.nobackup = true
+vim.g.noswapfile = true
+
+vim.g.virtualedit = 'block'
+
+-- < and > for indentation
+vim.keymap.set('v', '<silent><', '<gv')
+vim.keymap.set('v', '<silent>>', '>gv')
+
+vim.keymap.set({'n', 'v'}, '<ENTER>', ':')
+vim.keymap.set('v', '<ENTER>', ':')
+
+vim.keymap.set('n', '<leader><space>', ':Telescope find_files prompt_prefix=\\ \\ <cr>')
+vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
+vim.keymap.set('n', '<leader>g', ':Telescope treesitter<cr>')
+vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
+
+vim.keymap.set('n', '<leader>q', ':q<cr>')
+vim.keymap.set('n', '<leader>w', ':w<cr>')
+
 require('plugins')
 
 local telescope = require('telescope')
@@ -250,14 +254,35 @@ vim.api.nvim_create_autocmd('User', {
   end
 })
 
+-- recommended mappings
+-- resizing splits
+-- these keymaps will also accept a range,
+-- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
+vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+-- moving between splits
+vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
+vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
+vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
+vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
+vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+---- swapping buffers between windows
+--vim.keymap.set('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
+--vim.keymap.set('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
+--vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
+--vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
+
+vim.cmd("let g:vsnip_filetypes = {}")
+vim.cmd("let g:vsnip_filetypes.ruby = ['rails']")
+vim.cmd("let g:vsnip_filetypes.cruby = ['c']")
+
+vim.cmd("colorscheme wombat_lush")
+
+vim.cmd("autocmd VimResized * wincmd =")
+
+vim.cmd("command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>")
+
 EOF
 
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.ruby = ['rails']
-let g:vsnip_filetypes.cruby = ['c']
-
-colorscheme wombat_lush
-
-autocmd VimResized * wincmd =
-
-command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>

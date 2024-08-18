@@ -60,12 +60,21 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'rmagatti/auto-session',
+    'mrjones2014/smart-splits.nvim',
     config = function()
-      require("auto-session").setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/src", "~/github", "~/Downloads", "/"},
-      }
+      require('smart-splits').setup({
+        at_edge = 'none',
+      })
     end
   }
+
+  -- use {
+  --   'rmagatti/auto-session',
+  --   config = function()
+  --     require("auto-session").setup {
+  --       log_level = "error",
+  --       auto_session_suppress_dirs = { "~/", "~/src", "~/github", "~/Downloads", "/"},
+  --     }
+  --   end
+  -- }
 end)
