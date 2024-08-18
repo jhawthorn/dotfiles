@@ -1,16 +1,14 @@
-"set runtimepath^=~/.vim runtimepath+=~/.vim/after
-"let &packpath = &runtimepath
-"source ~/.vimrc
+-- set runtimepath^=~/.vim runtimepath+=~/.vim/after
+-- let &packpath = &runtimepath
+-- source ~/.vimrc
 
-"set wildmode=list:longest,full
+-- set wildmode=list:longest,full
 
-"" Timely updates from gitgutter
-"set updatetime=100
+-- " Timely updates from gitgutter
+-- set updatetime=100
 
-" supposedly not supposed to be set by default (anymore?)
-"set lazyredraw
-
-lua <<EOF
+-- supposedly not supposed to be set by default (anymore?)
+-- set lazyredraw
 
 vim.cmd('iab xdate <c-r>=strftime("%Y-%m-%d")<cr>')
 
@@ -283,6 +281,4 @@ vim.cmd("colorscheme wombat_lush")
 vim.cmd("autocmd VimResized * wincmd =")
 
 vim.cmd("command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>")
-
-EOF
 
