@@ -49,18 +49,14 @@ return {
 	-- git extras
 	{
 		'lewis6991/gitsigns.nvim',
-		config = function()
-			require('gitsigns').setup()
-		end
+		opts = {},
 	},
 	{
 		'akinsho/git-conflict.nvim',
-		config = function()
-			require('git-conflict').setup({
-				default_mappings = true,
-				disable_diagnostics = false,
-			})
-		end
+		opts = {
+			default_mappings = true,
+			disable_diagnostics = false,
+		},
 	},
 
 	-- 
@@ -68,11 +64,9 @@ return {
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		config = function()
-			require('lualine').setup {
-				options = { theme = 'wombat', }
-			}
-		end
+		opts = {
+			options = { theme = 'wombat', },
+		},
 	},
 
 	-- theme
@@ -87,10 +81,8 @@ return {
 
 	{
 		'mrjones2014/smart-splits.nvim',
-		config = function()
-			require('smart-splits').setup({
-				at_edge = 'none',
-			})
-		end
+		opts = {
+			at_edge = 'stop',
+		},
 	},
 }
