@@ -33,6 +33,9 @@ config.colors = {
   visual_bell = '#202020',
 }
 
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 30
+
 -- config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.use_fancy_tab_bar = false
