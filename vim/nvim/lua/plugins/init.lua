@@ -85,4 +85,6 @@ return {
 			at_edge = 'stop',
 		},
 	},
+
+	'bogado/file-line',
 }
