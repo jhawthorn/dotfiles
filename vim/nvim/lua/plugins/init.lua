@@ -86,5 +86,5 @@ return {
 		},
 	},
 
-	'bogado/file-line',
+	'wsdjeg/vim-fetch',
 }
