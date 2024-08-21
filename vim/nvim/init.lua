@@ -48,11 +48,6 @@ vim.keymap.set('n', '<leader>w', ':w<cr>')
 --require('plugins')
 require('config.lazy')
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-ensure_installed = { "rust_analyzer" }
-})
-
 vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 
 local cmp = require'cmp'

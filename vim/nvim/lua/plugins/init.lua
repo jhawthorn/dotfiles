@@ -77,8 +77,18 @@ return {
 	'jhawthorn/wombat.nvim',
 
 	-- LSP
-        'williamboman/mason-lspconfig.nvim',
-        'williamboman/mason.nvim',
+	{
+		'williamboman/mason.nvim',
+		config = true,
+	},
+	{
+		'williamboman/mason-lspconfig.nvim',
+		opts = {
+			ensure_installed = { "rust_analyzer" }
+		},
+		dependencies = { 'williamboman/mason.nvim' }
+	},
+
         'neovim/nvim-lspconfig',
         'jose-elias-alvarez/null-ls.nvim',
 
