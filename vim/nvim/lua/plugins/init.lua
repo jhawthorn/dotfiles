@@ -27,13 +27,16 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		config = function () 
-			local configs = require("nvim-treesitter.configs")
-
-			configs.setup({
-				ensure_installed = { "ruby", "c", "lua", "rust", "python", "markdown", "make", "go", "cpp", "bash" },
-			})
+		opts = {
+			ensure_installed = { "ruby", "c", "lua", "rust", "python", "markdown", "make", "go", "cpp", "bash" },
+			endwise = { enable = true },
+		},
+		config = function(_, opts)
+			require('nvim-treesitter.configs').setup(opts)
 		end,
+		dependencies = {
+			{ 'RRethy/nvim-treesitter-endwise' },
+		}
 	},
 
 	-- cmd and vsnip
