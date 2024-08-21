@@ -3,6 +3,7 @@ return {
 		'nvim-telescope/telescope.nvim',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-ui-select.nvim',
 			'nvim-telescope/telescope-fzy-native.nvim',
 			'jhawthorn/github-coauthors.nvim',
 		},
@@ -21,6 +22,7 @@ return {
 			})
 			telescope.load_extension('fzy_native')
 			telescope.load_extension('githubcoauthors')
+			telescope.load_extension('ui-select')
 		end,
 	},
 
