@@ -29,7 +29,7 @@ if [[ -n "$CODESPACES" ]]; then
 	echo 0 | sudo tee /proc/sys/kernel/kptr_restrict > /dev/null
 	echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid > /dev/null
 
-	curl -sSL https://github.com/neovim/neovim/releases/download/v0.9.4/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
+	curl -sSL https://github.com/neovim/neovim/releases/download/v0.10.1/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
 	ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
 
 	cat <<-"GITCONFIG" >> "$HOME/.gitconfig.local"
