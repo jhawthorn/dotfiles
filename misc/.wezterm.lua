@@ -45,7 +45,7 @@ local w = require('wezterm')
 -- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
 local function is_vim(pane)
   -- this is set by the plugin, and unset on ExitPre in Neovim
-  return pane:get_user_vars().IS_NVIM == 'true'
+  return pane:get_user_vars().IS_NVIM == 'true' or pane:get_user_vars().WEZTERM_IN_TMUX == '1'
 end
 --
 -- -- if you *ARE* lazy-loading smart-splits.nvim (not recommended)

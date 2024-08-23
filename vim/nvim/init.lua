@@ -18,6 +18,9 @@ vim.opt.shortmess = 'atI'
 vim.opt.mouse = ""
 vim.opt.number = true
 
+-- might be better to do detection
+vim.o.termguicolors = true
+
 vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
 -- vim.keymap.del({'n'}, "<F1>")
 
