@@ -17,6 +17,7 @@ vim.g.mapleader = ' '
 vim.opt.shortmess = 'atI'
 vim.opt.mouse = ""
 vim.opt.number = true
+vim.opt.scrolloff = 10
 
 -- might be better to do detection
 vim.o.termguicolors = true
