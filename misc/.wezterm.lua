@@ -110,7 +110,7 @@ config.keys = {
   },
 }
 
-config.selection_word_boundary = '{}[]()"\'`.,;:│'
+config.selection_word_boundary = '{}[]()"\'`,;: │'
 
 -- and finally, return the configuration to wezterm
 return config
