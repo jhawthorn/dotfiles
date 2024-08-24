@@ -28,6 +28,7 @@
 	quotepath = false
 	autocrlf = input
 	untrackedcache = true
+	editor = nvim
 [alias]
 	s = status --short --branch
 	l = log --oneline --decorate
