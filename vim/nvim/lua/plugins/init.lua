@@ -68,13 +68,48 @@ return {
 		},
 	},
 
-	-- 
 	--use 'kyazdani42/nvim-web-devicons'
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {
 			options = { theme = 'wombat', },
+			sections = {
+				lualine_a = {'mode'},
+				lualine_b = {
+					-- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
+					{ 'b:gitsigns_head', icon = ''},
+					'diagnostics'
+				},
+				lualine_c = {
+					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+					{ "filename", path = 1, },
+				},
+				lualine_x = {
+					--'encoding',
+					--'fileformat',
+					{
+						"diff",
+						symbols = {
+							added = " ",
+							modified = " ",
+							removed = " ",
+						},
+						source = function()
+							local gitsigns = vim.b.gitsigns_status_dict
+							if gitsigns then
+								return {
+									added = gitsigns.added,
+									modified = gitsigns.changed,
+									removed = gitsigns.removed,
+								}
+							end
+						end,
+					},
+				},
+				lualine_y = {'progress'},
+				lualine_z = {'location'}
+			},
 		},
 	},
 
