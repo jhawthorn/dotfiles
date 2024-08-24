@@ -40,6 +40,7 @@
 	whitespace = fix
 [rebase]
 	autosquash = true
+	autoStash = true
 [diff "ruby"]
 	funcname = "^ *\\(\\(def\\) .*\\)"
 [diff "image"]
@@ -52,3 +53,5 @@
 	path = ~/.gitconfig.local
 [diff]
 	algorithm = histogram
+[pull]
+	rebase = true
