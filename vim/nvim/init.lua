@@ -48,6 +48,9 @@ vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 vim.keymap.set('n', '<leader>w', ':w<cr>')
 
+vim.keymap.set('n', '<leader>a', '<C-a>')
+vim.keymap.set('n', '<leader>x', '<C-x>')
+
 --require('plugins')
 require('config.lazy')
 
