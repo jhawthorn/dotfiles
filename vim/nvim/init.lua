@@ -267,5 +267,7 @@ vim.api.nvim_create_user_command("CoAuthor",
   end,
   {})
 
+vim.api.nvim_create_user_command("Blame", "Gitsigns blame", {})
+
 -- vim.cmd("command CoAuthor lua require('telescope').extensions.githubcoauthors.coauthors()<CR>")
 

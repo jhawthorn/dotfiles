@@ -53,8 +53,12 @@ return {
 
 	-- git extras
 	{
+		'tpope/vim-fugitive'
+	},
+	{
 		'lewis6991/gitsigns.nvim',
-		opts = {},
+		opts = {
+		},
 	},
 	{
 		'akinsho/git-conflict.nvim',
