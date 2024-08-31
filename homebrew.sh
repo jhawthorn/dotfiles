@@ -3,9 +3,8 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew analytics off
-brew install --cask slack discord 1password firefox iterm2 aerial
+brew install --cask slack discord 1password firefox wezterm aerial
 brew install --cask hammerspoon
-brew install --cask flotato
 brew install --cask anki
 
 brew install --cask iina streamlink-twitch-gui handbrake
