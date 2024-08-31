@@ -108,6 +108,12 @@ config.keys = {
     mods = 'CMD',
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
+
+  {
+    key = 'Enter',
+    mods = 'CMD',
+    action = wezterm.action.ToggleFullScreen
+  },
 }
 
 config.selection_word_boundary = '{}[]()"\'`,;: │'
