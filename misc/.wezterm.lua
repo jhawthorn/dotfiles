@@ -112,5 +112,29 @@ config.keys = {
 
 config.selection_word_boundary = '{}[]()"\'`,;: │'
 
+config.mouse_bindings = {
+    -- Change the default click behavior so that it only selects
+    -- text and doesn't open hyperlinks
+    {
+      event={Up={streak=1, button="Left"}},
+      mods="NONE",
+      action=wezterm.action.CompleteSelection("PrimarySelection"),
+    },
+
+    -- and make CTRL-Click open hyperlinks
+    {
+      event={Up={streak=1, button="Left"}},
+      mods="CMD",
+      action=wezterm.action.OpenLinkAtMouseCursor,
+    },
+
+    -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+    {
+      event = { Down = { streak = 1, button = 'Left' } },
+      mods = 'CMD',
+      action = wezterm.action.Nop,
+    }
+}
+
 -- and finally, return the configuration to wezterm
 return config
