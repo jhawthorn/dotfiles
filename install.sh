@@ -31,15 +31,6 @@ if [[ -n "$CODESPACES" ]]; then
 
 	curl -sSL https://github.com/neovim/neovim/releases/download/v0.10.1/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
 	ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
-
-	cat <<-"GITCONFIG" >> "$HOME/.gitconfig.local"
-[credential "https://github.com"]
-        helper =
-        helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-        helper =
-        helper = !/usr/bin/gh auth git-credential
-GITCONFIG
 fi
 
 export PATH="$HOME/bin:$PATH"
