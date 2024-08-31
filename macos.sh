@@ -16,7 +16,8 @@ defaults write com.apple.finder AppleShowAllFiles YES;
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+mkdir "$HOME/Screenshots"
+defaults write com.apple.screencapture location -string "${HOME}/Screenshots"
 defaults write com.apple.screencapture type -string "png"
 
 # Disable "force click"
