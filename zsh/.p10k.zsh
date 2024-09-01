@@ -87,6 +87,7 @@
     #google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     #toolbox                 # toolbox name (https://github.com/containers/toolbox)
     context                 # user@hostname
+    os_icon_joined                 # os identifier
     #nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     #ranger                  # ranger shell (https://github.com/ranger/ranger)
     #yazi                    # yazi shell (https://github.com/sxyazi/yazi)
@@ -293,7 +294,7 @@
   # opening a directory in the file manager simply by clicking the link.
   # Can also be handy when the directory is shortened, as it allows you to see
   # the full directory that was used in previous commands.
-  typeset -g POWERLEVEL9K_DIR_HYPERLINK=false
+  typeset -g POWERLEVEL9K_DIR_HYPERLINK=true
 
   # Enable special styling for non-writable and non-existent directories. See POWERLEVEL9K_LOCK_ICON
   # and POWERLEVEL9K_DIR_CLASSES below.
@@ -353,6 +354,20 @@
   # back to POWERLEVEL9K_DIR_FOREGROUND.
   #
   # typeset -g POWERLEVEL9K_DIR_CLASSES=()
+
+  typeset -g POWERLEVEL9K_DIR_SRC_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_DIR_HOME_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_DIR_RUBY_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_DIR_RAILS_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_DIR_DOTFILES_VISUAL_IDENTIFIER_EXPANSION=''
+
+  typeset -g POWERLEVEL9K_DIR_CLASSES=(
+    '~/src/rails(|/*)'   RAILS     ''
+    '~/src/ruby(|/*)'   RUBY     ''
+    '~/src(|/*)'   SRC     ''
+    '~/dotfiles(|/*)'   DOTFILES     ''
+    '~(|/*)'       HOME     ''
+    '*'            DEFAULT  '')
 
   # Custom prefix.
   # typeset -g POWERLEVEL9K_DIR_PREFIX='%246Fin '
