@@ -3,6 +3,6 @@ set -ex
 
 cd -- "$(dirname -- "$(readlink -f -- "$0")")/.."
 
-git pull --ff-only
+git pull --autostash --ff-only
 git submodule update --init --recursive
 zsh ./install.sh
