@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 mkdir -p "$HOME/bin"
 cd `dirname "$0"`
 
@@ -11,6 +13,7 @@ dmenu_surfraw
 dmenu_tv
 dunst
 inspect
+install_ruby
 rline
 roll
 rtorrent
