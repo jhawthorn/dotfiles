@@ -1,6 +1,6 @@
 # I mash this by accident far more often than intending too
 # I can live without it
-stty -ixon -ixoff
+stty -ixon -ixoff <$TTY >$TTY
 
 function insert-fzy-path-in-command-line() {
         local selected_path
