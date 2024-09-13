@@ -44,7 +44,7 @@ vim.keymap.set('n', '<leader><space>', ':Telescope find_files prompt_prefix=\\ ï
 vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 vim.keymap.set('n', '<leader>g', ':Telescope treesitter<cr>')
-vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>:', ':Telescope command_history<cr>')
 
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 vim.keymap.set('n', '<leader>w', ':w<cr>')
