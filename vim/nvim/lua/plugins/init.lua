@@ -141,4 +141,34 @@ return {
 	},
 
 	'wsdjeg/vim-fetch',
+
+	{
+		"nvim-neotest/neotest",
+		--optional = true,
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+
+			"jhawthorn/neotest-minitest",
+			"olimorris/neotest-rspec",
+		},
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-minitest"),
+					require("neotest-rspec"),
+				},
+				log_level = vim.log.levels.DEBUG
+			})
+		end,
+		keys = {
+			{ "<leader>tt", function() require("neotest").run.run() end, desc = "Run Nearest" },
+			{ "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
+			{ "<leader>ta", function() require("neotest").run.run(vim.uv.cwd()) end, desc = "Run All Project Tests" },
+			{ "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
+			{ "<leader>to", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
+		}
+	},
 }
