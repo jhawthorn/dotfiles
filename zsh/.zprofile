@@ -1,69 +1,30 @@
-#
-# Executes commands at login pre-zshrc.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
-# Browser
-#
-
-#
-# Editors
-#
+if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
 
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
 export MANPAGER="nvim +Man!"
-
-export TERMINFO="$HOME/.terminfo"
-export MOSH_TITLE_NOPREFIX=1
-export MPD_HOST="$HOME/.mpd/socket"
-
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
-
-#
-# Paths
-#
-
-# Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
-
-# Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
-# Less
-#
-
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X and -F (exit if the content fits on one screen) to enable it.
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
-#
-# Temporary Files
-#
+export TZ=America/Vancouver
 
-if [[ ! -d "$TMPDIR" ]]; then
-  export TMPDIR="/tmp/$USER"
-  mkdir -p -m 700 "$TMPDIR"
-fi
+export NPM_PACKAGES="$HOME/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-TMPPREFIX="${TMPDIR%/}/zsh"
-if [[ ! -d "$TMPPREFIX" ]]; then
-  mkdir -p "$TMPPREFIX"
+if [[ -z "$LANG" ]]; then
+  eval "$(locale)"
 fi
 
 XDG_DATA_HOME=$HOME/.local/share
 XDG_CONFIG_HOME=$HOME/.config
 
+typeset -gU cdpath fpath mailpath path
+
+path=(
+  $HOME/bin
+  $HOME/go/bin
+  $NPM_PACKAGES/bin
+  $path
+)
