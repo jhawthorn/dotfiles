@@ -183,7 +183,7 @@ require("lspconfig").clangd.setup {}
 
 require("lspconfig").ruby_lsp.setup{}
 
-require("lspconfig").rubocop.setup{}
+-- require("lspconfig").rubocop.setup{}
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'LspAttached',
