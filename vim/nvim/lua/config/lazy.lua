@@ -32,5 +32,10 @@ require("lazy").setup({
   install = { colorscheme = { "wombat_lush" } },
   -- automatically check for plugin updates
   checker = { enabled = false },
-  change_detection = { notify = false }
+  change_detection = { notify = false },
+  dev = {
+	  path = "~/src",
+	  patterns = {"jhawthorn"},
+	  fallback = true,
+  },
 })
