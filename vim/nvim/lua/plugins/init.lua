@@ -171,4 +171,6 @@ return {
 			{ "<leader>to", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
 		}
 	},
+
+	"https://github.com/rhysd/committia.vim",
 }
