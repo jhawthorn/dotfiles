@@ -73,7 +73,12 @@ return {
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {
-			options = { theme = 'wombat', },
+			options = {
+				theme = 'wombat',
+				disabled_filetypes = {
+					'OverseerList',
+				},
+			},
 			sections = {
 				lualine_a = {'mode'},
 				lualine_b = {
@@ -88,6 +93,7 @@ return {
 				lualine_x = {
 					--'encoding',
 					--'fileformat',
+					"overseer",
 					{
 						"diff",
 						symbols = {
@@ -173,4 +179,23 @@ return {
 	},
 
 	"https://github.com/rhysd/committia.vim",
+
+	{
+		'stevearc/overseer.nvim',
+		opts = {
+			task_list = {
+				bindings = {
+					["<C-h>"] = false,
+					["<C-j>"] = false,
+					["<C-k>"] = false,
+					["<C-l>"] = false,
+					["<PageUp>"] = "ScrollOutputUp",
+					["<PageDown>"] = "ScrollOutputDown",
+				},
+			},
+		},
+		keys = {
+			{ "<leader>o", function() require("overseer").toggle() end, desc = "Open overseer" },
+		}
+	}
 }
