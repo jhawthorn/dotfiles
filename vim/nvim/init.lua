@@ -257,7 +257,7 @@ vim.cmd("let g:vsnip_filetypes = {}")
 vim.cmd("let g:vsnip_filetypes.ruby = ['rails']")
 vim.cmd("let g:vsnip_filetypes.cruby = ['c']")
 
-vim.cmd("colorscheme wombat_lush")
+vim.cmd.colorscheme "catppuccin-mocha"
 
 vim.cmd("autocmd VimResized * wincmd =")
 

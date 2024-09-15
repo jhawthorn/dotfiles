@@ -74,7 +74,7 @@ return {
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {
 			options = {
-				theme = 'wombat',
+				theme = 'catppuccin',
 				disabled_filetypes = {
 					'OverseerList',
 				},
@@ -122,6 +122,28 @@ return {
 	-- theme
 	'rktjmp/lush.nvim',
 	'jhawthorn/wombat.nvim',
+
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			transparent_background = true,
+
+			color_overrides = {
+			},
+			integrations = {
+				cmp = true,
+				gitsigns = true,
+				mason = true,
+				neotest = true,
+				overseer = true,
+				telescope = true,
+				treesitter = true,
+			}
+		}
+
+	},
 
 	-- LSP
 	{

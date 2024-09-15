@@ -6,8 +6,27 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
-config.color_scheme = 'Wombat'
+--config.color_scheme = 'Wombat'
+--config.color_scheme = 'Catppuccin Mocha'
+
+local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+custom.background = "#000000"
+custom.tab_bar.background = "#040404"
+custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
+custom.tab_bar.new_tab.bg_color = "#080808"
+color_schemes = { ["Catppuccin Black"] = custom, }
+
+config.color_scheme = "Catppuccin Black"
+
+wezterm.on('toggle-colorscheme', function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  if not overrides.color_scheme then
+    overrides.color_scheme = 'Catppuccin Latte'
+  else
+    overrides.color_scheme = nil
+  end
+  window:set_config_overrides(overrides)
+end)
 
 config.window_decorations = "RESIZE"
 config.window_padding = {
@@ -113,6 +132,12 @@ config.keys = {
     key = 'Enter',
     mods = 'CMD',
     action = wezterm.action.ToggleFullScreen
+  },
+
+  {
+	  key = 'E',
+	  mods = 'CTRL',
+	  action = wezterm.action.EmitEvent 'toggle-colorscheme',
   },
 }
 
