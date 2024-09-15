@@ -181,12 +181,17 @@ return {
 
 			"jhawthorn/neotest-minitest",
 			"olimorris/neotest-rspec",
+
+			"stevearc/overseer.nvim",
 		},
 		config = function()
 			require("neotest").setup({
 				adapters = {
 					require("neotest-minitest"),
 					require("neotest-rspec"),
+				},
+				consumers = {
+					overseer = require("neotest.consumers.overseer"),
 				},
 				log_level = vim.log.levels.DEBUG
 			})
