@@ -18,8 +18,8 @@
 [branch]
 	sort = committerdate
 [push]
-	# tracking is the deprecated name for "upstream"
-	default = tracking
+	default = simple
+	autoSetupRemote = true
 [difftool]
 	prompt = false
 [core]
