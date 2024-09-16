@@ -188,7 +188,7 @@ return {
 			require("neotest").setup({
 				adapters = {
 					require("neotest-minitest"),
-					require("neotest-rspec"),
+					--require("neotest-rspec"),
 				},
 				consumers = {
 					overseer = require("neotest.consumers.overseer"),
@@ -209,6 +209,24 @@ return {
 
 	{
 		'stevearc/overseer.nvim',
+		config = function(_, opts)
+			require("overseer").setup(opts)
+
+			vim.api.nvim_create_user_command('Bundle', function (args)
+				-- TODO: update and other commands
+				require("overseer").run_template({
+					name = "bundle install"
+				})
+			end, { desc = "Run bundle install" })
+
+			vim.api.nvim_create_user_command('BundleUpdate', function (args)
+				-- TODO: take args from command
+				require("overseer").run_template({
+					name = "bundle update",
+					prompt = "always"
+				})
+			end, { desc = "Run bundle update" })
+		end,
 		opts = {
 			task_list = {
 				bindings = {
@@ -220,9 +238,14 @@ return {
 					["<PageDown>"] = "ScrollOutputDown",
 				},
 			},
+			templates = {
+				"builtin",
+				"ruby",
+			},
 		},
 		keys = {
-			{ "<leader>o", function() require("overseer").toggle() end, desc = "Open overseer" },
+			{ "<leader>oo", "<cmd>OverseerToggle<cr>", desc = "Open overseer" },
+			{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run a command with overseer" },
 		}
 	}
 }
