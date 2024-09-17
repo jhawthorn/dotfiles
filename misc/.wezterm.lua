@@ -164,7 +164,13 @@ config.mouse_bindings = {
       event = { Down = { streak = 1, button = 'Left' } },
       mods = 'CMD',
       action = wezterm.action.Nop,
-    }
+    },
+
+    {
+	    event = { Down = { streak = 4, button = 'Left' } },
+	    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+	    mods = 'NONE',
+    },
 }
 
 -- and finally, return the configuration to wezterm
