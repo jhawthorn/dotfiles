@@ -40,6 +40,8 @@ vim.keymap.set('v', '<silent>>', '>gv')
 vim.keymap.set({'n', 'v'}, '<ENTER>', ':')
 vim.keymap.set('v', '<ENTER>', ':')
 
+vim.cmd("autocmd BufReadPost quickfix nnoremap <buffer> <ENTER> <ENTER>")
+
 vim.keymap.set('n', '<leader><space>', ':Telescope find_files prompt_prefix=\\ \\ <cr>')
 vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
