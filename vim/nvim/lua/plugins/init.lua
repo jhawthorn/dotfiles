@@ -264,4 +264,11 @@ return {
 		'nmac427/guess-indent.nvim',
 		opts = {},
 	},
+	'tpope/vim-unimpaired',
+
+	-- pretty quickfix
+	{
+		'yorickpeterse/nvim-pqf',
+		config = true
+	}
 }
