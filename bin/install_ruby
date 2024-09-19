@@ -4,4 +4,4 @@ cd -- "$(dirname -- "$(readlink -f -- "$0")")/.."
 
 git submodule update --init --recursive
 
-exec ruby/ruby-install/bin/ruby-install -U --no-install-deps "$@"
+exec ruby/ruby-install/bin/ruby-install -j16 -U --no-install-deps "$@"
