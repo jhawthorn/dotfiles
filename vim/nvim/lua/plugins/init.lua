@@ -247,5 +247,16 @@ return {
 			{ "<leader>oo", "<cmd>OverseerToggle<cr>", desc = "Open overseer" },
 			{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run a command with overseer" },
 		}
-	}
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = {
+				char = "▏", -- slightly narrower
+				-- char = "│", -- center, narrow
+			},
+		},
+	},
 }
