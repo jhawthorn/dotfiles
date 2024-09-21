@@ -14,6 +14,7 @@ zsh   misc/install.sh
 zsh   ruby/install.sh
 zsh   tmux/install.sh
 zsh    vim/install.sh
+zsh   nvim/install.sh
 zsh      x/install.sh
 zsh    zsh/install.sh
 ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
