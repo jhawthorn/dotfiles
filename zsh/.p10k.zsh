@@ -1723,6 +1723,7 @@
   # typeset -g POWERLEVEL9K_EXAMPLE_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   typeset -g POWERLEVEL9K_CHRUBY_FOREGROUND=red
+  typeset -g POWERLEVEL9K_CHRUBY_SHOW_ENGINE=false
 
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
   # when accepting a command line. Supported values:
