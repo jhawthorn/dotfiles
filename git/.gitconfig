@@ -4,8 +4,10 @@
 [github]
 	user = jhawthorn
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 	conflictstyle = zdiff3
+[mergetool]
+	keepBackup = false
 [color]
 	ui = auto
 	diff = auto
