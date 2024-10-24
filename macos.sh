@@ -12,6 +12,12 @@ defaults write -g AppleShowAllExtensions -bool true
 # Show hidden files:
 defaults write com.apple.finder AppleShowAllFiles YES;
 
+# Show path at bottom of finder
+defaults write com.apple.finder "ShowPathbar" -bool "true"
+
+# Columns by default
+defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
+
 # Disable "natural" (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
@@ -25,3 +31,5 @@ defaults write NSGlobalDomain com.apple.mouse.forceClick -bool false
 
 # Ctrl+cmd+click anywhere to drag a window
 defaults write -g NSWindowShouldDragOnGesture -bool true
+
+killall Finder
