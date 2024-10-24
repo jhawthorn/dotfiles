@@ -270,5 +270,10 @@ return {
 	{
 		'yorickpeterse/nvim-pqf',
 		config = true
-	}
+	},
+
+	{
+		"folke/trouble.nvim",
+		opts = {},
+	},
 }
