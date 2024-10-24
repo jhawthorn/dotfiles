@@ -54,6 +54,16 @@ vim.keymap.set('n', '<leader>w', ':w<cr>')
 vim.keymap.set('n', '<leader>a', '<C-a>')
 vim.keymap.set('n', '<leader>x', '<C-x>')
 
+-- system clipboard
+vim.keymap.set('v', '<leader>y',   '"+y')
+vim.keymap.set('n', '<leader>Y',   '"+yg_')
+vim.keymap.set('n', '<leader>y',   '"+y')
+vim.keymap.set('n', '<leader>yy',  '"+yy')
+vim.keymap.set('n', '<leader>p',   '"+p')
+vim.keymap.set('n', '<leader>P',   '"+P')
+vim.keymap.set('v', '<leader>p',   '"+p')
+vim.keymap.set('v', '<leader>P',   '"+P')
+
 --require('plugins')
 require('config.lazy')
 
