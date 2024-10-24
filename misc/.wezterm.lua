@@ -66,6 +66,10 @@ local function is_vim(pane)
   -- this is set by the plugin, and unset on ExitPre in Neovim
   return pane:get_user_vars().IS_NVIM == 'true' or pane:get_user_vars().WEZTERM_IN_TMUX == '1'
 end
+
+local function is_tmux(pane)
+  return pane:get_user_vars().WEZTERM_IN_TMUX == '1'
+end
 --
 -- -- if you *ARE* lazy-loading smart-splits.nvim (not recommended)
 -- -- you have to use this instead, but note that this will not work
@@ -93,7 +97,7 @@ local function split_nav(resize_or_move, key)
     key = key,
     mods = resize_or_move == 'resize' and 'META' or 'CTRL',
     action = wezterm.action_callback(function(win, pane)
-      if is_vim(pane) then
+      if is_vim(pane) or is_tmux(pane) then
         -- pass the keys through to vim/nvim
         win:perform_action({
           SendKey = { key = key, mods = resize_or_move == 'resize' and 'META' or 'CTRL' },
