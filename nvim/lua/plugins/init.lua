@@ -159,7 +159,9 @@ return {
 	},
 
         'neovim/nvim-lspconfig',
-        'jose-elias-alvarez/null-ls.nvim',
+	{
+		'nvimtools/none-ls.nvim',
+	},
 
 	{
 		'mrjones2014/smart-splits.nvim',
