@@ -39,3 +39,11 @@ export QUOTING_STYLE=literal
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
+
+zstyle :prompt:pure:path color '#b4befe'
+zstyle :prompt:pure:git:branch color '#cba6f7'
+zstyle :prompt:pure:prompt:success color '#fab387'
+zstyle :prompt:pure:prompt:continuation color '#fab387'
+zstyle :prompt:pure:prompt:error color '#f38ba8'
+zstyle :prompt:pure:host color '#eba0ac'
+zstyle :prompt:pure:user color '#eba0ac'
