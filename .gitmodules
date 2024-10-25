@@ -85,3 +85,6 @@
 [submodule "zsh/zsh/powerlevel10k"]
 	path = zsh/zsh/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
+[submodule "zsh/zsh/pure"]
+	path = zsh/zsh/pure
+	url = https://github.com/sindresorhus/pure.git
