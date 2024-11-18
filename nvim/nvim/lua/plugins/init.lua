@@ -278,4 +278,8 @@ return {
 		"folke/trouble.nvim",
 		opts = {},
 	},
+
+	{
+		"bullets-vim/bullets.vim"
+	},
 }

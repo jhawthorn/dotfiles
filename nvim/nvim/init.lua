@@ -195,6 +195,15 @@ require("lspconfig").clangd.setup {}
 
 require("lspconfig").ruby_lsp.setup{}
 
+require("lspconfig").harper_ls.setup{
+  filetypes = { "gitcommit", "markdown", "html", },
+  settings = {
+    ["harper-ls"] = {
+      --userDictPath = "~/dict.txt"
+    }
+  },
+}
+
 -- require("lspconfig").rubocop.setup{}
 
 vim.api.nvim_create_autocmd('User', {
