@@ -5,6 +5,8 @@ fi
 
 # Trying it out....
 alias vim="nvim"
+alias vimdiff="nvim -d"
+alias nvimdiff="nvim -d"
 export EDITOR=nvim
 
 for config_file ($HOME/.zsh/*.zsh); do
