@@ -6,6 +6,7 @@ cd "$( dirname "$0" )"
 
 git submodule update --init --recursive
 
+zsh aerospace/install.sh
 zsh    bin/install.sh
 zsh    git/install.sh
 zsh   mail/install.sh
