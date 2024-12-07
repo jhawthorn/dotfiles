@@ -22,7 +22,7 @@ defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Save screenshots to the desktop
-mkdir "$HOME/Screenshots"
+mkdir -p "$HOME/Screenshots"
 defaults write com.apple.screencapture location -string "${HOME}/Screenshots"
 defaults write com.apple.screencapture type -string "png"
 
