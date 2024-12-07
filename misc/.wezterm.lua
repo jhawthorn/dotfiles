@@ -140,7 +140,7 @@ config.keys = {
   },
 
   {
-	  key = 'E',
+	  key = 'e',
 	  mods = 'CTRL',
 	  action = wezterm.action.EmitEvent 'toggle-colorscheme',
   },
