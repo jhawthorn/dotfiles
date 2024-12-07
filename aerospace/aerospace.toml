@@ -60,7 +60,7 @@ inner.horizontal = 15
 inner.vertical =   15
 outer.left =       15
 outer.bottom =     15
-outer.top =        5
+outer.top =        [{ monitor."built-in" = 5 }, 15]
 outer.right =      15
 
 # 'main' binding mode declaration
