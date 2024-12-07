@@ -32,4 +32,16 @@ defaults write NSGlobalDomain com.apple.mouse.forceClick -bool false
 # Ctrl+cmd+click anywhere to drag a window
 defaults write -g NSWindowShouldDragOnGesture -bool true
 
+# Really hide the dock
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 2000
+defaults write com.apple.dock no-bouncing -bool true
+
+# Disable window animations
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
+# Hide all desktop icons
+defaults write com.apple.finder "CreateDesktop" -bool "false"
+
+killall Dock
 killall Finder
