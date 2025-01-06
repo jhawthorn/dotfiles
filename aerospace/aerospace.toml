@@ -87,7 +87,9 @@ outer.right =      15
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
 #alt-enter = 'exec-and-forget wezterm start'
-alt-enter = 'exec-and-forget wezterm cli spawn --new-window'
+#alt-enter = 'exec-and-forget wezterm cli spawn --new-window'
+#alt-enter = 'exec-and-forget wezterm cli spawn --new-window --cwd CWD'
+alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'

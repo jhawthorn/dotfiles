@@ -14,6 +14,7 @@ custom.background = "#000000"
 custom.tab_bar.background = "#040404"
 custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
 custom.tab_bar.new_tab.bg_color = "#080808"
+config.tab_max_width = 24
 config.color_schemes = { ["Catppuccin Black"] = custom, }
 
 config.color_scheme = "Catppuccin Black"
