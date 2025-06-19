@@ -28,6 +28,10 @@ vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
 vim.opt.backup = false
 vim.g.noswapfile = true
 
+-- persistent undo
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
+
 vim.g.virtualedit = 'block'
 
 -- < and > for indentation
