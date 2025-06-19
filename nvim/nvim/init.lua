@@ -25,10 +25,7 @@ vim.o.termguicolors = true
 vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
 -- vim.keymap.del({'n'}, "<F1>")
 
-vim.keymap.set('v', '<silent><', '<gv')
-vim.keymap.set('v', '<silent>>', '>gv')
-
-vim.g.nobackup = true
+vim.opt.backup = false
 vim.g.noswapfile = true
 
 vim.g.virtualedit = 'block'
