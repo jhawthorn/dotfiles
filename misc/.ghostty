@@ -1,0 +1,19 @@
+# https://ghostty.org/docs/config
+
+font-family = Iosevka Nerd Font Mono
+font-size = 14
+font-feature = -calt,-clig,-liga
+
+theme = catppuccin-mocha
+background = #000000
+
+background-opacity = 0.8
+background-blur-radius = 30
+
+macos-titlebar-style = hidden
+# window-decoration = false
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+copy-on-select = clipboard
+
+scrollback-limit = 10000000
