@@ -1,5 +1,5 @@
 ---
-BUNDLE_JOBS: "8"
+BUNDLE_JOBS: "16"
 BUNDLE_AUTO_INSTALL: "true"
 BUNDLE_GEM__TEST: "minitest"
 BUNDLE_GEM__CI: "github"

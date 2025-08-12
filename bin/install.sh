@@ -12,6 +12,7 @@ dmenu_run
 dmenu_surfraw
 dmenu_tv
 dunst
+git-recent
 inspect
 install_ruby
 rline

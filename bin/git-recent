@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git reflog --format='%gd %gs %gD' | grep 'checkout: moving from .* to' | sed 's/.*checkout: moving from .* to \([^ ]*\).*/\1/' | awk '!seen[$0]++' | head -10 | while read branch; do 
+    echo "$branch: $(git log -1 --format='%cr - %s' $branch 2>/dev/null || echo 'branch not found')"
+done
