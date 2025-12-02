@@ -40,7 +40,7 @@
 	bl = branch --sort=-committerdate
 	wip = commit -am WIP
 	scratch-untracked = !mkdir -p scratch && git ls-files --others --exclude-standard | grep -v / | xargs -I {} mv {} scratch/
-	dotfiles = !git --git-dir=$HOME/dotfiles.tmp/.git --work-tree=$HOME
+	dotfiles = !git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME
 [apply]
 	whitespace = fix
 [rebase]
