@@ -22,19 +22,6 @@ ln -sfn "$(pwd)/terminfo" "$HOME/.terminfo"
 
 ln -sfn "$(pwd)" "$HOME/.dotfiles"
 
-if [[ -n "$CODESPACES" ]]; then
-	sudo chsh -s /bin/zsh $(whoami)
-	sudo apt-get install -y fzy fd-find ripgrep tmux
-	sudo ln -sf $(which fdfind) /usr/local/bin/fd
-	sudo apt-get install -y linux-tools-common linux-tools-generic
-
-	echo 0 | sudo tee /proc/sys/kernel/kptr_restrict > /dev/null
-	echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid > /dev/null
-
-	curl -sSL https://github.com/neovim/neovim/releases/download/v0.10.1/nvim-linux64.tar.gz | tar xvzp --strip-components=1 -C "$HOME/.local/"
-	ln -sf "$HOME/.local/bin/nvim" "$HOME/bin/"
-fi
-
 export PATH="$HOME/bin:$PATH"
 nvim --headless "+Lazy! sync" +qa
 nvim --headless +'helptags ALL' +':TSUpdateSync ruby c lua rust python markdown make go cpp bash' +qa
