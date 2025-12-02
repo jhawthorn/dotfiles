@@ -4,81 +4,15 @@
 [submodule "ruby/ruby-install"]
 	path = ruby/ruby-install
 	url = https://github.com/postmodern/ruby-install
-[submodule "vim/pack/vendor/start/camelcasemotion"]
-	path = vim/pack/vendor/start/camelcasemotion
-	url = https://github.com/vim-scripts/camelcasemotion.git
-[submodule "vim/pack/vendor/start/file-line"]
-	path = vim/pack/vendor/start/file-line
-	url = https://github.com/vim-scripts/file-line.git
-[submodule "vim/pack/vendor/start/supertab"]
-	path = vim/pack/vendor/start/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "vim/pack/vendor/start/tabular"]
 	path = vim/pack/vendor/start/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule "vim/pack/vendor/start/vim-abolish"]
-	path = vim/pack/vendor/start/vim-abolish
-	url = https://github.com/tpope/vim-abolish.git
-[submodule "vim/pack/vendor/start/vim-bracketed-paste"]
-	path = vim/pack/vendor/start/vim-bracketed-paste
-	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
-[submodule "vim/pack/vendor/start/vim-dispatch"]
-	path = vim/pack/vendor/start/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
-[submodule "vim/pack/vendor/start/vim-endwise"]
-	path = vim/pack/vendor/start/vim-endwise
-	url = https://github.com/tpope/vim-endwise.git
-[submodule "vim/pack/vendor/start/vim-eunuch"]
-	path = vim/pack/vendor/start/vim-eunuch
-	url = https://github.com/tpope/vim-eunuch.git
-[submodule "vim/pack/vendor/start/vim-extradite"]
-	path = vim/pack/vendor/start/vim-extradite
-	url = https://github.com/int3/vim-extradite.git
-[submodule "vim/pack/vendor/start/vim-fugitive"]
-	path = vim/pack/vendor/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/pack/vendor/start/vim-git"]
-	path = vim/pack/vendor/start/vim-git
-	url = https://github.com/tpope/vim-git.git
 [submodule "vim/pack/vendor/start/vim-gitgutter"]
 	path = vim/pack/vendor/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/pack/vendor/start/vim-projectionist"]
-	path = vim/pack/vendor/start/vim-projectionist
-	url = https://github.com/tpope/vim-projectionist.git
-[submodule "vim/pack/vendor/start/vim-ragtag"]
-	path = vim/pack/vendor/start/vim-ragtag
-	url = https://github.com/tpope/vim-ragtag.git
-[submodule "vim/pack/vendor/start/vim-rails"]
-	path = vim/pack/vendor/start/vim-rails
-	url = https://github.com/tpope/vim-rails.git
-[submodule "vim/pack/vendor/start/vim-rake"]
-	path = vim/pack/vendor/start/vim-rake
-	url = https://github.com/tpope/vim-rake.git
-[submodule "vim/pack/vendor/start/vim-repeat"]
-	path = vim/pack/vendor/start/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim/pack/vendor/start/vim-ruby"]
-	path = vim/pack/vendor/start/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule "vim/pack/vendor/start/vim-surround"]
-	path = vim/pack/vendor/start/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/pack/vendor/start/vim-tmux-navigator"]
 	path = vim/pack/vendor/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "vim/pack/vendor/start/vim-trailing-whitespace"]
-	path = vim/pack/vendor/start/vim-trailing-whitespace
-	url = https://github.com/bronson/vim-trailing-whitespace.git
-[submodule "vim/pack/vendor/start/vim-unimpaired"]
-	path = vim/pack/vendor/start/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/pack/vendor/start/wombat256.vim"]
-	path = vim/pack/vendor/start/wombat256.vim
-	url = https://github.com/vim-scripts/wombat256.vim.git
-[submodule "vim/pack/vendor/start/vim-cruby"]
-	path = vim/pack/vendor/start/vim-cruby
-	url = https://github.com/mrkn/vim-cruby
 [submodule "vim/nvim_pack/vendor/start/packer.nvim"]
 	path = vim/nvim_pack/vendor/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
