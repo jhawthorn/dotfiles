@@ -1,5 +1,5 @@
 [submodule "ruby/ruby-install"]
-	path = ruby/ruby-install
+	path = .local/share/ruby-install
 	url = https://github.com/postmodern/ruby-install
 [submodule "zsh/zsh/pure"]
 	path = .zsh/pure
