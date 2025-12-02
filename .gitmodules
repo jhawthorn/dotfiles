@@ -1,18 +1,6 @@
 [submodule "ruby/ruby-install"]
 	path = ruby/ruby-install
 	url = https://github.com/postmodern/ruby-install
-[submodule "vim/pack/vendor/start/tabular"]
-	path = vim/pack/vendor/start/tabular
-	url = https://github.com/godlygeek/tabular.git
-[submodule "vim/pack/vendor/start/vim-gitgutter"]
-	path = vim/pack/vendor/start/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/pack/vendor/start/vim-tmux-navigator"]
-	path = vim/pack/vendor/start/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "vim/nvim_pack/vendor/start/packer.nvim"]
-	path = vim/nvim_pack/vendor/start/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim
 [submodule "zsh/zsh/pure"]
 	path = zsh/zsh/pure
 	url = https://github.com/sindresorhus/pure.git
