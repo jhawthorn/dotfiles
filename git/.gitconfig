@@ -39,6 +39,7 @@
 	list-authors = !git log -100000 --pretty='%aN <%aE>' | ruby -rset -ne 'print if ($s ||= Set.new).add?($_)'
 	bl = branch --sort=-committerdate
 	wip = commit -am WIP
+	scratch-untracked = !mkdir -p scratch && git ls-files --others --exclude-standard | grep -v / | xargs -I {} mv {} scratch/
 [apply]
 	whitespace = fix
 [rebase]
