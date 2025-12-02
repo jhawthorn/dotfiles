@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ `hostname -s` = "dragoon" ]; then
-	dtach -A ~/.dtach/rtorrent /usr/bin/rtorrent
-else
-	exec mosh dragoon rtorrent
-fi
-

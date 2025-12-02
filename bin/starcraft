@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# switch to windows with hibernate & reboot
-sudo grub-set-default 2
-sudo s2disk -P 'shutdown method = reboot'
-

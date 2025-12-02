@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-sudo tail -f -n0 '/var/log/messages.log' |
-sed -u 's/^.* \(.*\): \(.*\)$/\1:\2/' |
-while IFS=: read -r a b
-do
-	notify-send -t 1500 "$a" "$b"
-done
