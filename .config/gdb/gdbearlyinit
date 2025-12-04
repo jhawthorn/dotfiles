@@ -1,2 +1,3 @@
 set startup-quietly on
 set backtrace limit 50
+set height 1000
