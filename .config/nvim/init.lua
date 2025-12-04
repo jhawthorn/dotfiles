@@ -182,7 +182,7 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
   lsp_defaults
 )
 
-require("lspconfig").rust_analyzer.setup {
+vim.lsp.config('rust_analyzer', {
     settings = {
         ["rust-analyzer"] = {
             diagnostics = {
@@ -190,21 +190,18 @@ require("lspconfig").rust_analyzer.setup {
             }
         }
     }
-}
+})
 
-require("lspconfig").clangd.setup {}
-
-require("lspconfig").ruby_lsp.setup{}
-
-require("lspconfig").harper_ls.setup{
+vim.lsp.config('clangd', {})
+vim.lsp.config('ruby_lsp', {})
+vim.lsp.config('harper_ls', {
   filetypes = { "gitcommit", "markdown", "html", },
   settings = {
     ["harper-ls"] = {
       --userDictPath = "~/dict.txt"
     }
   },
-}
-
+})
 -- require("lspconfig").rubocop.setup{}
 
 vim.api.nvim_create_autocmd('User', {
