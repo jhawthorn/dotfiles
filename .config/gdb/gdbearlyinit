@@ -1,3 +1,4 @@
 set startup-quietly on
 set backtrace limit 50
+set disassembly-flavor intel
 set height 1000
