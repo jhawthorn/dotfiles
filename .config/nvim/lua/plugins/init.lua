@@ -75,7 +75,7 @@ return {
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {
 			options = {
-				theme = 'catppuccin',
+				theme = 'auto',
 				disabled_filetypes = {
 					'OverseerList',
 				},
