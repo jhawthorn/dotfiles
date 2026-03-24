@@ -21,7 +21,7 @@ set $menu wmenu-run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg #000000 solid_color
 output * scale 1.5
 #
 # Example configuration:
@@ -219,3 +219,9 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
+# Appearance
+default_border pixel 1
+default_floating_border none
+gaps inner 4
+gaps outer 0
