@@ -1,0 +1,52 @@
+{
+    "height": 24,
+    "spacing": 0,
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "tray",
+        "cpu",
+        "memory",
+        "network",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "clock"
+    ],
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%Y-%m-%d}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "cpu": {
+        "format": "󰍛 {usage}%"
+    },
+    "memory": {
+        "format": "󰘚 {percentage}%"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "󰤭 offline"
+    },
+    "pulseaudio": {
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰖁 mute"
+    },
+    "backlight": {
+        "format": "󰃟 {percent}%"
+    },
+    "tray": {
+        "spacing": 8
+    }
+}

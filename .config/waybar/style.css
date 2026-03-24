@@ -1,0 +1,38 @@
+* {
+    font-family: IosevkaTerm Nerd Font;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #000000;
+    color: #cdd6f4;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #585b70;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button.focused {
+    color: #cdd6f4;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+}
+
+#clock, #battery, #network, #pulseaudio, #backlight, #cpu, #memory, #tray {
+    padding: 0 8px;
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical {
+    color: #f38ba8;
+}
