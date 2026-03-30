@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
+# curl -fsSL https://raw.githubusercontent.com/jhawthorn/dotfiles/main/.dotfiles/setup.sh | zsh
 set -e
 
 DOTFILES_GIT="$HOME/.dotfiles.git"
