@@ -15,16 +15,13 @@ done
 
 export CLICOLOR=1
 
-alias mplayer=mpv
 alias mmv='noglob zmv -W'
 alias t=task
-alias beet='python2 =beet'
 alias ls="ls -F"
 alias l="ls"
 alias json="jq ."
 alias xml="xmllint --format -"
 alias shh="echo 🤫"
-f(){ ag --nocolor -l -g "$1" "${2:-.}" }
 
 tmrun() { tmux split-window -c `pwd` -l 10 "zsh -ic \"$@;read\"" && tmux last-pane }
 tmgem() { tmux new-window -c `bundle show $1` -n "$1" }
