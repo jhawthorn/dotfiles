@@ -39,7 +39,6 @@ vim.keymap.set('v', '<', '<gv', { silent = true })
 vim.keymap.set('v', '>', '>gv', { silent = true })
 
 vim.keymap.set({'n', 'v'}, '<ENTER>', ':')
-vim.keymap.set('v', '<ENTER>', ':')
 
 vim.cmd("autocmd BufReadPost quickfix nnoremap <buffer> <ENTER> <ENTER>")
 
