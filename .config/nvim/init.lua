@@ -32,7 +32,7 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 
-vim.g.virtualedit = 'block'
+vim.opt.virtualedit = 'block'
 
 -- < and > for indentation
 vim.keymap.set('v', '<silent><', '<gv')
