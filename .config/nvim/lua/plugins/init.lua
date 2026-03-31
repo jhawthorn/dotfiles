@@ -121,9 +121,6 @@ return {
 	},
 
 	-- theme
-	'rktjmp/lush.nvim',
-	'jhawthorn/wombat.nvim',
-
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
