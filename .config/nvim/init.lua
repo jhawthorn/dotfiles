@@ -193,15 +193,8 @@ vim.lsp.config('rust_analyzer', {
 
 vim.lsp.config('clangd', {})
 vim.lsp.config('ruby_lsp', {})
-vim.lsp.config('harper_ls', {
-  filetypes = { "gitcommit", "markdown", "html", },
-  settings = {
-    ["harper-ls"] = {
-      --userDictPath = "~/dict.txt"
-    }
-  },
-})
--- require("lspconfig").rubocop.setup{}
+
+vim.lsp.enable({ 'rust_analyzer', 'clangd', 'ruby_lsp' })
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'LspAttached',
@@ -238,7 +231,7 @@ vim.api.nvim_create_autocmd('User', {
 
     -- Selects a code action available at the current cursor position
     bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
     -- Show diagnostics in a floating window
     bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
