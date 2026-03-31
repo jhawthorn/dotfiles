@@ -148,18 +148,7 @@ return {
 		'williamboman/mason.nvim',
 		config = true,
 	},
-	{
-		'williamboman/mason-lspconfig.nvim',
-		opts = {
-			ensure_installed = { "rust_analyzer" }
-		},
-		dependencies = { 'williamboman/mason.nvim' }
-	},
-
         'neovim/nvim-lspconfig',
-	{
-		'nvimtools/none-ls.nvim',
-	},
 
 	{
 		'mrjones2014/smart-splits.nvim',
