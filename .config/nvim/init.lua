@@ -26,7 +26,7 @@ vim.keymap.set({'n', 'i'}, "<F1>", "<ESC>")
 -- vim.keymap.del({'n'}, "<F1>")
 
 vim.opt.backup = false
-vim.g.noswapfile = true
+vim.opt.swapfile = false
 
 -- persistent undo
 vim.opt.undofile = true
