@@ -1,8 +1,0 @@
-#!/bin/zsh
-set -ex
-
-cd -- "$(dirname -- "$(readlink -f -- "$0")")/.."
-
-git pull --rebase --autostash
-git submodule update --init --recursive
-zsh ./install.sh
