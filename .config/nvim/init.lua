@@ -35,8 +35,8 @@ vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 vim.opt.virtualedit = 'block'
 
 -- < and > for indentation
-vim.keymap.set('v', '<silent><', '<gv')
-vim.keymap.set('v', '<silent>>', '>gv')
+vim.keymap.set('v', '<', '<gv', { silent = true })
+vim.keymap.set('v', '>', '>gv', { silent = true })
 
 vim.keymap.set({'n', 'v'}, '<ENTER>', ':')
 vim.keymap.set('v', '<ENTER>', ':')
