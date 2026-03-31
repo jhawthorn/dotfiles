@@ -76,14 +76,10 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      vim.snippet.expand(args.body)
     end,
   },
   window = {
@@ -99,38 +95,33 @@ cmp.setup({
       if cmp.get_selected_entry() ~= nil then
         cmp.confirm({ select = true })
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { "i", "s" }),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-c>'] = cmp.mapping.abort(),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn["vsnip#jumpable"](1) == 1 then
-        feedkey("<Plug>(vsnip-jump-next)", "")
-      elseif cmp.visible() then
+      if cmp.visible() then
         cmp.select_next_item()
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function()
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
+      else
+        fallback()
       end
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'vsnip' },
     { name = 'path' },
-    { name = 'treesitter' },
-    { name = 'zsh' },
   }, {
     { name = 'buffer' },
   })
@@ -213,9 +204,6 @@ vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
 --vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
 --vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
 
-vim.cmd("let g:vsnip_filetypes = {}")
-vim.cmd("let g:vsnip_filetypes.ruby = ['rails']")
-vim.cmd("let g:vsnip_filetypes.cruby = ['c']")
 
 vim.cmd.colorscheme "catppuccin-mocha"
 
