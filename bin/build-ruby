@@ -1,0 +1,146 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require "fileutils"
+
+class RubyBuilder
+  def initialize
+    @prefix_name = nil
+    @configure_args = []
+    @configure_flags = {}
+    @cflags = []
+    @env = {}
+    @do_make = true
+    @do_install = false
+    @do_test = false
+    @dry_run = false
+  end
+
+  def parse(argv)
+    parser = OptionParser.new do |o|
+      o.banner = "Usage: build-ruby [OPTIONS...]"
+
+      o.on("--clang")              { @configure_flags["CC"] = "clang" }
+      o.on("--gcc")                { @configure_flags["CC"] = "gcc" }
+      o.on("--cc CC")              { |v| @configure_flags["CC"] = v }
+
+      o.on("--asan")               { sanitizer("address") }
+      o.on("--msan")               { sanitizer("memory") }
+      o.on("--tsan")               { sanitizer("thread") }
+      o.on("--ubsan")              { sanitizer("undefined") }
+
+      o.on("--O0")                 { @configure_flags["optflags"] = "-O0" }
+      o.on("--O1")                 { @configure_flags["optflags"] = "-O1" }
+      o.on("--O2")                 { @configure_flags["optflags"] = "-O2" }
+      o.on("--Og")                 { @configure_flags["optflags"] = "-Og" }
+
+      o.on("--g")                  { @configure_flags["debugflags"] = "-g" }
+
+      o.on("--yjit [MODE]")        { |v| @configure_args << "--enable-yjit#{v ? "=#{v}" : ""}" }
+      o.on("--no-yjit")            { @configure_args << "--disable-yjit" }
+      o.on("--zjit [MODE]")        { |v| @configure_args << "--enable-zjit#{v ? "=#{v}" : ""}" }
+      o.on("--no-zjit")            { @configure_args << "--disable-zjit" }
+
+      o.on("--jemalloc")           { @configure_args << "--with-jemalloc" }
+      o.on("--dtrace")             { @configure_args << "--enable-dtrace" }
+      o.on("--lto")                { @cflags.push("-flto", "-fno-strict-aliasing") }
+      o.on("--modular-gc [PATH]")   { |v| @modular_gc = v || true }
+      o.on("--shared")             { @configure_args << "--enable-shared" }
+      o.on("--valgrind")           { @configure_args << "--enable-valgrind" }
+      o.on("--tailcall")           { @cflags << "-DOPT_THREADED_CODE=3" }
+      o.on("--yjit-stats")         { @cflags << "-DYJIT_STATS" }
+      o.on("--target TARGET")      { |v| @configure_args << "--target=#{v}" }
+      o.on("--debug-env")          { @configure_args << "--enable-debug-env" }
+
+      o.on("--devel")              { @env["RUBY_DEVEL"] = "yes" }
+      o.on("--debug")              { @debug = true }
+      o.on("--vm-check [N]", Integer) { |v| @cflags << "-DVM_CHECK_MODE=#{v || 1}" }
+      o.on("--rgengc-check [N]", Integer) { |v| @cflags << "-DRGENGC_CHECK_MODE=#{v || 2}" }
+      o.on("--verify-shareable")   { @cflags << "-DSTRICT_VERIFY_SHAREABLE=1" }
+
+      o.on("--prefix NAME")       { |v| @prefix_name = v }
+      o.on("--no-make")            { @do_make = false }
+      o.on("--install")            { @do_install = true }
+      o.on("--test")               { @do_test = true }
+      o.on("--cflags FLAGS")       { |v| @cflags << v }
+      o.on("--configure FLAGS")    { |v| @configure_args << v }
+      o.on("--dry-run")            { @dry_run = true }
+
+    end
+
+    parser.parse!(argv)
+
+    # Defaults
+    @configure_flags["debugflags"] ||= "-ggdb3"
+    @configure_args << "--disable-valgrind" unless @configure_args.any? { |a| a.include?("valgrind") }
+    if @debug
+      @cflags << "-DRUBY_DEBUG=1"
+      jit_mode = "dev"
+    else
+      jit_mode = "dev_nodebug"
+    end
+    unless @configure_args.any? { |a| a.match?(/--(?:enable|disable)-yjit/) }
+      @configure_args << "--enable-yjit=#{jit_mode}"
+    end
+    unless @configure_args.any? { |a| a.match?(/--(?:enable|disable)-zjit/) }
+      @configure_args << "--enable-zjit=#{jit_mode}"
+    end
+
+    self
+  end
+
+  def run
+    prefix = File.join(ENV["HOME"], ".rubies", @prefix_name || "ruby-dev")
+    if @modular_gc
+      @modular_gc = File.join(prefix, "modular_gc") if @modular_gc == true
+      FileUtils.mkdir_p(@modular_gc)
+      @configure_args << "--with-modular-gc=#{@modular_gc}"
+    end
+    @configure_flags["cflags"] = @cflags.join(" ") if @cflags.any?
+    flags = @configure_flags.map { |k, v| "#{k}=#{v}" }
+    args = ["--prefix=#{prefix}", "--disable-install-doc", *@configure_args, *flags]
+
+    commands = []
+    commands << ["sh", "autogen.sh"]
+    commands << ["./configure", *args]
+    if @do_make
+      commands << ["make", "clean"]
+      commands << ["make", "-j"]
+      commands << ["make", "install"] if @do_install
+      if @do_test
+        commands << ["make", "btest"]
+        commands << ["make", "test-all"]
+        commands << ["make", "test-spec"]
+      end
+    end
+
+    if @dry_run
+      @env.each { |k, v| puts "export #{k}=\"#{v}\"" }
+      commands.each { |cmd| puts cmd.join(" ") }
+      return
+    end
+
+    @env.each { |k, v| ENV[k] = v }
+    commands.each do |cmd|
+      puts "$ #{cmd.join(" ")}"
+      system(*cmd) or abort "Failed: #{cmd.join(" ")}"
+    end
+  end
+
+  private
+
+  def sanitizer(name)
+    @configure_flags["CC"] ||= "clang"
+    @cflags << "-fsanitize=#{name}"
+    case name
+    when "address"
+      @env["ASAN_OPTIONS"] = "halt_on_error=0:use_sigaltstack=0:detect_leaks=0:detect_stack_use_after_return=0"
+    when "memory"
+      @cflags << "-fsanitize-memory-track-origins=2" << "-fno-omit-frame-pointer"
+    when "thread"
+      @env["TSAN_OPTIONS"] = "report_bugs=0"
+    end
+  end
+end
+
+RubyBuilder.new.parse(ARGV).run
