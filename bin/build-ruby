@@ -2,6 +2,7 @@
 
 require "optparse"
 require "fileutils"
+require "tmpdir"
 
 class RubyBuilder
   def initialize
@@ -13,6 +14,7 @@ class RubyBuilder
     @do_make = true
     @do_install = false
     @do_test = false
+    @worktree_ref = nil
     @dry_run = false
   end
 
@@ -62,6 +64,7 @@ class RubyBuilder
       o.on("--no-make")            { @do_make = false }
       o.on("--install")            { @do_install = true }
       o.on("--test")               { @do_test = true }
+      o.on("--worktree REF")       { |v| @worktree_ref = v }
       o.on("--cflags FLAGS")       { |v| @cflags << v }
       o.on("--configure FLAGS")    { |v| @configure_args << v }
       o.on("--dry-run")            { @dry_run = true }
@@ -90,7 +93,9 @@ class RubyBuilder
   end
 
   def run
-    prefix = File.join(ENV["HOME"], ".rubies", @prefix_name || "ruby-dev")
+    name = @prefix_name || "dev"
+    name = "ruby-#{name}" unless name.start_with?("ruby-")
+    prefix = File.join(ENV["HOME"], ".rubies", name)
     if @modular_gc
       @modular_gc = File.join(prefix, "modular_gc") if @modular_gc == true
       FileUtils.mkdir_p(@modular_gc)
@@ -120,14 +125,41 @@ class RubyBuilder
       return
     end
 
-    @env.each { |k, v| ENV[k] = v }
-    commands.each do |cmd|
-      puts "$ #{cmd.join(" ")}"
-      system(*cmd) or abort "Failed: #{cmd.join(" ")}"
+    if @worktree_ref
+      run_in_worktree(commands)
+    else
+      exec_commands(commands)
     end
   end
 
   private
+
+  def exec_commands(commands)
+    @env.each { |k, v| ENV[k] = v }
+    commands.each do |cmd|
+      run_command(*cmd)
+    end
+  end
+
+  def run_command(*cmd)
+    puts "$ #{cmd.join(" ")}"
+    system(*cmd, exception: true)
+  end
+
+  def run_in_worktree(commands)
+    tmpdir = Dir.mktmpdir("build-ruby")
+    worktree = File.join(tmpdir, "ruby")
+    run_command("git", "worktree", "add", "--detach", worktree, @worktree_ref)
+    begin
+      Dir.chdir(worktree) do
+        exec_commands(commands)
+      end
+    ensure
+      run_command("git", "worktree", "remove", "--force", worktree)
+    end
+  ensure
+    FileUtils.rm_rf(tmpdir) if tmpdir
+  end
 
   def sanitizer(name)
     @configure_flags["CC"] ||= "clang"
