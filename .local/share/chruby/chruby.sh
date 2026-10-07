@@ -1,10 +1,14 @@
 CHRUBY_VERSION="0.3.9"
-RUBIES=()
 
-for dir in "$PREFIX/opt/rubies" "$HOME/.rubies"; do
-	[[ -d "$dir" && -n "$(command ls -A "$dir")" ]] && RUBIES+=("$dir"/*)
-done
-unset dir
+function chruby_reload()
+{
+	RUBIES=()
+	for dir in "$PREFIX/opt/rubies" "$HOME/.rubies"; do
+		[[ -d "$dir" && -n "$(command ls -A "$dir")" ]] && RUBIES+=("$dir"/*)
+	done
+	unset dir
+}
+chruby_reload
 
 function chruby_reset()
 {
@@ -56,6 +60,7 @@ EOF
 
 function chruby()
 {
+	chruby_reload
 	case "$1" in
 		-h|--help)
 			echo "usage: chruby [RUBY|VERSION|system] [RUBYOPT...]"
