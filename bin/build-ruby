@@ -78,15 +78,15 @@ class RubyBuilder
     @configure_args << "--disable-valgrind" unless @configure_args.any? { |a| a.include?("valgrind") }
     if @debug
       @cflags << "-DRUBY_DEBUG=1"
-      jit_mode = "dev"
+      jit_mode = "=dev"
     else
-      jit_mode = "dev_nodebug"
+      jit_mode = ""
     end
     unless @configure_args.any? { |a| a.match?(/--(?:enable|disable)-yjit/) }
-      @configure_args << "--enable-yjit=#{jit_mode}"
+      @configure_args << "--enable-yjit#{jit_mode}"
     end
     unless @configure_args.any? { |a| a.match?(/--(?:enable|disable)-zjit/) }
-      @configure_args << "--enable-zjit=#{jit_mode}"
+      @configure_args << "--enable-zjit#{jit_mode}"
     end
 
     self
