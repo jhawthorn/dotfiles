@@ -61,19 +61,25 @@ pr = JSON.parse(capture('gh', 'pr', 'view', pr_number, '--repo', UPSTREAM_SLUG, 
                         'title,body,state,url,mergeCommit,commits'))
 abort "#{pr['url']} is #{pr['state'].downcase}, not merged" unless pr['state'] == 'MERGED'
 
-tickets = (pr['commits'].map {|c| c['messageHeadline'] + "\n" + c['messageBody']} + [pr['title'], pr['body']])
+pr_branch = "#{branch_name}-pr-#{pr_number}"
+pr_ref = "refs/remotes/backport-pr/pr-#{pr_number}"
+
+run 'git', 'fetch', '--quiet', UPSTREAM_URL,
+    "+refs/heads/#{DEFAULT_BRANCH}:#{master_ref}", "+refs/heads/#{branch_name}:#{base_ref}",
+    "+refs/pull/#{pr_number}/head:#{pr_ref}"
+
+# Read commit messages from git, not gh: GitHub cuts messageHeadline at ~70 characters.
+pr_messages = pr['commits'].map {|c| capture('git', 'show', '-s', '--format=%B', c['oid'])}
+
+tickets = (pr_messages + [pr['title'], pr['body']])
   .join("\n").scan(/\[(?:Bug|Feature|Misc) #(\d+)\]/i).flatten.uniq
 
 title = pr['title'].sub(/ \(#\d+\)\z/, '').sub(/\A(?:\s*\[(?:Bug|Feature|Misc) #\d+\])+\s*/i, '')
 title = "[#{version}]#{tickets.map {|t| "[Backport ##{t}]"}.join} #{title}"
-pr_branch = "#{branch_name}-pr-#{pr_number}"
-
-run 'git', 'fetch', '--quiet', UPSTREAM_URL,
-    "+refs/heads/#{DEFAULT_BRANCH}:#{master_ref}", "+refs/heads/#{branch_name}:#{base_ref}"
 
 merge = pr['mergeCommit']['oid']
 parents = capture('git', 'rev-list', '--parents', '-n1', merge).split.drop(1)
-nonmerge_subjects = pr['commits'].map {|c| c['messageHeadline']}.reject {|s| s.start_with?('Merge ')}
+nonmerge_subjects = pr_messages.map {|m| m.lines.first.to_s.chomp}.reject {|s| s.start_with?('Merge ')}
 
 # How the PR landed on master decides which commits to pick:
 #  - merge commit: the commits reachable from it but not from its first parent
@@ -101,8 +107,9 @@ body << "\n\nRelated tickets: #{tickets.map {|t| "https://bugs.ruby-lang.org/iss
 # A detached worktree under .git (not /tmp), so there is no local branch to clean up.
 git_dir = capture('git', 'rev-parse', '--path-format=absolute', '--git-common-dir')
 wt = File.join(git_dir, 'backport-pr', pr_branch)
-FileUtils.rm_rf(wt) # left over from an interrupted run
-run 'git', 'worktree', 'prune'
+# Left over from an interrupted run.
+system('git', 'worktree', 'remove', '--force', wt, err: File::NULL)
+FileUtils.rm_rf(wt)
 run 'git', 'worktree', 'add', '--detach', wt, base_ref
 
 begin
@@ -118,6 +125,8 @@ begin
 
   owner = capture('git', 'remote', 'get-url', push_remote)[%r{github\.com[:/]([^/]+)/}, 1] or
     abort "can't tell the GitHub owner of remote #{push_remote}"
+  owner == UPSTREAM_SLUG.split('/').first and
+    abort "remote #{push_remote} is #{UPSTREAM_SLUG} itself; pass -r with the remote for your fork"
   run 'git', '-C', wt, 'push', push_remote, "HEAD:refs/heads/#{pr_branch}"
   cmd = ['gh', 'pr', 'create', '--repo', UPSTREAM_SLUG, '--base', branch_name,
          '--head', "#{owner}:#{pr_branch}", '--title', title, '--body', body]
