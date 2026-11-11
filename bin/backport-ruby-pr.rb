@@ -79,22 +79,29 @@ title = "[#{version}]#{tickets.map {|t| "[Backport ##{t}]"}.join} #{title}"
 
 merge = pr['mergeCommit']['oid']
 parents = capture('git', 'rev-list', '--parents', '-n1', merge).split.drop(1)
-# %s, like the comparisons below: it joins a first paragraph that spans lines.
-nonmerge_subjects = pr['commits'].map {|c| capture('git', 'show', '-s', '--format=%s', c['oid'])}
-  .reject {|s| s.start_with?('Merge ')}
+subject = ->(c) {capture('git', 'show', '-s', '--format=%s', c)}
+# Rebasing drops the PR's merge commits; tell them by their parents, not their subjects.
+pr_nonmerges = pr['commits'].map {|c| c['oid']}
+  .reject {|c| capture('git', 'show', '-s', '--format=%p', c).split.size > 1}
+pr_subjects = pr_nonmerges.map(&subject)
 
 # How the PR landed on master decides which commits to pick:
 #  - merge commit: the commits reachable from it but not from its first parent
-#  - rebase: the same subjects, ending at the merge commit
-#  - squash: the merge commit alone
+#  - rebase: the last N commits on master, with the PR's N subjects in order
+#  - squash: the merge commit alone ("Title (#N)", which no PR commit has)
 commits =
   if parents.size > 1
     capture('git', 'rev-list', '--reverse', '--no-merges', "#{parents[0]}..#{merge}").split
-  elsif nonmerge_subjects.include?(capture('git', 'show', '-s', '--format=%s', merge))
-    walked = capture('git', 'rev-list', '--first-parent', '--no-merges', "-n#{nonmerge_subjects.size}", merge).split
-    walked.select {|c| nonmerge_subjects.include?(capture('git', 'show', '-s', '--format=%s', c))}.reverse
   else
-    [merge]
+    walked = capture('git', 'rev-list', '--reverse', '--first-parent', "-n#{pr_subjects.size}", merge).split
+    if walked.map(&subject) == pr_subjects
+      walked
+    elsif pr_subjects.include?(subject[merge])
+      abort "#{pr['url']} looks rebased onto #{DEFAULT_BRANCH}, but the commits before " \
+            "#{merge[0, 10]} don't match the PR's; backport this one by hand"
+    else
+      [merge]
+    end
   end
 abort 'could not work out which commits to backport' if commits.empty?
 
