@@ -75,7 +75,9 @@ pr_messages = pr['commits'].map {|c| capture('git', 'show', '-s', '--format=%B',
 tickets = (pr_messages + [pr['title'], pr['body']])
   .join("\n").scan(/\[(Bug|Feature|Misc) #(\d+)\]/i).map {|k, n| [k.capitalize, n]}.uniq(&:last)
 
-title = pr['title'].sub(/ \(#\d+\)\z/, '').sub(/\A(?:\s*\[(?:Bug|Feature|Misc) #\d+\])+\s*/i, '')
+# [Backport #N] replaces the ticket tags at either end of the title.
+tag = /\[(?:Bug|Feature|Misc) #\d+\]/i
+title = pr['title'].sub(/ \(#\d+\)\z/, '').sub(/\A(?:\s*#{tag})+\s*/, '').sub(/(?:\s*#{tag})+\s*\z/, '')
 title = "[#{version}]#{tickets.map {|_, n| "[Backport ##{n}]"}.join} #{title}"
 
 merge = pr['mergeCommit']['oid']
