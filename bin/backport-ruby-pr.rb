@@ -79,7 +79,9 @@ title = "[#{version}]#{tickets.map {|t| "[Backport ##{t}]"}.join} #{title}"
 
 merge = pr['mergeCommit']['oid']
 parents = capture('git', 'rev-list', '--parents', '-n1', merge).split.drop(1)
-nonmerge_subjects = pr_messages.map {|m| m.lines.first.to_s.chomp}.reject {|s| s.start_with?('Merge ')}
+# %s, like the comparisons below: it joins a first paragraph that spans lines.
+nonmerge_subjects = pr['commits'].map {|c| capture('git', 'show', '-s', '--format=%s', c['oid'])}
+  .reject {|s| s.start_with?('Merge ')}
 
 # How the PR landed on master decides which commits to pick:
 #  - merge commit: the commits reachable from it but not from its first parent
