@@ -71,11 +71,12 @@ run 'git', 'fetch', '--quiet', UPSTREAM_URL,
 # Read commit messages from git, not gh: GitHub cuts messageHeadline at ~70 characters.
 pr_messages = pr['commits'].map {|c| capture('git', 'show', '-s', '--format=%B', c['oid'])}
 
+# [kind, number] pairs, e.g. ["Bug", "22419"]
 tickets = (pr_messages + [pr['title'], pr['body']])
-  .join("\n").scan(/\[(?:Bug|Feature|Misc) #(\d+)\]/i).flatten.uniq
+  .join("\n").scan(/\[(Bug|Feature|Misc) #(\d+)\]/i).map {|k, n| [k.capitalize, n]}.uniq(&:last)
 
 title = pr['title'].sub(/ \(#\d+\)\z/, '').sub(/\A(?:\s*\[(?:Bug|Feature|Misc) #\d+\])+\s*/i, '')
-title = "[#{version}]#{tickets.map {|t| "[Backport ##{t}]"}.join} #{title}"
+title = "[#{version}]#{tickets.map {|_, n| "[Backport ##{n}]"}.join} #{title}"
 
 merge = pr['mergeCommit']['oid']
 parents = capture('git', 'rev-list', '--parents', '-n1', merge).split.drop(1)
@@ -109,9 +110,9 @@ puts "Backporting #{commits.size} commit(s) from #{pr['url']} to #{branch_name}:
 commits.each {|c| puts "  " + capture('git', 'show', '-s', '--format=%h %s', c)}
 
 body = +"Backport of #{pr['url']}"
-tickets.each {|t| body << " ([Bug ##{t}](https://bugs.ruby-lang.org/issues/#{t}))"} if tickets.size == 1
+tickets.each {|k, n| body << " ([#{k} ##{n}](https://bugs.ruby-lang.org/issues/#{n}))"} if tickets.size == 1
 body << " to `#{branch_name}`.\n\nThis is `git cherry-pick -x` of the merged commit(s)."
-body << "\n\nRelated tickets: #{tickets.map {|t| "https://bugs.ruby-lang.org/issues/#{t}"}.join(', ')}" if tickets.size > 1
+body << "\n\nRelated tickets: #{tickets.map {|_, n| "https://bugs.ruby-lang.org/issues/#{n}"}.join(', ')}" if tickets.size > 1
 
 # A detached worktree under .git (not /tmp), so there is no local branch to clean up.
 git_dir = capture('git', 'rev-parse', '--path-format=absolute', '--git-common-dir')
